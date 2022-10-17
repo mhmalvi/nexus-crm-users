@@ -14,6 +14,54 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
     /**
+     * User List
+     * @param Request $request
+     * @return User Details array
+     */
+    public function userList(Request $request){
+
+        if(!isset($request->users)){
+            return response()->json([
+                'status' => false,
+                'message' => 'Client id required'
+            ], 406);
+        }
+        $userIdArray = json_decode($request->users);
+        //dd($userIdArray);
+
+        try {
+
+            $data = User::join('user_profile', function ($join) {
+                    $join->on('user_profile.user_id', '=', 'users.id');
+                })->whereIn('users.id', $userIdArray)
+                //->where('lead_details.client_id', '=', $request->client_id)
+                ->get();
+
+            if($data==""){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 401);
+            }
+            //dd($data->toArray());
+
+            return response()->json([
+                'status' => true,
+                'message' => 'All User List',
+                'data' => $data->toArray()
+            ], 200);
+
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+
+    }
+
+    /**
      * Create User
      * @param Request $request
      * @return User
