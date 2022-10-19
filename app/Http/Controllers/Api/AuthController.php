@@ -16,7 +16,7 @@ class AuthController extends Controller
     /**
      * User List
      * @param Request $request
-     * @return User Details array
+     * @return \Illuminate\Http\JsonResponse Details array
      */
     public function userList(Request $request){
 
@@ -64,7 +64,7 @@ class AuthController extends Controller
     /**
      * Create User
      * @param Request $request
-     * @return User
+     * @return \Illuminate\Http\JsonResponse  User
      */
     public function createUser(Request $request)
     {
@@ -195,7 +195,7 @@ class AuthController extends Controller
             ], 401);
 
         try {
-            $user = User::find($request->user_id)->first();
+            $user = User::find($request->user_id);
             if($user==""){
                 return response()->json([
                     'status' => false,
