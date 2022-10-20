@@ -128,7 +128,7 @@ class AuthController extends Controller
     /**
      * Update User
      * @param Request $request
-     * @return boolean
+     * @return \Illuminate\Http\JsonResponse
      */
     public function updateUser(Request $request)
     {
@@ -183,7 +183,7 @@ class AuthController extends Controller
     /**
      * Update User Password
      * @param Request $request
-     * @return boolean
+     * @return \Illuminate\Http\JsonResponse
      */
     public function resetPassword(Request $request)
     {
@@ -220,7 +220,7 @@ class AuthController extends Controller
     /**
      * Update Forgot Password
      * @param Request $request
-     * @return User ID
+     * @return \Illuminate\Http\JsonResponse ID
      */
     public function forgotPassword(Request $request)
     {
@@ -272,7 +272,7 @@ class AuthController extends Controller
     /**
      * Login The User
      * @param Request $request
-     * @return User
+     * @return \Illuminate\Http\JsonResponse
      */
     public function loginUser(Request $request)
     {
@@ -299,11 +299,26 @@ class AuthController extends Controller
             }
 
             $user = User::where('email', $request->email)->first();
+           // dd($user->id);
+
+            $data = User::join('user_profile', function ($join) {
+                $join->on('user_profile.user_id', '=', 'users.id');
+            })->where('users.id', $user->id)
+                //->where('lead_details.client_id', '=', $request->client_id)
+                ->get();
+
+            if($data==""){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 401);
+            }
 
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
+                'token' => $user->createToken("API TOKEN")->plainTextToken,
+                'data'  => $data
             ], 200);
 
         } catch (\Throwable $th) {
