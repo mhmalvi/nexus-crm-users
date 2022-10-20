@@ -298,12 +298,14 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            $user = User::where('email', $request->email)->first();
+            //$user = User::where('email', $request->email)->first();
            // dd($user->id);
+
+            //dd(Auth::user()->id);
 
             $data = User::join('user_profile', function ($join) {
                 $join->on('user_profile.user_id', '=', 'users.id');
-            })->where('users.id', $user->id)
+            })->where('users.id', Auth::user()->id)
                 //->where('lead_details.client_id', '=', $request->client_id)
                 ->get();
 
@@ -317,7 +319,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken,
+                'token' => Auth::user()->createToken("API TOKEN")->plainTextToken,
                 'data'  => $data
             ], 200);
 
