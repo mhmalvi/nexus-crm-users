@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -318,7 +319,17 @@ class AuthController extends Controller
             $clientId = 0;
             $roleArray = [3,4,5];
             if(isset($data->role_id) && in_array($data->role_id, $roleArray)){
-                $clientId =  $data->id;
+               // $clientId =  $data->user_id;
+                $companyServiceAPI = env('COMPANY_SERVICE_API', '');
+                //dd($companyServiceAPI);
+
+                $response = Http::post($companyServiceAPI.'/company/details/user', [
+                    'user_id' => $data->user_id,
+                    'role_id' => $data->role_id
+                ]);
+
+                $clientData =  isset(json_decode($response->body())->data->company_id)?json_decode($response->body())->data->company_id:0;
+                $clientId = $clientData;
             }
             $data->client_id = $clientId;
             //dd($data);
