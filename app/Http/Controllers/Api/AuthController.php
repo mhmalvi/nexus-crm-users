@@ -307,7 +307,7 @@ class AuthController extends Controller
                 $join->on('user_profile.user_id', '=', 'users.id');
             })->where('users.id', Auth::user()->id)
                 //->where('lead_details.client_id', '=', $request->client_id)
-                ->get();
+                ->first();
 
             if($data==""){
                 return response()->json([
@@ -315,7 +315,13 @@ class AuthController extends Controller
                     'message' => 'User not found',
                 ], 401);
             }
-
+            $clientId = 0;
+            $roleArray = [3,4,5];
+            if(isset($data->role_id) && in_array($data->role_id, $roleArray)){
+                $clientId =  $data->id;
+            }
+            $data->client_id = $clientId;
+            //dd($data);
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
