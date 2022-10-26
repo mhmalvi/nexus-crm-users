@@ -317,6 +317,7 @@ class AuthController extends Controller
                 ], 401);
             }
             $clientId = 0;
+            $ac_k ='';
             $roleArray = [3,4,5];
             if(isset($data->role_id) && in_array($data->role_id, $roleArray)){
                // $clientId =  $data->user_id;
@@ -327,11 +328,15 @@ class AuthController extends Controller
                     'user_id' => $data->user_id,
                     'role_id' => $data->role_id
                 ]);
+                $jsonArray = json_decode($response->body());
+                if($jsonArray!="" && isset($jsonArray->data->company_id)){
+                    $clientId = $jsonArray->data->company_id;
+                    $ac_k = $jsonArray->data->fb_ac_credential;
+                }
 
-                $clientData =  isset(json_decode($response->body())->data->company_id)?json_decode($response->body())->data->company_id:0;
-                $clientId = $clientData;
             }
             $data->client_id = $clientId;
+            $data->ac_k = $ac_k;
             //dd($data);
             return response()->json([
                 'status' => true,
