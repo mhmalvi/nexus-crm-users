@@ -91,7 +91,9 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($randomPassword),
                 'role_id' => $request->role_id,
-                'contact_number' => isset($request->contact_number)?$request->contact_number:''
+                'contact_number' => isset($request->contact_number)?$request->contact_number:'',
+                'flag' => 1,
+                'status'=>1
             ]);
             DB::table('user_profile')->insert([
                 'user_id' => $userId,
@@ -104,8 +106,8 @@ class AuthController extends Controller
                 'location' => isset($request->location)?$request->location:'',
                 'profession' => isset($request->profession)?$request->profession:'',
                 'secondary_contact' => isset($request->secondary_contact)?$request->secondary_contact:'',
-                'date_of_birth' => isset($request->date_of_birth)?$request->date_of_birth:'',
-                'flag' => 1
+                'date_of_birth' => isset($request->date_of_birth)?$request->date_of_birth:''
+
             ]);
             DB::commit();
             $userData = [
