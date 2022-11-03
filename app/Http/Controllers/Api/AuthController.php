@@ -104,7 +104,8 @@ class AuthController extends Controller
                 'location' => isset($request->location)?$request->location:'',
                 'profession' => isset($request->profession)?$request->profession:'',
                 'secondary_contact' => isset($request->secondary_contact)?$request->secondary_contact:'',
-                'date_of_birth' => isset($request->date_of_birth)?$request->date_of_birth:''
+                'date_of_birth' => isset($request->date_of_birth)?$request->date_of_birth:'',
+                'flag' => 1
             ]);
             DB::commit();
             $userData = [
@@ -204,6 +205,7 @@ class AuthController extends Controller
             }
             if(isset($request->password))
                 $user->password = Hash::make($request->password);
+                $user->flag = 2 ;
             $user->save();
             return response()->json([
                 'status' => true,
