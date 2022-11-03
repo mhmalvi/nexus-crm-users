@@ -22,6 +22,7 @@ Route::post('/user/register', [\App\Http\Controllers\Api\AuthController::class, 
 Route::post('/user/update', [\App\Http\Controllers\Api\AuthController::class, 'updateUser']);
 Route::post('/user/password-reset', [\App\Http\Controllers\Api\AuthController::class, 'resetPassword']);
 Route::post('/user/forgot-password', [\App\Http\Controllers\Api\AuthController::class, 'forgotPassword']);
+Route::post('/user/check-verification', [\App\Http\Controllers\Api\AuthController::class, 'updateVerificationCode']);
 Route::post('/user/list', [\App\Http\Controllers\Api\AuthController::class, 'userList']);
 
 Route::post('/user/login', [\App\Http\Controllers\Api\AuthController::class, 'loginUser']);

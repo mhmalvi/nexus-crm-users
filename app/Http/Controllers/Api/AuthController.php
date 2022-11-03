@@ -319,6 +319,53 @@ class AuthController extends Controller
     }
 
     /**
+     * Update Verification Code for Forgot Password
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateVerificationCode(Request $request)
+    {
+        if(!isset($request->verification_code))
+            return response()->json([
+                'status' => false,
+                'message' => 'validation error',
+            ], 401);
+
+        $verificationCodeArray = explode('-',$request->verification_code);
+        if(!isset($verificationCodeArray[1])){
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid verification Code',
+            ], 401);
+        }
+        //dd($verificationCodeArray);
+        try {
+
+            $user = User::where('id', $verificationCodeArray[1])->where('verification_code', $request->verification_code)->first();
+
+            if($user==""){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User verification Code not found',
+                ], 401);
+            }
+
+            $user->verification_code = '';
+            $user->save();
+            return response()->json([
+                'status' => true,
+                'message' => 'Verification Code Update Successfully',
+            ], 201);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
      * Random Password generate
      * @param Request void
      * @return 8 character password
