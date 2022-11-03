@@ -303,6 +303,13 @@ class AuthController extends Controller
                 ], 401);
             }
 
+
+            if(Auth::user()->status!=1){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Your Account is Currently Inactive, Please Contact with Support Team',
+                ], 401);
+            }
             //$user = User::where('email', $request->email)->first();
            // dd($user->id);
 
