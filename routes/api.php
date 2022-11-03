@@ -25,4 +25,5 @@ Route::post('/user/forgot-password', [\App\Http\Controllers\Api\AuthController::
 Route::post('/user/list', [\App\Http\Controllers\Api\AuthController::class, 'userList']);
 
 Route::post('/user/login', [\App\Http\Controllers\Api\AuthController::class, 'loginUser']);
+Route::post('/user/status', [\App\Http\Controllers\Api\AuthController::class, 'updateUserStatus']);
 //Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');

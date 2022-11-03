@@ -185,6 +185,43 @@ class AuthController extends Controller
     }
 
     /**
+     * Update User Status
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateUserStatus(Request $request)
+    {
+        if(!isset($request->id) || !isset($request->status))
+            return response()->json([
+                'status' => false,
+                'message' => 'User Id and Status is required',
+            ], 401);
+
+        try {
+            $user = User::find($request->id);
+            if($user==""){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User Data not found',
+                ], 401);
+            }
+
+            $user->status = ($request->status==1)?1:0;
+            $user->save();
+            return response()->json([
+                'status' => true,
+                'message' => 'User Status Update Successfully',
+            ], 201);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
      * Update User Password
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
