@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\User;
 use App\Models\UserProfile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,7 @@ class AuthController extends Controller
                 //->where('lead_details.client_id', '=', $request->client_id)
                 ->get();
 
-            if($data==""){
+            if($data =="" || count($data)==0){
                 return response()->json([
                     'status' => false,
                     'message' => 'User not found',
@@ -93,7 +94,9 @@ class AuthController extends Controller
                 'role_id' => $request->role_id,
                 'contact_number' => isset($request->contact_number)?$request->contact_number:'',
                 'flag' => 1,
-                'status'=>1
+                'status'=>1,
+                'created_at' => Carbon::parse(now())->toDateTime(),
+                'updated_at' => Carbon::parse(now())->toDateTime()
             ]);
             DB::table('user_profile')->insert([
                 'user_id' => $userId,
@@ -280,11 +283,31 @@ class AuthController extends Controller
                     'message' => 'User Data not found',
                 ], 401);
             }
+            $user->verification_code = $this->_randomPassword().'-'.$user->id;
+            $user->save();
+
+            $userServiceAPI = env('EMAIL_SERVICE_API', '');
+            //dd($userServiceAPI);
+            $userData=[
+                'email'=>$user->email,
+                'verification_code' => $user->verification_code
+            ];
+
+            $response = Http::post($userServiceAPI.'/forget-password', [
+                'data' => json_encode($userData)
+            ]);
+            //dd($response->status());
+
+            if($response->status()!= '201'){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Email Not Sent',
+                ], 401);
+            }
 
             return response()->json([
                 'status' => true,
-                'message' => 'User found',
-                'data' => $user->id
+                'message' => 'Email sent with link for forgotten password'
             ], 202);
 
         } catch (\Throwable $th) {
