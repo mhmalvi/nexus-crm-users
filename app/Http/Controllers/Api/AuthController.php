@@ -36,6 +36,7 @@ class AuthController extends Controller
             $data = User::join('user_profile', function ($join) {
                     $join->on('user_profile.user_id', '=', 'users.id');
                 })->whereIn('users.id', $userIdArray)
+                ->where('users.status', 1)->where('users.suspend', 0)
                 //->where('lead_details.client_id', '=', $request->client_id)
                 ->get();
 
@@ -95,6 +96,7 @@ class AuthController extends Controller
                 'contact_number' => isset($request->contact_number)?$request->contact_number:'',
                 'flag' => 1,
                 'status'=>1,
+                'suspend'=>0,
                 'created_at' => Carbon::parse(now())->toDateTime(),
                 'updated_at' => Carbon::parse(now())->toDateTime()
             ]);
@@ -225,6 +227,58 @@ class AuthController extends Controller
     }
 
     /**
+     * Update User suspend status
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function usersSuspend(Request $request)
+    {
+        if(!isset($request->users) || !isset($request->suspend)){
+            return response()->json([
+                'status' => false,
+                'message' => 'Client id required'
+            ], 406);
+        }
+        $userIdArray = json_decode($request->users);
+
+        $suspend = $request->suspend;
+        $status = ($request->suspend==1)?0:1;
+        $statusArray = [
+            'suspend' => $suspend,
+            'status' => $status
+        ];
+
+//        return response()->json([
+//            'status' => false,
+//            'message' => 'User Data not found',
+//            'data' =>$request->suspend
+//        ], 401);
+
+        try {
+//            $user = User::find($userIdArray);
+//
+//            $user->suspend = $suspend;
+//            $user->status = $status;
+//            $user->save();
+            User::find(collect($userIdArray)->pluck('id')->toArray())->map(function($item, $key) use ($statusArray){
+                $item['suspend'] = $statusArray['suspend'];
+                $item['status'] = $statusArray['status'];;
+                return $item->save();
+            });
+            return response()->json([
+                'status' => true,
+                'message' => 'User Status Update Successfully',
+            ], 201);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
      * Update User Password
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -276,7 +330,7 @@ class AuthController extends Controller
             ], 401);
 
         try {
-            $user = User::where('email', '=',$request->email)->first();
+            $user = User::where('email', '=',$request->email)->where('suspend',0)->first();
             if($user==""){
                 return response()->json([
                     'status' => false,
@@ -341,7 +395,7 @@ class AuthController extends Controller
         //dd($verificationCodeArray);
         try {
 
-            $user = User::where('id', $verificationCodeArray[1])->where('verification_code', $request->verification_code)->first();
+            $user = User::where('id', $verificationCodeArray[1])->where('verification_code', $request->verification_code)->where('suspend',0)->first();
 
             if($user==""){
                 return response()->json([
@@ -410,6 +464,12 @@ class AuthController extends Controller
                 ], 401);
             }
 
+            if(Auth::user()->suspend!=0){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Your Account is Currently Suspend, Please Contact with Support Team',
+                ], 401);
+            }
 
             if(Auth::user()->status!=1){
                 return response()->json([

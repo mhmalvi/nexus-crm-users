@@ -27,4 +27,6 @@ Route::post('/user/list', [\App\Http\Controllers\Api\AuthController::class, 'use
 
 Route::post('/user/login', [\App\Http\Controllers\Api\AuthController::class, 'loginUser']);
 Route::post('/user/status', [\App\Http\Controllers\Api\AuthController::class, 'updateUserStatus']);
+Route::post('/user/suspend', [\App\Http\Controllers\Api\AuthController::class, 'usersSuspend']);
+
 //Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
