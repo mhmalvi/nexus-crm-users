@@ -112,9 +112,17 @@ class AuthController extends Controller
                 'profession' => isset($request->profession)?$request->profession:'',
                 'secondary_contact' => isset($request->secondary_contact)?$request->secondary_contact:'',
                 'date_of_birth' => isset($request->date_of_birth)?$request->date_of_birth:''
-
             ]);
             DB::commit();
+
+            $userServiceAPI = env('EMAIL_SERVICE_API', '');
+
+            $response = Http::post($userServiceAPI.'/registration', [
+                'username'=>$request->email,
+                'email'=>$request->email,
+                'password' => $randomPassword
+            ]);
+
             $userData = [
                 'user_id' => $userId,
                 'password' => $randomPassword
@@ -155,6 +163,7 @@ class AuthController extends Controller
                     'message' => 'User Data not found',
                 ], 401);
             }
+
             if(isset($request->full_name))
                 $user->full_name = $request->full_name;
             if(isset($request->address))
@@ -172,7 +181,7 @@ class AuthController extends Controller
             if(isset($request->profession))
                 $user->profession = $request->profession;
             if(isset($request->secondary_contact))
-                $user->full_name = $request->secondary_contact;
+                $user->secondary_contact = $request->secondary_contact;
             if(isset($request->date_of_birth))
                 $user->date_of_birth = $request->date_of_birth;
             $user->save();
@@ -255,11 +264,7 @@ class AuthController extends Controller
 //        ], 401);
 
         try {
-//            $user = User::find($userIdArray);
-//
-//            $user->suspend = $suspend;
-//            $user->status = $status;
-//            $user->save();
+
             User::find(collect($userIdArray)->pluck('id')->toArray())->map(function($item, $key) use ($statusArray){
                 $item['suspend'] = $statusArray['suspend'];
                 $item['status'] = $statusArray['status'];;
@@ -338,6 +343,7 @@ class AuthController extends Controller
                 ], 401);
             }
             $user->verification_code = $this->_randomPassword().'-'.$user->id;
+            $user->flag = 2 ;
             $user->save();
 
             $userServiceAPI = env('EMAIL_SERVICE_API', '');
