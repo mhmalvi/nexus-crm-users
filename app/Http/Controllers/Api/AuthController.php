@@ -414,6 +414,7 @@ class AuthController extends Controller
             $user->save();
             return response()->json([
                 'status' => true,
+                'user_id'=>$verificationCodeArray[1],
                 'message' => 'Verification Code Update Successfully',
             ], 201);
 
