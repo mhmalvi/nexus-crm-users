@@ -320,6 +320,49 @@ class AuthController extends Controller
     }
 
     /**
+     * Update User suspend status
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function usersSuspendById(Request $request)
+    {
+        if(!isset($request->user_id) || !isset($request->suspend)){
+            return response()->json([
+                'status' => false,
+                'message' => 'User id required'
+            ], 406);
+        }
+
+
+        try {
+
+            $user = User::find($request->user_id);
+            if($user==""){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User Data not found',
+                ], 401);
+            }
+
+            if(isset($request->suspend))
+                $user->suspend = $request->suspend;
+
+            $user->save();
+            return response()->json([
+                'status' => true,
+                'message' => 'User Profile Update Successfully',
+            ], 201);
+
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
      * Update User Password
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
