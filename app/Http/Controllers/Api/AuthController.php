@@ -582,7 +582,7 @@ class AuthController extends Controller
             }
             $clientId = 0;
             $ac_k ='';
-            $roleArray = [3,4,5];
+            $roleArray = [1,2,3,4,5];
             if(isset($data->role_id) && in_array($data->role_id, $roleArray)){
                // $clientId =  $data->user_id;
                 $companyServiceAPI = env('COMPANY_SERVICE_API', '');
