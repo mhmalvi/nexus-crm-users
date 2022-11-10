@@ -279,17 +279,19 @@ class AuthController extends Controller
         if(!isset($request->users) || !isset($request->suspend)){
             return response()->json([
                 'status' => false,
-                'message' => 'Client id required'
+                'message' => 'User id required'
             ], 406);
         }
         $userIdArray = json_decode($request->users);
+        //dd($userIdArray);
 
         $suspend = $request->suspend;
-        $status = ($request->suspend==1)?0:1;
+        //$status = ($request->suspend==1)?0:1;
         $statusArray = [
-            'suspend' => $suspend,
-            'status' => $status
+            'suspend' => $suspend
+           // 'status' => $status
         ];
+        //dd($statusArray);
 
 //        return response()->json([
 //            'status' => false,
@@ -301,7 +303,7 @@ class AuthController extends Controller
 
             User::find(collect($userIdArray)->pluck('id')->toArray())->map(function($item, $key) use ($statusArray){
                 $item['suspend'] = $statusArray['suspend'];
-                $item['status'] = $statusArray['status'];;
+                $item['status'] = $statusArray['status'];
                 return $item->save();
             });
             return response()->json([
