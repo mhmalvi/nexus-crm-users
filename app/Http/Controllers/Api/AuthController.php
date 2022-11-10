@@ -31,6 +31,7 @@ class AuthController extends Controller
         $userIdArray = json_decode($request->users);
         //dd($userIdArray);
 
+
         try {
 
             $data = User::join('user_profile', function ($join) {
@@ -303,7 +304,6 @@ class AuthController extends Controller
 
             User::find(collect($userIdArray)->pluck('id')->toArray())->map(function($item, $key) use ($statusArray){
                 $item['suspend'] = $statusArray['suspend'];
-                $item['status'] = $statusArray['status'];
                 return $item->save();
             });
             return response()->json([
