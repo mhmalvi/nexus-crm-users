@@ -24,6 +24,7 @@ Route::post('/user/password-reset', [\App\Http\Controllers\Api\AuthController::c
 Route::post('/user/forgot-password', [\App\Http\Controllers\Api\AuthController::class, 'forgotPassword']);
 Route::post('/user/check-verification', [\App\Http\Controllers\Api\AuthController::class, 'updateVerificationCode']);
 Route::post('/user/list', [\App\Http\Controllers\Api\AuthController::class, 'userList']);
+Route::get('/user/{user_id}/details', [\App\Http\Controllers\Api\AuthController::class, 'getUserDetails']);
 
 Route::post('/user/login', [\App\Http\Controllers\Api\AuthController::class, 'loginUser']);
 Route::post('/user/status', [\App\Http\Controllers\Api\AuthController::class, 'updateUserStatus']);

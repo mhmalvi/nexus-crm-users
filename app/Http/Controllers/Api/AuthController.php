@@ -143,6 +143,40 @@ class AuthController extends Controller
     }
 
     /**
+     * User Profile Details
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUserDetails(Request $request)
+    {
+        if(!isset($request->user_id))
+            return response()->json([
+                'status' => false,
+                'message' => 'validation error',
+            ], 401);
+        try {
+            $user = UserProfile::where('user_id', '=', $request->user_id)->first();
+            if($user==""){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User Data not found',
+                ], 401);
+            }
+
+            return response()->json([
+                'status' => true,
+                'message' => 'User Profile Data',
+                'data'    => $user->toArray()
+            ], 201);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+    /**
      * Update User
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
