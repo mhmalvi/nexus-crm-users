@@ -25,16 +25,15 @@ class AuthController extends Controller
         if(!isset($request->users)){
             return response()->json([
                 'status' => false,
-                'message' => 'Client id required'
+                'message' => 'User id required'
             ], 406);
         }
         $userIdArray = json_decode($request->users);
         //dd($userIdArray);
 
-
         try {
 
-            $data = User::join('user_profile', function ($join) {
+            $data = User::leftJoin('user_profile', function ($join) {
                     $join->on('user_profile.user_id', '=', 'users.id');
                 })->whereIn('users.id', $userIdArray)
                 ->where('users.status', 1)
