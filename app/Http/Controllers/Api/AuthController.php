@@ -420,7 +420,7 @@ class AuthController extends Controller
                     'message' => 'User Data not found',
                 ], 401);
             }
-            $user->verification_code = $this->_randomPassword().'-'.$user->id;
+            $user->verification_code = $user->id.$this->_randomPassword().'-'.$user->id;
             $user->flag = 2 ;
             $user->save();
 
@@ -510,7 +510,7 @@ class AuthController extends Controller
      * @return 8 character password
      */
     private function _randomPassword() {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.time();
         $pass = array(); //remember to declare $pass as an array
         $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
         for ($i = 0; $i < 8; $i++) {
