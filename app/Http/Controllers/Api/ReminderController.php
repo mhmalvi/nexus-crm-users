@@ -55,11 +55,13 @@ class ReminderController extends Controller
         // $this->attributes['r_time'] = date('H:i', strtotime($value));
         try {
             $follow_up = FollowUp::create([
-                'event_title' => $request->event_title,
-                'start_time' => $request->start_time,
-                'end_time' => $request->end_time,
+                'title' => $request->title,
+                'start' => $request->start,
+                'end' => $request->end,
                 'description' => $request->description,
                 'priority' => $request->priority,
+                'user_id' => $request->user_id,
+                'status' => 1
             ]);
             // dd($follow_up);
             if ($follow_up) {
@@ -89,9 +91,21 @@ class ReminderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $follow_up = FollowUp::where('user_id', $request->user_id)->get();
+        if (!$follow_up->isEmpty()) {
+            return response()->json([
+                'message' => "success",
+                "status" => 200,
+                "data" => $follow_up
+            ]);
+        } else {
+            return response()->json([
+                'message' => "not found",
+                "status" => 403,
+            ]);
+        }
     }
 
     /**
@@ -118,11 +132,13 @@ class ReminderController extends Controller
             // dd($id);
             $follow_up = FollowUp::find($id);
             if ($follow_up) {
-                $follow_up->event_title = $request->event_title;
-                $follow_up->start_time = $request->start_time;
-                $follow_up->end_time = $request->end_time;
+                $follow_up->title = $request->title;
+                $follow_up->start = $request->start;
+                $follow_up->end = $request->end;
                 $follow_up->description = $request->description;
                 $follow_up->priority = $request->priority;
+                $follow_up->status = $request->status;
+                $follow_up->user_id = $request->user_id;
                 $save = $follow_up->save();
                 if ($save) {
                     return response()->json([

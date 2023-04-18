@@ -11,7 +11,7 @@ class FollowUp extends Model
     // protected $table = "follow_up";
     protected $guarded = [];
     protected $casts = [
-        'start_time' => 'datetime: H:i',
-        'end_time'=> 'datetime: H:i'
+        'start_time' => 'datetime:Y-m-d H:i',
+        'end_time'=> 'datetime:Y-m-d H:i'
     ]; 
 }

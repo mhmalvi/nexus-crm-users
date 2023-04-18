@@ -36,3 +36,4 @@ Route::post('/user/user-suspend', [\App\Http\Controllers\Api\AuthController::cla
 Route::get('/follow-up', [\App\Http\Controllers\Api\ReminderController::class, 'index']);
 Route::post('/follow-up', [\App\Http\Controllers\Api\ReminderController::class, 'store']);
 Route::put('/follow-up-update/{id}', [\App\Http\Controllers\Api\ReminderController::class, 'update']);
+Route::post('/follow-up-by-user', [\App\Http\Controllers\Api\ReminderController::class, 'show']);
