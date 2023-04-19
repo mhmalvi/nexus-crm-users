@@ -169,6 +169,30 @@ class ReminderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $follow_up = FollowUp::find($id);
+        if($follow_up){
+            $follow_up->status = 0;
+            $save = $follow_up->save();
+            if($save){
+                return response()->json([
+                    'message'=>'deleted',
+                    'status'=>200,
+                    'data'=>$follow_up
+                ],200);
+            }else{
+                return response()->json([
+                    'message' => 'not deleted',
+                    'status' => 500,
+                ],500);
+            }
+        }else{
+            return response()->json([
+                'message' => 'not found',
+                'status' => 404,
+            ],404);
+        }
+        
     }
 }
+
+
