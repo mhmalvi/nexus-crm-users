@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FollowUp;
+// use App\Events\FollowUp;
 use Exception;
 use PhpParser\Node\Stmt\TryCatch;
 
@@ -33,6 +34,14 @@ class ReminderController extends Controller
             ], 500);
         }
     }
+
+    public function broadcast(){
+        $message = '3:00';
+        broadcast(new \App\Events\FollowUp('You have a meeting at' . ' ' . $message));
+        return view('welcome');
+    }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -158,6 +167,25 @@ class ReminderController extends Controller
                 'status' => false,
                 'message' => $th->getMessage()
             ], 500);
+        }
+    }
+
+    public function get_user_details(Request $request, $id)
+    {
+        // dd($request->user_id);
+        if ($id) {
+            $follow_up = FollowUp::where('user_id', $id)->where('status', 1)->get();
+            // dd(json_encode($follow_up));
+            return response()->json([
+                'message' => 'success',
+                'data' => $follow_up,
+                'user' => $id
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'not found',
+                'status' => 404
+            ]);
         }
     }
 

@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -128,5 +129,15 @@
                 </div>
             </div>
         </div>
+         <script src="js/app.js"></script>
+         <script>
+             
+             Echo.channel('event')
+                 .listen('FollowUp', (e) => mess = console.log(e.message));
+             // var mess = e.message
+             // console.log(mess)
+
+         </script>
+
     </body>
 </html>
