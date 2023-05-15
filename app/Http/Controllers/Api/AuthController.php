@@ -117,11 +117,11 @@ class AuthController extends Controller
 
             $userServiceAPI = env('EMAIL_SERVICE_API');
 
-            $response = Http::post('https://crm-mailer.onrender.com/api/registration', [
-                'username' => $request->email,
-                'email' => $request->email,
-                'password' => $randomPassword
-            ]);
+            // $response = Http::post('https://crm-mailer.onrender.com/api/registration', [
+            //     'username' => $request->email,
+            //     'email' => $request->email,
+            //     'password' => $randomPassword
+            // ]);
 
             $userData = [
                 'user_name' => $request->full_name,
