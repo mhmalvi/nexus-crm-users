@@ -30,4 +30,5 @@ Route::post('/user/login', [\App\Http\Controllers\Api\AuthController::class, 'lo
 Route::post('/user/status', [\App\Http\Controllers\Api\AuthController::class, 'updateUserStatus']);
 Route::post('/user/suspend', [\App\Http\Controllers\Api\AuthController::class, 'usersSuspend']);
 Route::post('/user/user-suspend', [\App\Http\Controllers\Api\AuthController::class, 'usersSuspendById']);
+Route::get('/user/sales-list', [\App\Http\Controllers\Api\AuthController::class, 'get_sales_user']);
 //Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
