@@ -62,6 +62,8 @@ class AuthController extends Controller
         }
     }
 
+    
+
     /**
      * Create User
      * @param Request $request
@@ -115,15 +117,24 @@ class AuthController extends Controller
             ]);
             DB::commit();
 
-            $userServiceAPI = env('EMAIL_SERVICE_API', '');
+            $userServiceAPI = env('EMAIL_SERVICE_API');
 
+<<<<<<< HEAD
             $response = Http::post($userServiceAPI . '/registration', [
                 'username' => $request->email,
                 'email' => $request->email,
                 'password' => $randomPassword
             ]);
+=======
+            // $response = Http::post('https://crm-mailer.onrender.com/api/registration', [
+            //     'username' => $request->email,
+            //     'email' => $request->email,
+            //     'password' => $randomPassword
+            // ]);
+>>>>>>> 69a5a27eeba0117d5c411ce405835de7296adae4
 
             $userData = [
+                'user_name' => $request->full_name,
                 'user_id' => $userId,
                 'password' => $randomPassword
             ];
