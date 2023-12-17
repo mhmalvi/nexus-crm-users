@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        // $schedule->command('inspire')->hourly();
         $schedule->command('cache:clear')->everyMinute()->runInBackground();
         $schedule->command('config:clear')->everyMinute()->runInBackground();
         $schedule->command('view:clear')->everyMinute()->runInBackground();

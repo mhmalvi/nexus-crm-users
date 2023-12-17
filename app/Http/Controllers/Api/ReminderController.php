@@ -37,8 +37,7 @@ class ReminderController extends Controller
         }
     }
 
-    public function broadcast()
-    {
+    public function broadcast(){
         $message = '3:00';
         broadcast(new \App\Events\FollowUp('You have a meeting at' . ' ' . $message));
         return view('welcome');
@@ -103,7 +102,7 @@ class ReminderController extends Controller
      */
     public function show(Request $request)
     {
-        $follow_up = FollowUp::where('user_id', $request->user_id)->where('delete_status', 1)->get();
+        $follow_up = FollowUp::where('user_id', $request->user_id)->where('delete_status',1)->get();
         if (!$follow_up->isEmpty()) {
             return response()->json([
                 'message' => "success",
@@ -117,23 +116,23 @@ class ReminderController extends Controller
             ]);
         }
     }
-
-    public function get_user_details(Request $request, $id)
+    
+    public function get_user_details(Request $request,$id)
     {
         // dd($request->user_id);
-        if ($id) {
-            $follow_up = FollowUp::where('user_id', $id)->where('status', 1)->where('delete_status', 1)->get();
-            // dd(json_encode($follow_up));
+        if($id){        
+            $follow_up = FollowUp::where('user_id', $id)->where('status',1)->where('delete_status',1)->get();
+        // dd(json_encode($follow_up));
+        return response()->json([
+            'message' => 'success',
+            'data' => $follow_up,
+            'user'=>$id
+        ]);
+        }else{
             return response()->json([
-                'message' => 'success',
-                'data' => $follow_up,
-                'user' => $id
-            ]);
-        } else {
-            return response()->json([
-                'message' => 'not found',
-                'status' => 404
-            ]);
+            'message' => 'not found',
+            'status'=>404
+        ]);
         }
     }
 
@@ -220,80 +219,89 @@ class ReminderController extends Controller
     //             'status' => 404,
     //         ],404);
     //     }
-
+        
     // }
-
+    
     public function notify_list(Request $request)
     {
         // dd($request->user_id);
         $current_date_time = Carbon::now()->addHours(6);
         // dd(json_encode($current_date_time));
-        $data = FollowUp::where('user_id', $request->user_id)->where('delete_status', 1)->where('start', '<=', $current_date_time->format('Y-m-d H:i:s'))->orderBy('id', 'DESC')->get();
-        if ($data) {
+        $data = FollowUp::where('user_id', $request->user_id)->where('delete_status',1)->where('start', '<=', $current_date_time->format('Y-m-d H:i:s'))->orderBy('id','DESC')->get();
+        if($data){
             return response()->json([
-                'message' => 'success',
-                'status' => 200,
+                'message'=>'success',
+                'status'=>200,
                 'data' => $data,
             ]);
         }
+        
     }
-
-    public function change_status(Request $request)
-    {
-        // dd($request->id);
-        if ($request->id) {
-            $follow_up = FollowUp::where('id', $request->id)->first();
-            $follow_up->status = 0;
-            $save = $follow_up->save();
-            if ($save) {
-                return response()->json([
-                    'message'    => 'success',
-                    'status' => 201,
-                    'data' => $follow_up
-                ]);
-            } else {
-                return response()->json([
-                    'message'    => 'failed',
-                    'status' => 500,
-                ]);
-            }
-        } else {
-            return response()->json([
-                'message'    => 'not found',
-                'status' => 404,
-            ]);
-        }
-    }
-
-    public function destroy(Request $request)
-    {
-        if ($request->id) {
-            $follow_up = FollowUp::where('id', $request->id)->where('delete_status', 1)->first();
-            if ($follow_up) {
-                $follow_up->delete_status = 0;
-                $delete = $follow_up->save();
-                if ($delete) {
+    
+    public function change_status(Request $request,$id){
+        dd($id);
+        if($id){
+            $follow_up = FollowUp::where('id',$id)->where('status',1)->first();
+            if($follow_up){
+                $follow_up->status=0;
+                $save = $follow_up->save();
+                if($save){
                     return response()->json([
-                        'message' => 'deleted',
-                        'status' => 201,
-                    ], 201);
-                } else {
+                        'message'    =>'success',
+                        'status'=>201,
+                        'data'=>$follow_up
+                    ],201);
+                }else{
                     return response()->json([
-                        'message' => 'failed',
-                        'status' => 500,
-                    ], 500);
+                        'message'    =>'failed',
+                        'status'=>500,
+                    ],500);
                 }
-            } else {
+            }else{
                 return response()->json([
-                    'message' => 'not found',
-                    'status' => 404,
-                ], 404);
+                    'message'    =>'already inactive',
+                    'status'=>200,
+                ],200);
             }
-        } else {
+        }else{
             return response()->json([
-                'message' => 'not found',
-                'status' => 404,
-            ], 404);
+                    'message'    =>'already inactive',
+                    'status'=>200,
+                ],200);
         }
     }
+    
+    public function destroy(Request $request){
+        if($request->id){
+        $follow_up = FollowUp::where('id',$request->id)->where('delete_status',1)->first();
+            if($follow_up){
+            $follow_up->delete_status = 0;
+            $delete = $follow_up->save();
+                if($delete){
+                    return response()->json([
+                        'message'=>'deleted',
+                        'status'=>201,
+                    ],201);
+                }else{
+                    return response()->json([
+                        'message'=>'failed',
+                        'status'=>500,
+                    ],500);
+                }
+            }else{
+                return response()->json([
+                    'message'=>'not found',
+                    'status'=>404,
+                ],404);
+            }
+        }else{
+            return response()->json([
+                'message'=>'not found',
+                'status'=>404,
+            ],404);
+        }
+    }
+    
 }
+
+

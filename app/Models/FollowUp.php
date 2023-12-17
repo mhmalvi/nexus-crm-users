@@ -13,5 +13,5 @@ class FollowUp extends Model
     protected $casts = [
         'start_time' => 'datetime:Y-m-d H:i',
         'end_time'=> 'datetime:Y-m-d H:i'
-    ]; 
+    ];  
 }
