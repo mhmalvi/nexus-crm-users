@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 17, 2023 at 08:31 AM
+-- Generation Time: Dec 21, 2023 at 09:10 AM
 -- Server version: 10.5.19-MariaDB-cll-lve
 -- PHP Version: 7.2.34
 
@@ -71,7 +71,8 @@ INSERT INTO `follow_ups` (`id`, `title`, `start`, `end`, `description`, `user_id
 (348, 'test', '2023-09-20 02:19:00', '2023-09-20 05:06:00', 'sdfsdfsdf', 32, 1, 0, 1, '2023-09-20 02:19:00', '2023-09-21 08:16:43', '2023-09-21 08:17:56'),
 (349, 'task 1', '2023-11-05 10:01:00', '2023-11-05 10:15:00', NULL, 32, 1, 0, 1, '2023-11-05 09:46:00', '2023-11-05 03:43:08', '2023-12-04 10:26:10'),
 (352, NULL, NULL, '2023-05-10 13:00:00', 'dfgdggfr', 32, 1, 0, 1, '2023-07-03 09:24:00', '2023-11-05 04:18:10', '2023-12-04 10:26:04'),
-(353, 'task 2', '2023-11-05 13:03:00', '2023-11-05 13:10:00', NULL, 32, 1, 0, 1, '2023-11-05 12:34:00', '2023-11-05 06:32:19', '2023-11-12 05:44:29');
+(353, 'task 2', '2023-11-05 13:03:00', '2023-11-05 13:10:00', NULL, 32, 1, 0, 1, '2023-11-05 12:34:00', '2023-11-05 06:32:19', '2023-11-12 05:44:29'),
+(354, 'test', '2023-12-12 04:04:00', '2023-12-12 04:06:00', 'sgfgfgdfgrdg', 200, 1, 1, 1, '2023-12-12 03:03:00', '2023-12-20 05:18:45', '2023-12-20 05:18:45');
 
 -- --------------------------------------------------------
 
@@ -895,7 +896,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (749, 'App\\Models\\User', 32, 'API TOKEN', 'b1b28c374eb8e29f33553b81e062a943535ba61b6539b6817a47a0736aeb4bd7', '[\"*\"]', '2023-08-08 16:28:15', '2023-08-08 16:26:43', '2023-08-08 16:28:15'),
 (750, 'App\\Models\\User', 32, 'API TOKEN', '3f9c8a228ed0e2f29ea165d56a096b80a45375457ec91fbc9b909c58240837de', '[\"*\"]', NULL, '2023-08-10 09:17:48', '2023-08-10 09:17:48'),
 (751, 'App\\Models\\User', 32, 'API TOKEN', 'a228f38816ed0d66ec06dc8649cc8d02a79ce14ef0e25b72470cb4543831ae1d', '[\"*\"]', '2023-08-10 10:19:59', '2023-08-10 10:14:15', '2023-08-10 10:19:59'),
-(752, 'App\\Models\\User', 32, 'API TOKEN', '6fb6b83eb84fad7e25fdbc26bb0f42b10dbf406418afc280aecd8b64a433af26', '[\"*\"]', '2023-08-13 13:54:31', '2023-08-10 10:20:13', '2023-08-13 13:54:31'),
+(752, 'App\\Models\\User', 32, 'API TOKEN', '6fb6b83eb84fad7e25fdbc26bb0f42b10dbf406418afc280aecd8b64a433af26', '[\"*\"]', '2023-12-21 09:07:39', '2023-08-10 10:20:13', '2023-12-21 09:07:39'),
 (753, 'App\\Models\\User', 65, 'API TOKEN', 'ec4384ddddcf475f1645a310a2488f7d3c085dcc6a490080ad4936cf747e7dac', '[\"*\"]', NULL, '2023-08-10 10:20:35', '2023-08-10 10:20:35'),
 (754, 'App\\Models\\User', 32, 'API TOKEN', '6e147c64000194618985369307204a71443c6f100567722dbc9229464240393b', '[\"*\"]', '2023-08-13 10:12:56', '2023-08-10 10:20:57', '2023-08-13 10:12:56'),
 (755, 'App\\Models\\User', 153, 'API TOKEN', '03e7ea69e2d0a5a20705ba5c1a81648cf683be2ee1d91be1f55e977a95e66ea3', '[\"*\"]', '2023-08-13 16:25:55', '2023-08-12 18:21:07', '2023-08-13 16:25:55'),
@@ -1481,7 +1482,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (1333, 'App\\Models\\User', 32, 'API TOKEN', '3dc96dd161acd975dce129038775acfa1265e466754b491d0d7610fc454b1930', '[\"*\"]', '2023-09-20 12:00:14', '2023-09-12 10:56:04', '2023-09-20 12:00:14'),
 (1334, 'App\\Models\\User', 205, 'API TOKEN', '65f1407972b6733c154c4ef3c6e05fba2a9f50325276c20066e9854ea085322b', '[\"*\"]', '2023-09-12 13:57:23', '2023-09-12 13:57:15', '2023-09-12 13:57:23'),
 (1335, 'App\\Models\\User', 32, 'API TOKEN', '675a6d6d81778b64dc8176c5e217a09bf91494e02654c7dd3919cf76abe40475', '[\"*\"]', '2023-09-13 11:47:05', '2023-09-12 13:57:26', '2023-09-13 11:47:05'),
-(1336, 'App\\Models\\User', 205, 'API TOKEN', '75e2638c074f5ef1a9084eca3019604c0a085dae9d8fd19657f5a0e26a04a674', '[\"*\"]', '2023-12-15 12:51:40', '2023-09-12 13:58:23', '2023-12-15 12:51:40'),
+(1336, 'App\\Models\\User', 205, 'API TOKEN', '75e2638c074f5ef1a9084eca3019604c0a085dae9d8fd19657f5a0e26a04a674', '[\"*\"]', '2023-12-19 08:14:48', '2023-09-12 13:58:23', '2023-12-19 08:14:48'),
 (1337, 'App\\Models\\User', 206, 'API TOKEN', 'fcb896064183a1a8f89b57788f0574d58e06f87b565b2e1232c6dc76b0ac0b3b', '[\"*\"]', '2023-09-12 15:14:43', '2023-09-12 15:14:37', '2023-09-12 15:14:43'),
 (1338, 'App\\Models\\User', 32, 'API TOKEN', '4d991294617abe229349547f456552c2e3bc3d2a617ef4e3814b446b80be70df', '[\"*\"]', '2023-09-12 16:11:11', '2023-09-12 15:32:17', '2023-09-12 16:11:11'),
 (1339, 'App\\Models\\User', 65, 'API TOKEN', '342baffc2f6eb08e9aa042559d5250a98f96eee2fd37cf92d25cf8eff8899917', '[\"*\"]', NULL, '2023-09-12 16:17:34', '2023-09-12 16:17:34'),
@@ -1766,7 +1767,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
 (1617, 'App\\Models\\User', 32, 'API TOKEN', 'a922cade902abfd8722311ac025628d641e3c60034529c192ea337278d01ab69', '[\"*\"]', '2023-11-01 16:10:00', '2023-11-01 08:23:36', '2023-11-01 16:10:00'),
 (1618, 'App\\Models\\User', 32, 'API TOKEN', 'c0cbe4abe3429d93008f4eb8677dfbdce758b74b0c186588fb1c72d662de9e50', '[\"*\"]', '2023-11-01 16:43:45', '2023-11-01 08:39:06', '2023-11-01 16:43:45'),
-(1619, 'App\\Models\\User', 32, 'API TOKEN', '9c27d656d46a9f88270286c5dd5b148b52d898722d19536c03295aae83ad2c2e', '[\"*\"]', '2023-12-01 12:33:11', '2023-11-01 16:05:44', '2023-12-01 12:33:11'),
+(1619, 'App\\Models\\User', 32, 'API TOKEN', '9c27d656d46a9f88270286c5dd5b148b52d898722d19536c03295aae83ad2c2e', '[\"*\"]', '2023-12-20 23:57:25', '2023-11-01 16:05:44', '2023-12-20 23:57:25'),
 (1620, 'App\\Models\\User', 32, 'API TOKEN', '354acf6f489d5775f640664181d9115fed3e8236c3321a5f9606cf2e2f91c47f', '[\"*\"]', '2023-11-05 08:42:35', '2023-11-01 16:43:47', '2023-11-05 08:42:35'),
 (1621, 'App\\Models\\User', 200, 'API TOKEN', 'd6ce3084810152c62fbc84c5d28a60cf4ece1302b651112bc77ea7105732442b', '[\"*\"]', '2023-11-05 08:45:55', '2023-11-05 08:45:53', '2023-11-05 08:45:55'),
 (1622, 'App\\Models\\User', 179, 'API TOKEN', 'a6a9c879b510b2f897eead478bb56c0c013d60558e8a95b0925827dd4871b1a6', '[\"*\"]', '2023-11-05 08:46:13', '2023-11-05 08:46:11', '2023-11-05 08:46:13'),
@@ -1841,13 +1842,13 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (1691, 'App\\Models\\User', 32, 'API TOKEN', '9e3bfa7a351b11286428f6641fd2d3c51d0d105e2a3c01a28467fa84c593468f', '[\"*\"]', '2023-11-20 09:50:54', '2023-11-20 09:50:49', '2023-11-20 09:50:54'),
 (1692, 'App\\Models\\User', 32, 'API TOKEN', 'd09724335f479d140ef0fa7f474e3b9e5f7fdc485b9aefda0fb6da161614aafc', '[\"*\"]', '2023-11-27 08:27:02', '2023-11-20 09:51:09', '2023-11-27 08:27:02'),
 (1693, 'App\\Models\\User', 32, 'API TOKEN', '8bf4a5f1591e6fd36ed9556042008957319290a35a9dad0f365817f0fbe53c4c', '[\"*\"]', '2023-12-12 12:04:07', '2023-11-20 09:57:23', '2023-12-12 12:04:07'),
-(1694, 'App\\Models\\User', 32, 'API TOKEN', '94d9a15089b05b73b97a91cab1d6e7206f30885ca47c4e648851de9f1d2b39f3', '[\"*\"]', NULL, '2023-11-20 10:44:55', '2023-11-20 10:44:55'),
+(1694, 'App\\Models\\User', 32, 'API TOKEN', '94d9a15089b05b73b97a91cab1d6e7206f30885ca47c4e648851de9f1d2b39f3', '[\"*\"]', '2023-12-18 14:25:59', '2023-11-20 10:44:55', '2023-12-18 14:25:59'),
 (1695, 'App\\Models\\User', 251, 'API TOKEN', '617d8ae940e807bc51466251b71c15161aa844291d0346a879029a4e19af2c01', '[\"*\"]', NULL, '2023-11-21 09:49:20', '2023-11-21 09:49:20'),
 (1696, 'App\\Models\\User', 251, 'API TOKEN', 'a7193b45808cd042c65b1b712af44028e2cde4cd133a9448ac080384bb1a0500', '[\"*\"]', '2023-11-30 06:15:48', '2023-11-21 09:50:01', '2023-11-30 06:15:48'),
 (1697, 'App\\Models\\User', 250, 'API TOKEN', '7d52ce39938ef9f928104f143407d3ed6d2dec0adaeb1e48fd4086c7f119f6bc', '[\"*\"]', '2023-11-21 09:53:26', '2023-11-21 09:51:29', '2023-11-21 09:53:26'),
 (1698, 'App\\Models\\User', 249, 'API TOKEN', '582a31e8fa4d186c795f28d76f7fd828f1d38aaf397a6ef764ba5b6b462923c3', '[\"*\"]', '2023-11-21 12:05:28', '2023-11-21 12:02:39', '2023-11-21 12:05:28'),
 (1699, 'App\\Models\\User', 32, 'API TOKEN', '1beedbaa435141a58f6704a4a91c8d7a107e269f560ec8d60a5494f66e98843c', '[\"*\"]', '2023-11-21 12:09:14', '2023-11-21 12:02:40', '2023-11-21 12:09:14'),
-(1700, 'App\\Models\\User', 250, 'API TOKEN', 'df95350ac23290f1b628d59a4fef31f788cc63116f7b8ef18e65b525f17e1e24', '[\"*\"]', '2023-12-14 15:48:18', '2023-11-21 12:03:04', '2023-12-14 15:48:18'),
+(1700, 'App\\Models\\User', 250, 'API TOKEN', 'df95350ac23290f1b628d59a4fef31f788cc63116f7b8ef18e65b525f17e1e24', '[\"*\"]', '2023-12-18 13:10:45', '2023-11-21 12:03:04', '2023-12-18 13:10:45'),
 (1701, 'App\\Models\\User', 251, 'API TOKEN', '6370069f94c19a28847d12517892f5d51063001306db106b42def8960b0495e4', '[\"*\"]', '2023-12-11 11:44:54', '2023-11-21 12:03:57', '2023-12-11 11:44:54'),
 (1702, 'App\\Models\\User', 249, 'API TOKEN', 'dde2e67768b832fd37a237ee268f4cd429edc4d7a7a4853cf8d537dbd3efd9b1', '[\"*\"]', '2023-12-08 05:40:54', '2023-11-21 12:05:36', '2023-12-08 05:40:54'),
 (1703, 'App\\Models\\User', 206, 'API TOKEN', 'ea5e6dad3b3849ff3692e9726851370d4f320f92efb2303e28c180b2eef72317', '[\"*\"]', '2023-11-24 11:39:27', '2023-11-21 12:09:19', '2023-11-24 11:39:27'),
@@ -1905,7 +1906,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (1755, 'App\\Models\\User', 32, 'API TOKEN', '8c7695afde3ffedb9a71582154f73c841110c63c8f305ee4152a119518e83d31', '[\"*\"]', NULL, '2023-12-13 13:05:18', '2023-12-13 13:05:18'),
 (1756, 'App\\Models\\User', 32, 'API TOKEN', '84d54e44718ea474f6e00c4d4ce2b93e59789987c26c3a571c03c5f61271aa03', '[\"*\"]', NULL, '2023-12-13 13:05:33', '2023-12-13 13:05:33'),
 (1757, 'App\\Models\\User', 200, 'API TOKEN', 'c43d155ce5f025969c68237edb7d321f7d55cc81f18851bc155a753239a806b5', '[\"*\"]', '2023-12-14 09:23:52', '2023-12-14 09:10:24', '2023-12-14 09:23:52'),
-(1758, 'App\\Models\\User', 200, 'API TOKEN', '229382a673190eecd0fce549f8f2612fd60292405aabb3cf24121693b548a633', '[\"*\"]', '2023-12-15 06:08:34', '2023-12-14 09:15:16', '2023-12-15 06:08:34'),
+(1758, 'App\\Models\\User', 200, 'API TOKEN', '229382a673190eecd0fce549f8f2612fd60292405aabb3cf24121693b548a633', '[\"*\"]', '2023-12-18 09:59:20', '2023-12-14 09:15:16', '2023-12-18 09:59:20'),
 (1759, 'App\\Models\\User', 212, 'API TOKEN', '7bd093c6b021fb87999c6bca412a7996d654af5764a2d55c202519cf13f0d47d', '[\"*\"]', '2023-12-14 09:25:32', '2023-12-14 09:25:20', '2023-12-14 09:25:32'),
 (1760, 'App\\Models\\User', 250, 'API TOKEN', '5648fa72a90621d38267e216dc22a2bf068eab8488360b5547a3ff4611347ca1', '[\"*\"]', '2023-12-14 09:54:17', '2023-12-14 09:40:46', '2023-12-14 09:54:17'),
 (1761, 'App\\Models\\User', 32, 'API TOKEN', 'ea132445a4c851a0bd33d8aea220960ffef431f1efb0c9ba58f84a81672b9eee', '[\"*\"]', NULL, '2023-12-14 09:41:56', '2023-12-14 09:41:56'),
@@ -1913,7 +1914,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (1763, 'App\\Models\\User', 32, 'API TOKEN', '64a46f0514ad1282ae3332f91ea79b6137a0909421b3812b5df8c5055ea2b1f0', '[\"*\"]', '2023-12-14 09:45:28', '2023-12-14 09:45:25', '2023-12-14 09:45:28'),
 (1764, 'App\\Models\\User', 200, 'API TOKEN', '0f66539ea25b1b8530c887abeb880c097f44ad8c234a6fe5e7c19ef8b0909f14', '[\"*\"]', '2023-12-14 09:45:36', '2023-12-14 09:45:34', '2023-12-14 09:45:36'),
 (1765, 'App\\Models\\User', 200, 'API TOKEN', 'c5299298f2c7b4cfda3adc99e10a000dfa8dfd9bd944af814d0268c57412c093', '[\"*\"]', '2023-12-14 09:45:56', '2023-12-14 09:45:54', '2023-12-14 09:45:56'),
-(1766, 'App\\Models\\User', 250, 'API TOKEN', '99717ffc01ecef3f5ec7cdcf821922293cdc2b068d43c01a086291ba8035cbdb', '[\"*\"]', '2023-12-14 09:57:13', '2023-12-14 09:46:13', '2023-12-14 09:57:13'),
+(1766, 'App\\Models\\User', 250, 'API TOKEN', '99717ffc01ecef3f5ec7cdcf821922293cdc2b068d43c01a086291ba8035cbdb', '[\"*\"]', '2023-12-18 14:42:19', '2023-12-14 09:46:13', '2023-12-18 14:42:19'),
 (1767, 'App\\Models\\User', 200, 'API TOKEN', '0da9645d8ba9ae79010987b748ce7c832d3bcc6c05ca80967d7b4631154d93a2', '[\"*\"]', '2023-12-14 09:54:24', '2023-12-14 09:54:21', '2023-12-14 09:54:24'),
 (1768, 'App\\Models\\User', 250, 'API TOKEN', 'b1fc980e029a13013f00b6a790230c6a8d549c1265c73259e7ddf495fa3e75d8', '[\"*\"]', '2023-12-14 11:34:54', '2023-12-14 10:00:44', '2023-12-14 11:34:54'),
 (1769, 'App\\Models\\User', 250, 'API TOKEN', 'b5041c1ff521c0f6f525e8e8ae69e3bcee1368f298d6d6663ae0430701029783', '[\"*\"]', '2023-12-14 11:43:22', '2023-12-14 10:17:05', '2023-12-14 11:43:22'),
@@ -1929,16 +1930,37 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (1779, 'App\\Models\\User', 32, 'API TOKEN', '8f88c9d894086e28d483543c9cfada99716f6067d1c4ca8873279771c71afa07', '[\"*\"]', '2023-12-14 14:46:59', '2023-12-14 13:01:17', '2023-12-14 14:46:59'),
 (1780, 'App\\Models\\User', 32, 'API TOKEN', '26b25e77d593a7da388cd83d670860b6143c6f2768be4f031fbf0231ba244d58', '[\"*\"]', '2023-12-14 13:07:05', '2023-12-14 13:06:44', '2023-12-14 13:07:05'),
 (1781, 'App\\Models\\User', 250, 'API TOKEN', '873a47844c82743c99bb488fc8555375b4981183076a668d2180cae94d9f9306', '[\"*\"]', '2023-12-17 09:25:04', '2023-12-14 13:08:43', '2023-12-17 09:25:04'),
-(1782, 'App\\Models\\User', 250, 'API TOKEN', '7b5de97ff07386d5b12ffb164c0236b816c6c261dc45acb693a8830dffd46b77', '[\"*\"]', '2023-12-14 17:06:48', '2023-12-14 13:59:30', '2023-12-14 17:06:48'),
+(1782, 'App\\Models\\User', 250, 'API TOKEN', '7b5de97ff07386d5b12ffb164c0236b816c6c261dc45acb693a8830dffd46b77', '[\"*\"]', '2023-12-18 09:16:03', '2023-12-14 13:59:30', '2023-12-18 09:16:03'),
 (1783, 'App\\Models\\User', 250, 'API TOKEN', 'b5f78f6ff703fcea52ceda1867f1a08493ce44185caf6a9017c0ddd00379f010', '[\"*\"]', '2023-12-14 16:00:39', '2023-12-14 16:00:27', '2023-12-14 16:00:39'),
 (1784, 'App\\Models\\User', 32, 'API TOKEN', '3f370d59131898f09e45184caebd263290a85fbe9f7e2c92eb1da5f3f0813a1c', '[\"*\"]', '2023-12-17 09:12:21', '2023-12-14 16:00:47', '2023-12-17 09:12:21'),
 (1785, 'App\\Models\\User', 32, 'API TOKEN', '86ce5d1b03f322fee435991d78ff8ef20a1f553779bc0ddb92cada4f78a67a1b', '[\"*\"]', NULL, '2023-12-17 09:12:17', '2023-12-17 09:12:17'),
 (1786, 'App\\Models\\User', 250, 'API TOKEN', 'e8b24236443cf9374dcf07fbb57cc8f912e8a52822ff10462e9c1c7a30a1d3c2', '[\"*\"]', '2023-12-17 09:13:46', '2023-12-17 09:13:43', '2023-12-17 09:13:46'),
 (1787, 'App\\Models\\User', 250, 'API TOKEN', '4660845b2759626fdcf68b90772a53bbf33f6013248c10c017a636bbfeebe823', '[\"*\"]', '2023-12-17 09:13:55', '2023-12-17 09:13:49', '2023-12-17 09:13:55'),
 (1788, 'App\\Models\\User', 32, 'API TOKEN', '3ff6fd13e2f23fc860cfe29d4b31379b77ae0aded3a48508052446daa3cfa113', '[\"*\"]', '2023-12-17 11:26:32', '2023-12-17 09:14:03', '2023-12-17 11:26:32'),
-(1789, 'App\\Models\\User', 32, 'API TOKEN', '8eb939197257ddf238600eab6829e85eb1f72593e96353e3364b29162f7b43bb', '[\"*\"]', '2023-12-17 09:26:40', '2023-12-17 09:25:16', '2023-12-17 09:26:40'),
+(1789, 'App\\Models\\User', 32, 'API TOKEN', '8eb939197257ddf238600eab6829e85eb1f72593e96353e3364b29162f7b43bb', '[\"*\"]', '2023-12-21 11:04:43', '2023-12-17 09:25:16', '2023-12-21 11:04:43'),
 (1790, 'App\\Models\\User', 250, 'API TOKEN', 'b85a61b12e76a6bff0532098c0c1c6f033100f751ec24753e243faa79424bbbb', '[\"*\"]', '2023-12-17 11:26:58', '2023-12-17 11:26:55', '2023-12-17 11:26:58'),
-(1791, 'App\\Models\\User', 32, 'API TOKEN', '14350f26964b0de2df5a736cd1b8e02c2482145d98edc454f82045a712fdb9be', '[\"*\"]', '2023-12-17 14:28:54', '2023-12-17 11:27:02', '2023-12-17 14:28:54');
+(1791, 'App\\Models\\User', 32, 'API TOKEN', '14350f26964b0de2df5a736cd1b8e02c2482145d98edc454f82045a712fdb9be', '[\"*\"]', '2023-12-17 14:43:39', '2023-12-17 11:27:02', '2023-12-17 14:43:39'),
+(1792, 'App\\Models\\User', 32, 'API TOKEN', '54f5c7e724fa0cf598dd3ee452e6cee1f1e0cb3a0ba197a6987f5c4b0abdf68b', '[\"*\"]', '2023-12-17 14:57:00', '2023-12-17 14:55:59', '2023-12-17 14:57:00'),
+(1793, 'App\\Models\\User', 200, 'API TOKEN', '1c8ec81e682b2b8fe9727fd131171d59b4c23a1ee5720290b6b3d2790bc351b7', '[\"*\"]', '2023-12-18 09:17:35', '2023-12-18 09:16:13', '2023-12-18 09:17:35'),
+(1794, 'App\\Models\\User', 194, 'API TOKEN', 'fe0afb6800394b64ea42a3ffaa0f3cc27a97c4a5ddc051e851aa55e43a61ab38', '[\"*\"]', '2023-12-18 09:36:47', '2023-12-18 09:24:43', '2023-12-18 09:36:47'),
+(1795, 'App\\Models\\User', 242, 'API TOKEN', '932b31d964cfe568eaf4ac6a83ecfe3e66f23ae9ecd0b878235beb4f17326036', '[\"*\"]', '2023-12-18 09:38:30', '2023-12-18 09:36:54', '2023-12-18 09:38:30'),
+(1796, 'App\\Models\\User', 32, 'API TOKEN', '182a12b4440d62e81adc5432b3c7e9dc885a7049e00dbb40660ce785718973fc', '[\"*\"]', '2023-12-20 15:43:13', '2023-12-18 11:09:10', '2023-12-20 15:43:13'),
+(1797, 'App\\Models\\User', 32, 'API TOKEN', '7c57881ae9d0230ccb0daa111f3460ad54161f2cac6b1212157345e2a533c366', '[\"*\"]', '2023-12-18 12:59:58', '2023-12-18 12:58:36', '2023-12-18 12:59:58'),
+(1798, 'App\\Models\\User', 200, 'API TOKEN', '93bd78b76096e7f1e3132ab36776835fdcb53a00e56e3c40606d88f1048df93c', '[\"*\"]', '2023-12-18 14:13:10', '2023-12-18 14:11:57', '2023-12-18 14:13:10'),
+(1799, 'App\\Models\\User', 250, 'API TOKEN', '240e8f86ea0250495019e657ff2cb50631e5f2b79f31b3f1b37a22c27255688c', '[\"*\"]', '2023-12-18 14:18:48', '2023-12-18 14:15:09', '2023-12-18 14:18:48'),
+(1800, 'App\\Models\\User', 32, 'API TOKEN', '57c4b3c04d1292fc8c79029a50aec3a369c21ace5cfc096814d334003a15808d', '[\"*\"]', '2023-12-18 14:19:00', '2023-12-18 14:18:57', '2023-12-18 14:19:00'),
+(1801, 'App\\Models\\User', 250, 'API TOKEN', 'f7a6ab68071e887e10ce99f8ecced969a70d79442b724a27a6752ccf45cc4bfc', '[\"*\"]', '2023-12-18 16:33:57', '2023-12-18 14:30:08', '2023-12-18 16:33:57'),
+(1802, 'App\\Models\\User', 200, 'API TOKEN', 'a0de55521f404dc5f951cab4c1bc820c93f781510e0cfb6884890e87fd8229a7', '[\"*\"]', '2023-12-18 15:19:21', '2023-12-18 14:37:31', '2023-12-18 15:19:21'),
+(1803, 'App\\Models\\User', 200, 'API TOKEN', 'bc82a4be74e65fd616b527d41cbf7514847ba1fe156d53f2c06dd354f7b217dc', '[\"*\"]', '2023-12-19 15:17:51', '2023-12-18 15:25:08', '2023-12-19 15:17:51'),
+(1804, 'App\\Models\\User', 250, 'API TOKEN', '390f9f8dcdd19f970b211d6b4aa08ae45b25e2a96e843dcf1e8412e40d312dd3', '[\"*\"]', '2023-12-18 15:46:08', '2023-12-18 15:39:46', '2023-12-18 15:46:08'),
+(1805, 'App\\Models\\User', 250, 'API TOKEN', '6067ee46efb64fb1a88f335a6afdf6a56c6afaf215fe98b8540648ababf387da', '[\"*\"]', '2023-12-19 09:59:59', '2023-12-18 15:46:24', '2023-12-19 09:59:59'),
+(1806, 'App\\Models\\User', 32, 'API TOKEN', '77cea6f847366e0156228855460e36274bcdd2fc82d3c14cc7bc6f7ae4ee8a23', '[\"*\"]', '2023-12-19 10:00:09', '2023-12-19 10:00:06', '2023-12-19 10:00:09'),
+(1807, 'App\\Models\\User', 250, 'API TOKEN', 'db9176a8a9b132e9114f3a03f139eed780199d55613603857c5ba975a6265a32', '[\"*\"]', '2023-12-19 10:55:40', '2023-12-19 10:55:34', '2023-12-19 10:55:40'),
+(1808, 'App\\Models\\User', 32, 'API TOKEN', 'e4c83ee52cff9a5266a0daf54f948aa0fde3e2a3cdaa79a34595d5f8db1b9c66', '[\"*\"]', '2023-12-19 10:55:49', '2023-12-19 10:55:46', '2023-12-19 10:55:49'),
+(1809, 'App\\Models\\User', 200, 'API TOKEN', 'b9ff43181a9ee58b8eca21e6e50d148b405a4a3fcd842fddc53b5de1a1ab2ae2', '[\"*\"]', '2023-12-21 09:03:37', '2023-12-19 15:21:34', '2023-12-21 09:03:37'),
+(1810, 'App\\Models\\User', 196, 'API TOKEN', 'fe9e2fd6ae28fe3c5563545a5ed8c858c22f64300c101c63ec6eacea1737db98', '[\"*\"]', '2023-12-20 23:53:34', '2023-12-20 23:53:11', '2023-12-20 23:53:34'),
+(1811, 'App\\Models\\User', 32, 'API TOKEN', '37cf7e2113998627ab31a0f284dd887baca37fa9423db5615e89934eea58815c', '[\"*\"]', '2023-12-21 00:00:46', '2023-12-20 23:57:16', '2023-12-21 00:00:46'),
+(1812, 'App\\Models\\User', 32, 'API TOKEN', 'b3d979548ab986ba632679cd18d665dafd283329ae94da2242ea3be27cc800c9', '[\"*\"]', '2023-12-21 14:10:56', '2023-12-21 09:03:48', '2023-12-21 14:10:56');
 
 -- --------------------------------------------------------
 
@@ -1981,7 +2003,7 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `password`, `remember_t
 (29, 'cc@quadque.digital', NULL, '$2y$10$Nh.g8Bmqb8HNPXhKoOhFvea4ugpMmHQvnZz0c4y2UI0voUgu/vGzG', NULL, 3, NULL, '0123654', NULL, NULL, 1, 0, NULL, NULL, NULL, NULL, NULL),
 (30, 'ccc@quadque.digital', NULL, '$2y$10$Hvv8QtbOdc07J2pXH0mbZOmnVuMO4L1ta8OQCaPFmdy4Ei70USEGe', NULL, 3, NULL, '0123654', NULL, NULL, 1, 0, NULL, NULL, NULL, NULL, NULL),
 (31, 'advisor@itecounsel.com', NULL, '$2y$10$oj9pFtHr2W5c1eyI7SyyBOXulEpVCGHCynhNd0wH8wg7ctWK7wrN.', NULL, 4, NULL, '', NULL, NULL, 1, 0, NULL, NULL, NULL, NULL, '2023-01-08 04:18:57'),
-(32, 'admin@itecounsel.com', NULL, '$2y$10$cGD4gXMvNNwb7NWloNCFO.Zhaz7zbntSzvPGwbEJflVeQREjgot5K', NULL, 3, NULL, '', NULL, 2, 1, 0, NULL, NULL, '1791|xYl8s9agTCLfOu37N7zS1JcJ7VZwrhsUcVzPrswi', NULL, '2023-12-17 11:27:02'),
+(32, 'admin@itecounsel.com', NULL, '$2y$10$cGD4gXMvNNwb7NWloNCFO.Zhaz7zbntSzvPGwbEJflVeQREjgot5K', NULL, 3, NULL, '', NULL, 2, 1, 0, NULL, NULL, '1812|eQwJTVhXlsvIw3UAi7nk5Ikz82vUeDlHYGlN18Wh', NULL, '2023-12-21 09:03:48'),
 (62, 'admin@nta.com', NULL, '$2y$10$zVz.1eWdOQras1uenwULHexSbdkEGSGxyDYjbcljpXJDF/EaOjs0.', NULL, 3, NULL, '0120003265', NULL, 2, 1, 0, NULL, NULL, '626|0T6cV1WUU0u0zVQ5wTVC90PcWGalno6rvURgsSFw', '2022-11-08 21:31:08', '2023-07-18 09:18:15'),
 (65, 'crm@quadque.digital', NULL, '$2a$12$MBaKaU7dE/cE1g3uhiulLOK0B.XPyXU2XHhfazM4y0RjTMUbhwKBe', NULL, 1, NULL, '+61407593943', NULL, 2, 1, 0, NULL, NULL, '1721|jrfiHbZRtvp4LwZ7nAKooGUcLdppTcXHiPaWMvpv', '2023-01-08 04:08:18', '2023-11-30 13:53:43'),
 (67, 'Jey12552@gmail.com', NULL, '$2y$10$bCDl6Ozs84hhvtz9Df0PKOXAkuDGdlEnNN8HAA4IVsQRh8FgsNzZq', NULL, 6, NULL, '+61410161261', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-02-05 16:13:16', '2023-02-05 16:13:16'),
@@ -2010,10 +2032,10 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `password`, `remember_t
 (170, 'green@gmial.com', NULL, '$2y$10$qgFAw84xfKsteYZZa1nLzOwRpfl800DhJvQkkeg3STCB3NHmd8vWm', NULL, 7, NULL, '654564564564', NULL, 1, 1, 1, NULL, NULL, NULL, '2023-08-13 13:43:18', '2023-08-13 13:43:48'),
 (172, 'ejmahadiair@gmail.com', NULL, '$2y$10$eCPa5j62fTG4b/2oFm.bG.7F730IJ4GHK4RCvIBwHswrGuw5X4XQS', NULL, 9, NULL, '', NULL, 2, 1, 0, '1642167361', NULL, '1638|fb8aGis0PYV5wrjKMFv75qxK8gaNQYy7XAwU8JVv', '2023-08-13 16:13:12', '2023-11-05 12:51:26'),
 (179, 'Admin@atr.edu.au', NULL, '$2a$12$M/LGamzYptuwl6HQb/4zz.pksxOXBHlVTSmOJTkLJzet4.udO2r8W', NULL, 3, NULL, '0549656983', NULL, NULL, 1, 0, '45282', NULL, '1713|RKItNTiFBbl1R6UoCw412wle3KjstwAAH8zFe5Fp', NULL, '2023-11-28 09:11:41'),
-(194, 'admin@uct.edu.au', NULL, '$2y$10$6vvOQPPRsitAeF.xma0dtO1noNPAAB0llm3BiBu/vlCM9Uaf2zTWO', NULL, 3, NULL, '1300 905 858', NULL, 2, 1, 0, NULL, NULL, '1753|gdruQMDyLNA5FpMKkLvWPD5ElLCn1wkOHFRLCJFG', '2023-08-16 15:53:34', '2023-12-13 09:57:26'),
-(196, 'info@quadque.tech', NULL, '$2y$10$UzCWji1pdOmkSULVRhmI6O0/KVOf4KijkioGQxjjGdfpxdEWR9wtO', NULL, 3, NULL, '01765276560', NULL, 2, 1, 0, NULL, NULL, '906|txnSpFGIJZK754cvcNUIDdcnVU9LAIUmlWU1GDJo', '2023-08-16 18:14:20', '2023-08-17 17:17:51'),
+(194, 'admin@uct.edu.au', NULL, '$2y$10$6vvOQPPRsitAeF.xma0dtO1noNPAAB0llm3BiBu/vlCM9Uaf2zTWO', NULL, 3, NULL, '1300 905 858', NULL, 2, 1, 0, NULL, NULL, '1794|wog3IhmR2bXqyLkO5SSTHefJmPoiRbVdWkAu95lB', '2023-08-16 15:53:34', '2023-12-18 09:24:43'),
+(196, 'info@quadque.tech', NULL, '$2y$10$UzCWji1pdOmkSULVRhmI6O0/KVOf4KijkioGQxjjGdfpxdEWR9wtO', NULL, 3, NULL, '01765276560', NULL, 2, 1, 0, NULL, NULL, '1810|AGNzu0zQC37Jx9EtD85NOndJIUntog7AF7BtXb2v', '2023-08-16 18:14:20', '2023-12-20 23:53:11'),
 (198, 'jaman@quadque.tech', NULL, '$2y$10$IFe1Gcrt2T9hWe/9DNJnLuAwCbLgMgZtKvmvuMFtTwR9JqnPg26q2', NULL, 8, NULL, '01642167361', NULL, 2, 1, 1, NULL, NULL, '949|IbeBEgygaF0H9QNTEE16ST260vrkzMVsWbmxzq1V', '2023-08-17 11:01:32', '2023-08-23 12:41:17'),
-(200, 'enquiries@nta.nsw.edu.au', NULL, '$2y$10$G9zG70qG6MgykEkDg3isOO21HmG9V2iwZKh/R5goHA3C.nGoL6qve', NULL, 3, NULL, '0421814485', NULL, 2, 1, 0, NULL, NULL, '1776|1FkDFFeLSRNi0wH1FACrdQfIgq6efmGgLhjMaMJu', '2023-08-22 09:48:48', '2023-12-14 12:33:20'),
+(200, 'enquiries@nta.nsw.edu.au', NULL, '$2y$10$G9zG70qG6MgykEkDg3isOO21HmG9V2iwZKh/R5goHA3C.nGoL6qve', NULL, 3, NULL, '0421814485', NULL, 2, 1, 0, NULL, NULL, '1809|NrlX3dWcZVYXmRu90eytmdM89EacP66KV4QSqIRC', '2023-08-22 09:48:48', '2023-12-19 15:21:34'),
 (201, 'sakib@itecounsel.com', NULL, '$2y$10$pn7lvXVgEoLhmjrUJjUPFu3dyrKIIVWf8jVVQxcoGY0n1EnPjn6Bi', NULL, 4, NULL, '', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-08-22 12:43:19', '2023-08-22 12:43:19'),
 (202, 'hilal@itecounsel.com', NULL, '$2y$10$UZD6M4zNJDl13ZAQd6vAyu0lAqM9M0gZmBr0CrevLmZ5rZPW1EXYG', NULL, 4, NULL, '', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-08-22 12:44:18', '2023-08-22 12:44:18'),
 (203, 'eram@itecounsel.com', NULL, '$2y$10$j9ZVAJOlr.aWJlrWE0zDPuZ8o/uBTT9CKZcNQPsE6yOKRU8bCfPsC', NULL, 4, NULL, '', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-08-22 12:44:34', '2023-08-22 12:44:34'),
@@ -2029,16 +2051,16 @@ INSERT INTO `users` (`id`, `email`, `email_verified_at`, `password`, `remember_t
 (227, 'nta.bijoy@gmail.com', NULL, '$2y$10$nrheTqe9IbhcctTqYmMt2.16IkgOFCrvZholgc54l4g0ik6/nfbFW', NULL, 4, NULL, '', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-08-24 12:02:43', '2023-08-24 12:02:43'),
 (228, 'bijoy.uct@gmail.com', NULL, '$2y$10$64wzvsVu6MepslNunweEiu8ble0EfV6lls4aBsliy0WP.gNI2C8L.', NULL, 4, NULL, '', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-08-24 12:08:22', '2023-08-24 12:08:22'),
 (240, 'tanjibrubyat@gmail.com', NULL, '$2y$10$KH0/eD87xs3s9J2AdKVoMexJmDluRN67BUVZgr1DNduOQG2NBZbMG', NULL, 7, NULL, '01972075917', NULL, 2, 1, 0, NULL, NULL, '1657|pbOGhxiHZr4zkEAGf2euNTwR4jTvWeU5oniWqY21', '2023-08-28 13:09:05', '2023-11-06 12:51:23'),
-(242, 'megatanjib@gmail.com', NULL, '$2y$10$qrbJMEImkT98wb6/eSLyuuSMaKIhP5MU27h2e7ocv4LOG8sJ83RJm', NULL, 8, NULL, '01972075917', NULL, 2, 1, 0, NULL, NULL, '1627|GT6AtKHUZcmWrOS0teAq2hdN7YTGkHg8agsRrnii', '2023-08-29 11:57:30', '2023-11-05 09:03:25'),
+(242, 'megatanjib@gmail.com', NULL, '$2y$10$qrbJMEImkT98wb6/eSLyuuSMaKIhP5MU27h2e7ocv4LOG8sJ83RJm', NULL, 8, NULL, '01972075917', NULL, 2, 1, 0, NULL, NULL, '1795|9C18EEV8kDoyHAAFnCkqvLpFOlDqhgWVvTnsMeHC', '2023-08-29 11:57:30', '2023-12-18 09:36:54'),
 (243, 'quadquetech2020@gmail.com', NULL, '$2y$10$s5WwpzenFLLNHWHQpzbFj.xglFKDCB7T0gS6o96jrdcUOJwf1DCdK', NULL, 5, NULL, '01862770389', NULL, 1, 0, 0, NULL, NULL, NULL, '2023-09-11 13:20:16', '2023-09-11 13:20:16'),
 (247, 'hr@itecounsel.com', NULL, '$2y$10$MSPJdyXRrwIMKgE4Fr7TnO2ZZRgSg1R4floEEuUpVTyCOVyDhKg7m', NULL, 3, NULL, '0421814485', NULL, 2, 1, 0, NULL, NULL, '1716|zher2fpqTRHfOMPSnAjv8Xbs86nmIGuddBQa537B', '2023-09-27 10:49:41', '2023-11-28 09:13:31'),
-(248, 'dgd@sales.com', NULL, '$2y$10$xYFe.mTmC93YB8r68nHatuWOrC2oDBUj/uj4ecggnnY9VzjB8LXWK', NULL, 5, NULL, '565465757', NULL, 1, 0, 0, NULL, NULL, NULL, '2023-11-21 09:07:08', '2023-11-21 09:07:08'),
-(249, 'sidra@itecounsel.com', NULL, '$2y$10$ZukWNUTDnxd7UkoWXeJaaO8AopN1eqv0MWql/qpGiFdxg.RGZyu42', NULL, 5, NULL, '0432753445', NULL, 2, 1, 0, NULL, NULL, '1702|6apxqRkc9llTPPwsn22OXIgDSzSVIaFNvRUug2wc', '2023-11-21 09:44:07', '2023-11-21 12:05:36'),
-(250, 'anna@itecounsel.com', NULL, '$2a$12$vU2MFDmvhb.iNxQkyxZM..9vW1nEGPySOBqKmZIGc6WeYTHBu/Onu', NULL, 5, NULL, '0466063286', NULL, 2, 1, 0, NULL, NULL, '1790|IP17u7EB8Js8OFQbHrGvNBwW6zc3TlSdENpIv2w1', '2023-11-21 09:44:56', '2023-12-17 11:26:55'),
+(248, 'dgd@sales.com', NULL, '$2y$10$xYFe.mTmC93YB8r68nHatuWOrC2oDBUj/uj4ecggnnY9VzjB8LXWK', NULL, 5, NULL, '565465757', NULL, 1, 0, 1, NULL, NULL, NULL, '2023-11-21 09:07:08', '2023-12-21 10:32:07'),
+(249, 'sidra@itecounsel.com', NULL, '$2y$10$ZukWNUTDnxd7UkoWXeJaaO8AopN1eqv0MWql/qpGiFdxg.RGZyu42', NULL, 5, NULL, '0432753445', NULL, 2, 1, 1, NULL, NULL, '1702|6apxqRkc9llTPPwsn22OXIgDSzSVIaFNvRUug2wc', '2023-11-21 09:44:07', '2023-12-21 10:31:01'),
+(250, 'anna@itecounsel.com', NULL, '$2a$12$vU2MFDmvhb.iNxQkyxZM..9vW1nEGPySOBqKmZIGc6WeYTHBu/Onu', NULL, 5, NULL, '0466063286', NULL, 2, 1, 0, NULL, NULL, '1807|VZPi5FTr5X9ZS89QkGDKdfQFfx6OLaAHUyJ2qtp6', '2023-11-21 09:44:56', '2023-12-19 10:55:34'),
 (251, 'huling@itecounsel.com', NULL, '$2y$10$XQE04MJjfsDd3uUoD7F1N.HtsUcQI7lGbRa2gIfiryOJyvW3E9OMG', NULL, 5, NULL, '0466037064', NULL, 2, 1, 0, NULL, NULL, '1701|qQhPboSv0nPDIvOgDtZn52ImPAuRZrFSeP1lwS2T', '2023-11-21 09:45:35', '2023-11-21 12:03:57'),
 (252, 'shivneel@itecounsel.com', NULL, '$2y$10$ZZnYHAH61gQQQXhlEZGkROHy4WEtHV.mPhYWk2mBcGFJf1RdfweyC', NULL, 5, NULL, '61466278355', NULL, 2, 1, 0, NULL, NULL, '1730|uFQirQnzbUmbVRoFdOXH5cDYtea5g1yxYJTNtp54', '2023-12-05 05:47:36', '2023-12-08 05:59:44'),
 (253, 'abhishek@itecounsel.com', NULL, '$2y$10$JUa3R0oSV24yIMUzg6ADDeDZRB1KLxMsxFqitG36MSAM0UWaEN9MW', NULL, 5, NULL, '61411636701', NULL, 2, 1, 0, NULL, NULL, '1728|r2R1w4GjgJ9RGxf06gZhuY5P7RqhlVq3Rl095n7I', '2023-12-05 05:48:28', '2023-12-08 05:51:48'),
-(254, 'zulker@quadque.tech', NULL, '$2y$10$24CebSnlzQ6P9DznXbHvLeNygL1kY0wCejLuBTEAEE5rcPFxR08Uy', NULL, 5, NULL, '', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-12-06 09:56:34', '2023-12-06 09:56:34'),
+(254, 'zulker@quadque.tech', NULL, '$2y$10$24CebSnlzQ6P9DznXbHvLeNygL1kY0wCejLuBTEAEE5rcPFxR08Uy', NULL, 5, NULL, '', NULL, 1, 0, 0, NULL, NULL, NULL, '2023-12-06 09:56:34', '2023-12-06 09:56:34'),
 (255, 'brian@itecounsel.com', NULL, '$2y$10$oj3orNgtpB3wOD4kHK121u24Vq70nLtZdL01ixt84bEp2aid9E.B.', NULL, 5, NULL, '61478394922', NULL, 2, 1, 0, NULL, NULL, '1732|mJrtlGNm4MT93sHirSDR5BjxAlAy41VXRcAqSeMJ', '2023-12-06 12:58:27', '2023-12-08 06:01:53'),
 (256, 'linda@itecounsel.com', NULL, '$2y$10$J4ZxYbZCxuEWZDlBsNzM0.QYO1zoZymNNNEewfWsRy9dJEj39eABO', NULL, 5, NULL, '0426516312', NULL, 2, 1, 0, NULL, NULL, '1745|6M3OYTRkkmYlH2NXAyiJJNrUv3HfYMvqIrazspKx', '2023-12-11 06:19:08', '2023-12-12 06:32:18'),
 (257, 'fahad@quadque.tech', NULL, '$2y$10$ZVzdgHU6dNKTlPtak4JKieA.EDcGw69CMJyCnQ2xaEdXvfcnK/9Lq', NULL, 5, NULL, '+61 405 719 047', NULL, 2, 1, 0, NULL, NULL, '1742|Z2J9maPDkD7UbJg1f2U8yw9X22GppnHxiytZqmfc', '2023-12-11 11:00:57', '2023-12-11 11:52:54');
@@ -2220,7 +2242,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `follow_ups`
 --
 ALTER TABLE `follow_ups`
-  MODIFY `id` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=354;
+  MODIFY `id` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=355;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -2232,7 +2254,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1792;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1813;
 
 --
 -- AUTO_INCREMENT for table `users`
