@@ -107,7 +107,7 @@ class AuthController extends Controller
 
     public function fetch_sales_user_in_lead_details(Request $request, $company_id)
     {
-        $flag = Http::withToken($request->bearerToken())->post(env('APP_URL') . '/api/check-if-token-exists');
+        $flag = Http::withToken($request->bearerToken())->post(env('APP_URL', '') . '/api/check-if-token-exists');
         $flag_receive = $flag['data'];
         if ($flag_receive == 1) {
             $data =
@@ -131,7 +131,7 @@ class AuthController extends Controller
 
     public function fetch_user(Request $request, $role, $status)
     {    ///fetch student admins ////
-        $flag = Http::withToken($request->bearerToken())->post(env('APP_URL') . '/api/check-if-token-exists');
+        $flag = Http::withToken($request->bearerToken())->post(env('APP_URL', '') . '/api/check-if-token-exists');
         $flag_receive = $flag['data'];
         if ($flag_receive == 1) {
             $user = User::where('role_id', $role)->where('suspend', $status)->get();
