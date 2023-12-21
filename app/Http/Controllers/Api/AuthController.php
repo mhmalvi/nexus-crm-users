@@ -107,9 +107,9 @@ class AuthController extends Controller
 
     public function fetch_sales_user_in_lead_details(Request $request, $company_id)
     {
-        $flag = Http::withToken($request->bearerToken())->post(env('APP_URL', '') . '/api/check-if-token-exists');
-        $flag_receive = $flag['data'];
-        if ($flag_receive == 1) {
+        // $flag = Http::withToken($request->bearerToken())->post(env('APP_URL', '') . '/api/check-if-token-exists');
+        // $flag_receive = $flag['data'];
+        // if ($flag_receive == 1) {
             $data =
                 DB::table('users')
                 ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
@@ -126,14 +126,14 @@ class AuthController extends Controller
                     'status' => 404
                 ], 404);
             }
-        }
+        // }
     }
 
     public function fetch_user(Request $request, $role, $status)
     {    ///fetch student admins ////
-        $flag = Http::withToken($request->bearerToken())->post(env('APP_URL', '') . '/api/check-if-token-exists');
-        $flag_receive = $flag['data'];
-        if ($flag_receive == 1) {
+        // $flag = Http::withToken($request->bearerToken())->post(env('APP_URL', '') . '/api/check-if-token-exists');
+        // $flag_receive = $flag['data'];
+        // if ($flag_receive == 1) {
             $user = User::where('role_id', $role)->where('suspend', $status)->get();
             if (count($user) > 0) {
                 return response()->json([
@@ -148,7 +148,7 @@ class AuthController extends Controller
                     'data' => []
                 ], 200);
             }
-        }
+        // }
     }
 
     /**
