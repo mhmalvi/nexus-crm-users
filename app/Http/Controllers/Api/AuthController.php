@@ -520,7 +520,6 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email|exists:users',
         ]);
-        dd('hello');
         $token = Str::random(64);
 
         DB::table('password_resets')->insert([
