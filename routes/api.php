@@ -34,7 +34,7 @@ Route::post('/user/update', [\App\Http\Controllers\Api\AuthController::class, 'u
 Route::post('/user/password-reset', [\App\Http\Controllers\Api\AuthController::class, 'resetPassword']);
 Route::post('/user/forgot-password', [\App\Http\Controllers\Api\AuthController::class, 'forgotPassword']);
 Route::get('reset-password/{token}', [\App\Http\Controllers\Api\AuthController::class, 'showResetPasswordForm'])->name('reset.password.get');
-
+Route::post('reset-password', [\App\Http\Controllers\Api\AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::post('/user/check-verification', [\App\Http\Controllers\Api\AuthController::class, 'updateVerificationCode']);
 Route::post('/user/list', [\App\Http\Controllers\Api\AuthController::class, 'userList']);

@@ -111,22 +111,22 @@ class AuthController extends Controller
         // $flag = Http::withToken($request->bearerToken())->post(env('APP_URL', '') . '/api/check-if-token-exists');
         // $flag_receive = $flag['data'];
         // if ($flag_receive == 1) {
-            $data =
-                DB::table('users')
-                ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
-                ->select('users.*', 'user_profile.*')
-                ->where('users.role_id', '=', 5)
-                ->where('suspend', 0)
-                ->get();
-            // dd(json_encode($data));
-            if ($data) {
-                return response()->json($data);
-            } else {
-                return response()->json([
-                    'message' => 'not found',
-                    'status' => 404
-                ], 404);
-            }
+        $data =
+            DB::table('users')
+            ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
+            ->select('users.*', 'user_profile.*')
+            ->where('users.role_id', '=', 5)
+            ->where('suspend', 0)
+            ->get();
+        // dd(json_encode($data));
+        if ($data) {
+            return response()->json($data);
+        } else {
+            return response()->json([
+                'message' => 'not found',
+                'status' => 404
+            ], 404);
+        }
         // }
     }
 
@@ -135,20 +135,20 @@ class AuthController extends Controller
         // $flag = Http::withToken($request->bearerToken())->post(env('APP_URL', '') . '/api/check-if-token-exists');
         // $flag_receive = $flag['data'];
         // if ($flag_receive == 1) {
-            $user = User::where('role_id', $role)->where('suspend', $status)->get();
-            if (count($user) > 0) {
-                return response()->json([
-                    'message'    => 'success',
-                    'status' => 200,
-                    'data' => $user
-                ], 200);
-            } else {
-                return response()->json([
-                    'message'    => 'Failed',
-                    'status' => 200,
-                    'data' => []
-                ], 200);
-            }
+        $user = User::where('role_id', $role)->where('suspend', $status)->get();
+        if (count($user) > 0) {
+            return response()->json([
+                'message'    => 'success',
+                'status' => 200,
+                'data' => $user
+            ], 200);
+        } else {
+            return response()->json([
+                'message'    => 'Failed',
+                'status' => 200,
+                'data' => []
+            ], 200);
+        }
         // }
     }
 
@@ -516,7 +516,7 @@ class AuthController extends Controller
      */
     public function forgotPassword(Request $request)
     {
-        
+
         $request->validate([
             'email' => 'required|email|exists:users',
         ]);
@@ -531,7 +531,12 @@ class AuthController extends Controller
         Mail::send('email.forgetpassword', ['token' => $token], function ($message) use ($request) {
             $message->to($request->email);
             $message->subject('Reset Password');
-        });        
+        });
+    }
+
+    public function showResetPasswordForm($token)
+    {
+        return view('auth.forgetPasswordLink', ['token' => $token]);
     }
 
     /**
