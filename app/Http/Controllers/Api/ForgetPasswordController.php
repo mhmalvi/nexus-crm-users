@@ -64,9 +64,4 @@ class ForgetPasswordController extends Controller
 
         return view('auth.redirectToLogin');
     }
-
-    public function redirectLogin()
-    {
-        return view('redirect.login');
-    }
 }
