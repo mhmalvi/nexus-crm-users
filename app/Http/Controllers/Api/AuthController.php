@@ -648,7 +648,7 @@ class AuthController extends Controller
                 
                 // dd($companyServiceAPI);
 
-                $response = Http::post($companyServiceAPI . '/company/details/user', [
+                $response = Http::post('https://crmcompany.queleadscrm.com/api/company/details/user', [
                     'user_id' => $data->user_id,
                     'role_id' => $data->role_id
                 ]);
