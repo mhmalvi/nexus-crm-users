@@ -31,6 +31,10 @@ class ForgetPasswordController extends Controller
             $message->to($request->email);
             $message->subject('Reset Password');
         });
+        return response()->json([
+            'message' => 'success',
+            'status' => 200
+        ], 200);
     }
 
     public function showResetPasswordForm($token)
