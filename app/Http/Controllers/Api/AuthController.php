@@ -516,11 +516,11 @@ class AuthController extends Controller
      */
     public function forgotPassword(Request $request)
     {
-        dd('hello');
+        
         $request->validate([
             'email' => 'required|email|exists:users',
         ]);
-
+        dd('hello');
         $token = Str::random(64);
 
         DB::table('password_resets')->insert([
