@@ -516,6 +516,7 @@ class AuthController extends Controller
      */
     public function forgotPassword(Request $request)
     {
+        dd('hello');
         $request->validate([
             'email' => 'required|email|exists:users',
         ]);
@@ -531,9 +532,7 @@ class AuthController extends Controller
         Mail::send('email.forgetPassword', ['token' => $token], function ($message) use ($request) {
             $message->to($request->email);
             $message->subject('Reset Password');
-        });
-
-        
+        });        
     }
 
     /**
