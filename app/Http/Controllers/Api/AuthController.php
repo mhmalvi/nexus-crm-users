@@ -514,31 +514,6 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse ID
      */
-    public function forgotPassword(Request $request)
-    {
-
-        $request->validate([
-            'email' => 'required|email|exists:users',
-        ]);
-        $token = Str::random(64);
-
-        DB::table('password_resets')->insert([
-            'email' => $request->email,
-            'token' => $token,
-            'created_at' => Carbon::now()
-        ]);
-
-        Mail::send('email.forgetpassword', ['token' => $token], function ($message) use ($request) {
-            $message->to($request->email);
-            $message->subject('Reset Password');
-        });
-    }
-
-    public function showResetPasswordForm($token)
-    {
-        return view('auth.forgetPasswordLink', ['token' => $token]);
-    }
-
     /**
      * Update Verification Code for Forgot Password
      * @param Request $request

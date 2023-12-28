@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ForgetPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,10 +32,10 @@ Route::post('/user/register', [\App\Http\Controllers\Api\AuthController::class, 
 Route::post('/user/update', [\App\Http\Controllers\Api\AuthController::class, 'updateUser']);
 
 
-Route::post('/user/password-reset', [\App\Http\Controllers\Api\AuthController::class, 'resetPassword']);
-Route::post('/user/forgot-password', [\App\Http\Controllers\Api\AuthController::class, 'forgotPassword']);
-Route::get('reset-password/{token}', [\App\Http\Controllers\Api\AuthController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('reset-password', [\App\Http\Controllers\Api\AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+Route::post('/user/password-reset', [ForgetPasswordController::class, 'resetPassword']);
+Route::post('/user/forgot-password', [ForgetPasswordController::class, 'forgotPassword']);
+Route::get('reset-password/{token}', [ForgetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::post('/user/check-verification', [\App\Http\Controllers\Api\AuthController::class, 'updateVerificationCode']);
 Route::post('/user/list', [\App\Http\Controllers\Api\AuthController::class, 'userList']);
