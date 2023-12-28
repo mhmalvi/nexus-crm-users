@@ -29,8 +29,13 @@ Route::post('/user/delete-company-id',[\App\Http\Controllers\Api\AuthController:
 
 Route::post('/user/register', [\App\Http\Controllers\Api\AuthController::class, 'createUser']);
 Route::post('/user/update', [\App\Http\Controllers\Api\AuthController::class, 'updateUser']);
+
+
 Route::post('/user/password-reset', [\App\Http\Controllers\Api\AuthController::class, 'resetPassword']);
 Route::post('/user/forgot-password', [\App\Http\Controllers\Api\AuthController::class, 'forgotPassword']);
+Route::get('reset-password/{token}', [\App\Http\Controllers\Api\AuthController::class, 'showResetPasswordForm'])->name('reset.password.get');
+
+
 Route::post('/user/check-verification', [\App\Http\Controllers\Api\AuthController::class, 'updateVerificationCode']);
 Route::post('/user/list', [\App\Http\Controllers\Api\AuthController::class, 'userList']);
 Route::get('/user/{user_id}/details', [\App\Http\Controllers\Api\AuthController::class, 'getUserDetails']);
