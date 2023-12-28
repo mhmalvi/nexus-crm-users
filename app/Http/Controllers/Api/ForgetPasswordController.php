@@ -47,10 +47,10 @@ class ForgetPasswordController extends Controller
         ]);
 
         $updatePassword = DB::table('password_resets')
-        ->where([
-            'email' => $request->email,
-            'token' => $request->token
-        ])
+            ->where([
+                'email' => $request->email,
+                'token' => $request->token
+            ])
             ->first();
 
         if (!$updatePassword) {
@@ -63,5 +63,10 @@ class ForgetPasswordController extends Controller
         DB::table('password_resets')->where(['email' => $request->email])->delete();
 
         return redirect('/login')->with('message', 'Your password has been changed!');
+    }
+
+    public function redirectLogin()
+    {
+        return view('redirect.login');
     }
 }
