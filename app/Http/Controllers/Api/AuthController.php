@@ -645,7 +645,7 @@ class AuthController extends Controller
             if (isset($data->role_id) && in_array($data->role_id, $roleArray)) {
                 // $clientId =  $data->user_id;
                 $companyServiceAPI = env('COMPANY_SERVICE_API', '');
-                //dd($companyServiceAPI);
+                dd($companyServiceAPI);
 
                 $response = Http::post($companyServiceAPI . '/company/details/user', [
                     'user_id' => $data->user_id,
