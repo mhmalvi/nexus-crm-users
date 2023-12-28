@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\UserProfile;
-use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Mail\RegistrationMail;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
-use App\Mail\RegistrationMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -515,53 +516,24 @@ class AuthController extends Controller
      */
     public function forgotPassword(Request $request)
     {
-        if (!isset($request->email))
-            return response()->json([
-                'status' => false,
-                'message' => 'validation error',
-            ], 401);
+        $request->validate([
+            'email' => 'required|email|exists:users',
+        ]);
 
-        try {
-            $user = User::where('email', '=', $request->email)->where('suspend', 0)->first();
-            if ($user == "") {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'User Data not found',
-                ], 401);
-            }
-            $user->verification_code = $user->id . $this->_randomPassword() . '-' . $user->id;
-            $user->flag = 2;
-            $user->save();
+        $token = Str::random(64);
 
-            $userServiceAPI = env('EMAIL_SERVICE_API', '');
-            //dd($userServiceAPI);
-            $userData = [
-                'email' => $user->email,
-                'verification_code' => $user->verification_code
-            ];
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
 
-            $response = Http::post($userServiceAPI . '/forget-password', [
-                'data' => json_encode($userData)
-            ]);
-            //dd($response->status());
+        Mail::send('email.forgetPassword', ['token' => $token], function ($message) use ($request) {
+            $message->to($request->email);
+            $message->subject('Reset Password');
+        });
 
-            if ($response->status() != '201') {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Email Not Sent',
-                ], 401);
-            }
-
-            return response()->json([
-                'status' => true,
-                'message' => 'Email sent with link for forgotten password'
-            ], 202);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
-        }
+        
     }
 
     /**
