@@ -61,19 +61,18 @@ class ForgetPasswordController extends Controller
             return back()->withInput()->with('error', 'Invalid token!');
         }
         $is_email_exist = User::where('email', $request->email)->exists();
-        if($is_email_exist){
+        if ($is_email_exist) {
             $user = User::where('email', $request->email)
-            ->update(['password' => Hash::make($request->password)]);
+                ->update(['password' => Hash::make($request->password)]);
 
             DB::table('password_resets')->where(['email' => $request->email])->delete();
 
             return view('auth.redirectToLogin');
-        }else{
+        } else {
             return response()->json([
-                'message'=>'Email is not valid',
-                'status'=>500,
+                'message' => 'Email is not valid',
+                'status' => 500,
             ]);
         }
-        
     }
 }
