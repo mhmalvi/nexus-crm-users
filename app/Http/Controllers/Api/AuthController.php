@@ -100,12 +100,6 @@ class AuthController extends Controller
         }
     }
 
-    public function get_user_name(Request $request)
-    {
-        $user_name = UserProfile::where('user_id', $request->user_id)->first();
-        return response($user_name);
-    }
-
     public function fetch_sales_user_in_lead_details(Request $request, $company_id)
     {
         // $flag = Http::withToken($request->bearerToken())->post(env('APP_URL', '') . '/api/check-if-token-exists');

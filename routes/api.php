@@ -69,6 +69,5 @@ Route::post('/delete-notification', [\App\Http\Controllers\Api\ReminderControlle
 
 
 /////////////////api used for another service////////////////
-Route::get('/get-user-name',[\App\Http\Controllers\Api\AuthController::class,'get_user_name']);
 Route::get('/user-details',[\App\Http\Controllers\Api\AuthController::class,'get_user_details']);
 Route::post('/sales-employee-list',[\App\Http\Controllers\Api\SalesListController::class,'salesList']);
