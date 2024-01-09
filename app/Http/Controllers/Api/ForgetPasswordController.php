@@ -45,16 +45,12 @@ class ForgetPasswordController extends Controller
 
     public function submitResetPasswordForm(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:users',
-            'password' => [
-                'required',
-                'string',
-                'min:8',
-                'confirmed',
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
-            ],
-        ]);
+        $rules = [
+            'email'    => 'required|email|exists:App\User,email',
+            'password' => 'required|alphaNum|min:8'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
         // $validator = $request->validate([
         //     'email' => 'required|email|exists:users',
         //     'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
