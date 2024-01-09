@@ -45,17 +45,17 @@ class ForgetPasswordController extends Controller
 
     public function submitResetPasswordForm(Request $request)
     {
-        $rules = [
-            'email'    => 'required|email|exists:App\Models\User,email',
-            'password' => 'required|alphaNum|min:8'
-        ];
+        // $rules = [
+        //     'email'    => 'required|email|exists:App\Models\User,email',
+        //     'password' => 'required|alphaNum|min:8'
+        // ];
 
-        $validator = Validator::make($request->all(), $rules);
-        // $validator = $request->validate([
-        //     'email' => 'required|email|exists:users',
-        //     'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
-        //     'password_confirmation' => 'required'
-        // ]);
+        // $validator = Validator::make($request->all(), $rules);
+        $validator = $request->validate([
+            'email' => 'required|email|exists:users',
+            'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+            'password_confirmation' => 'required'
+        ]);
 
         $updatePassword = DB::table('password_resets')
             ->where([
@@ -68,7 +68,7 @@ class ForgetPasswordController extends Controller
             return back()->withInput()->with('error', 'Invalid token!');
         }
         $is_email_exist = User::where('email', $request->email)->exists();
-        if ($is_email_exist && !$validator->fails()) {
+        if ($is_email_exist) {
             $user = User::where('email', $request->email)
                 ->update(['password' => Hash::make($request->password)]);
 
