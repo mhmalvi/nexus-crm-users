@@ -7,9 +7,9 @@
             <div class="col-md-8">
                 <div class="card">
                     {{-- @dd($validator) --}}
-                    @if ($error)
+                    @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
-                        {{ $error }}
+                        {!! implode('', $errors->all('<div>:message</div>')) !!}
                     </div>
                     @endif
 
