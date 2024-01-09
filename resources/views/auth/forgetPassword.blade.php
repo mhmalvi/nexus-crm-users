@@ -9,9 +9,9 @@
                     <div class="card-header">Reset Password</div>
                     <div class="card-body">
 
-                        @if (Session::has('message'))
-                        <div class="alert alert-success" role="alert">
-                            {{ Session::get('message') }}
+                        @if (Session::has('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('error') }}
                         </div>
                         @endif
 
@@ -21,7 +21,7 @@
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
                                     <input type="text" id="email_address" class="form-control" name="email" required autofocus>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-md-6 offset-md-4">
