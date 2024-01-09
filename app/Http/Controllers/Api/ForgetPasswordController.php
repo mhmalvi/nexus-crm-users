@@ -46,7 +46,7 @@ class ForgetPasswordController extends Controller
     public function submitResetPasswordForm(Request $request)
     {
         $rules = [
-            'email'    => 'required|email|exists:User,email',
+            'email'    => 'required|email|exists:App\Models\User,email',
             'password' => 'required|alphaNum|min:8'
         ];
 
