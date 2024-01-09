@@ -7,9 +7,9 @@
             <div class="col-md-8">
                 <div class="card">
                     {{-- @dd($validator) --}}
-                    @if (Session::has('error'))
+                    @if ($error)
                     <div class="alert alert-danger" role="alert">
-                        {{ Session::get('error') }}
+                        {{ $error }}
                     </div>
                     @endif
 
