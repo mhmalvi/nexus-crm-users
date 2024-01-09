@@ -63,32 +63,32 @@ class ForgetPasswordController extends Controller
             //     'status' => 500,
             //     'data'=> $validator
             // ]);
-        }
-
-        $updatePassword = DB::table('password_resets')
-            ->where([
-                'email' => $request->email,
-                'token' => $request->token
-            ])
-            ->first();
-
-        if (!$updatePassword) {
-            return back()->withInput()->with('error', 'Invalid token!');
-        }
-        $is_email_exist = User::where('email', $request->email)->exists();
-        if ($is_email_exist) {
-            $user = User::where('email', $request->email)
-                ->update(['password' => Hash::make($request->password)]);
-
-            DB::table('password_resets')->where(['email' => $request->email])->delete();
-
-            return view('auth.redirectToLogin');
         } else {
-            return response()->json([
-                'message' => 'Email is not valid',
-                'status' => 500,
-            ]);
-            // return redirect()->back()->withInput()->withErrors('error', $validator);
+            $updatePassword = DB::table('password_resets')
+                ->where([
+                    'email' => $request->email,
+                    'token' => $request->token
+                ])
+                ->first();
+
+            if (!$updatePassword) {
+                return back()->withInput()->with('error', 'Invalid token!');
+            }
+            $is_email_exist = User::where('email', $request->email)->exists();
+            if ($is_email_exist) {
+                $user = User::where('email', $request->email)
+                    ->update(['password' => Hash::make($request->password)]);
+
+                DB::table('password_resets')->where(['email' => $request->email])->delete();
+
+                return view('auth.redirectToLogin');
+            } else {
+                return response()->json([
+                    'message' => 'Email is not valid',
+                    'status' => 500,
+                ]);
+                // return redirect()->back()->withInput()->withErrors('error', $validator);
+            }
         }
     }
 }
