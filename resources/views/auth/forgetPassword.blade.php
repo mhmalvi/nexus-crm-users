@@ -5,13 +5,14 @@
     <div class="cotainer">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if ($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    {!! implode('', $errors->all('<div>:message</div>')) !!}
+                </div>
+                @endif
+
                 <div class="card">
                     {{-- @dd($validator) --}}
-                    @if ($errors->any())
-                    <div class="alert alert-danger" role="alert">
-                        {!! implode('', $errors->all('<div>:message</div>')) !!}
-                    </div>
-                    @endif
 
                     <div class="card-header">Reset Password</div>
                     <div class="card-body">
