@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    @dd(Session)
+                    @dd($validator)
                     @if (Session::has('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ Session::get('error') }}
