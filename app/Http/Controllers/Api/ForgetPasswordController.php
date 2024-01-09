@@ -57,7 +57,12 @@ class ForgetPasswordController extends Controller
             'password_confirmation' => 'required'
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors('error', $validator);
+            // return redirect()->back()->withInput()->withErrors('error', $validator);
+            return response()->json([
+                'message' => 'Email is not valid',
+                'status' => 500,
+                'data'=> $validator
+            ]);
         }
 
         $updatePassword = DB::table('password_resets')
@@ -79,11 +84,11 @@ class ForgetPasswordController extends Controller
 
             return view('auth.redirectToLogin');
         } else {
-            // return response()->json([
-            //     'message' => 'Email is not valid',
-            //     'status' => 500,
-            // ]);
-            return redirect()->back()->withInput()->withErrors('error', $validator);
+            return response()->json([
+                'message' => 'Email is not valid',
+                'status' => 500,
+            ]);
+            // return redirect()->back()->withInput()->withErrors('error', $validator);
         }
     }
 }
