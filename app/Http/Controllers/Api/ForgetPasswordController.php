@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class ForgetPasswordController extends Controller
 {
@@ -44,11 +45,21 @@ class ForgetPasswordController extends Controller
 
     public function submitResetPasswordForm(Request $request)
     {
-        $validator = $request->validate([
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
-            'password_confirmation' => 'required'
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+            ],
         ]);
+        // $validator = $request->validate([
+        //     'email' => 'required|email|exists:users',
+        //     'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+        //     'password_confirmation' => 'required'
+        // ]);
 
         $updatePassword = DB::table('password_resets')
             ->where([
