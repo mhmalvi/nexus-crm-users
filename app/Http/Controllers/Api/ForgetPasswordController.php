@@ -44,9 +44,9 @@ class ForgetPasswordController extends Controller
 
     public function submitResetPasswordForm(Request $request)
     {
-        $request->validate([
+        $validator = $request->validate([
             'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
             'password_confirmation' => 'required'
         ]);
 
@@ -68,11 +68,12 @@ class ForgetPasswordController extends Controller
             DB::table('password_resets')->where(['email' => $request->email])->delete();
 
             return view('auth.redirectToLogin');
-        } else {
-            return response()->json([
-                'message' => 'Email is not valid',
-                'status' => 500,
-            ]);
+        } else if (!$validator) {
+            // return response()->json([
+            //     'message' => 'Email is not valid',
+            //     'status' => 500,
+            // ]);
+            return redirect()->back()->withInput()->withErrors('error', $validator);
         }
     }
 }
