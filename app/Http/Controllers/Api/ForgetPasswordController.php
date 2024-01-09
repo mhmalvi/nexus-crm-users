@@ -79,7 +79,7 @@ class ForgetPasswordController extends Controller
             DB::table('password_resets')->where(['email' => $request->email])->delete();
 
             return view('auth.redirectToLogin');
-        } else if (!$validator) {
+        } else if ($validator->fails()) {
             // return response()->json([
             //     'message' => 'Email is not valid',
             //     'status' => 500,
