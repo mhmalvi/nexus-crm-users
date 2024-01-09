@@ -68,7 +68,7 @@ class ForgetPasswordController extends Controller
             return back()->withInput()->with('error', 'Invalid token!');
         }
         $is_email_exist = User::where('email', $request->email)->exists();
-        if ($is_email_exist && !$validator->fails()) {
+        if ($is_email_exist) {
             $user = User::where('email', $request->email)
                 ->update(['password' => Hash::make($request->password)]);
 
