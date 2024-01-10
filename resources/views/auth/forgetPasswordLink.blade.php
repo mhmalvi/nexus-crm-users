@@ -33,10 +33,11 @@
                                 <input type="password" id="password" class="form-control" name="password" required autofocus>
                                 {{-- @php
                                 @if (isset($errors->has('password'))) --}}
-                                <div class="text-danger">gfdggrgrg</div>
+                                
                                 {{-- @endif
                                 @endphp --}}
                             </div>
+                            <div class="text-danger">gfdggrgrg</div>
                         </div>
 
                         <div class="form-group row">
