@@ -58,7 +58,7 @@ class ForgetPasswordController extends Controller
         ]);
         if ($validator->fails()) {
             // return back()->with($validator->errors()[0]);
-            return response()->json([$validator->errors()]);
+            return redirect()->back()->withErrors($validator);
         } else {
             $updatePassword = DB::table('password_resets')
                 ->where([
