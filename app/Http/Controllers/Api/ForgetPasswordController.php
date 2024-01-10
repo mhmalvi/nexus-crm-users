@@ -56,9 +56,9 @@ class ForgetPasswordController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required'
         ]);
-        if ($validator->fails()) {
-            return back()->compact('errors', $validator->errors());
-        } else {
+        // if ($validator->fails()) {
+        //     return back()->compact('errors', $validator->errors());
+        // } else {
             $updatePassword = DB::table('password_resets')
                 ->where([
                     'email' => $request->email,
@@ -83,6 +83,6 @@ class ForgetPasswordController extends Controller
                     'status' => 500,
                 ]);
             }
-        }
+        // }
     }
 }
