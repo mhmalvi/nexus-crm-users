@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                             <div class="col-md-6">
-                                <input type="text" id="email_address" class="form-control" name="email" required autofocus>
+                                <input type="email" id="email_address" class="form-control" name="email" required autofocus>
 
                             </div>
                         </div>
@@ -33,9 +33,7 @@
                                 <input type="password" id="password" class="form-control" name="password" required autofocus>
                                 {{-- @php
                                 @if (isset($errors->has('password'))) --}}
-                                <div class="text-danger">{{ $errors->has('password') ? $errors->first('password') : $errors->first('password') }}</div>
-
-
+                                <div class="text-danger">gfdggrgrg</div>
                                 {{-- @endif
                                 @endphp --}}
                             </div>
