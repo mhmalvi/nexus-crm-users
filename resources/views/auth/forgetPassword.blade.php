@@ -5,9 +5,9 @@
     <div class="cotainer">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                @if ($errors->any())
+                @if ($error)
                 <div class="alert alert-danger" role="alert">
-                    {!! implode('', $errors->all('<div>:message</div>')) !!}
+                    {{ $error }}
                 </div>
                 @endif
 
