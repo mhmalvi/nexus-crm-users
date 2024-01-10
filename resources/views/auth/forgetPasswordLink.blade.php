@@ -31,14 +31,10 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                             <div class="col-md-6">
                                 <input type="password" id="password" class="form-control" name="password" required autofocus>
-                                {{-- @php
-                                @if (isset($errors->has('password'))) --}}
-
-                                {{-- @endif
-                                @endphp --}}
+                                @if (isset($errors->has('password')))
+                                <div class="text-danger">{{ $errors->first('password') }}</div>
+                                @endif
                             </div>
-                            <div class="text-danger">{{ isset($errors->has('password')) ? $errors->first('password') : $errors->first('password') }}</div>
-
                         </div>
 
                         <div class="form-group row">
