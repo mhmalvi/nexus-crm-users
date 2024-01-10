@@ -5,9 +5,11 @@
     <div class="cotainer">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                @if ($error)
+                @if ($validator->errors())
+
                 <div class="alert alert-danger" role="alert">
-                    {{ $error }}
+                    {{ $validator->errors() }}
+
                 </div>
                 @endif
 
