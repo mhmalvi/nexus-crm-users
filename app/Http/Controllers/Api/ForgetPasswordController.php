@@ -61,7 +61,7 @@ class ForgetPasswordController extends Controller
             return response()->json([
                 'message' => 'Email is not valid',
                 'status' => 500,
-                'data'=> $validator
+                'data' => $validator->errors()
             ]);
         } else {
             $updatePassword = DB::table('password_resets')
