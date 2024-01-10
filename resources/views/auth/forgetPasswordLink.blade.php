@@ -37,7 +37,7 @@
                                 {{-- @endif
                                 @endphp --}}
                             </div>
-                            <div class="text-danger">{{ $errors->has('password') ? $errors->first('password') : $errors->first('password') }}</div>
+                            <div class="text-danger">{{ isset($errors->has('password')) ? $errors->first('password') : $errors->first('password') }}</div>
 
                         </div>
 
