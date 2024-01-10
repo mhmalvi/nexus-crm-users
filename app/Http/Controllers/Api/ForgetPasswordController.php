@@ -57,7 +57,7 @@ class ForgetPasswordController extends Controller
             'password_confirmation' => 'required'
         ]);
         if ($validator->fails()) {
-            return back()->with('error', $validator->errors());
+            return back()->with($validator->errors());
         } else {
             $updatePassword = DB::table('password_resets')
                 ->where([
@@ -82,7 +82,6 @@ class ForgetPasswordController extends Controller
                     'message' => 'Email is not valid',
                     'status' => 500,
                 ]);
-                // return redirect()->back()->withInput()->withErrors('error', $validator);
             }
         }
     }
