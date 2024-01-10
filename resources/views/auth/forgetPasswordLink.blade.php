@@ -32,7 +32,7 @@
                             <div class="col-md-6">
                                 <input type="password" id="password" class="form-control" name="password" required autofocus>
                                 {{-- @if ($errors->has('password')) --}}
-                                <span class="text-danger">{{ $errors ? $errors : '' }}</span>
+                                <span class="text-danger">{{ $errors ?? '' }}</span>
                                 {{-- @endif --}}
                             </div>
                         </div>
