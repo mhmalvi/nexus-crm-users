@@ -8,12 +8,11 @@
                 <div class="card">
                     <div class="card-header">Reset Password</div>
                     <div class="card-body">
-                        @if (Session::has('message'))
-                        <div class="alert alert-success" role="alert">
-                            {{ Session::get('message') }}
+                        @if ($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            {{ $errors }}
                         </div>
                         @endif
-
                         <form action="{{ route('reset.password.post') }}" method="POST">
                             @csrf
                             <input type="hidden" name="token" value="{{ $token }}">
