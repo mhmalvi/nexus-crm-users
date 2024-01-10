@@ -33,7 +33,7 @@
                                 <input type="password" id="password" class="form-control" name="password" required autofocus>
                                 {{-- @php
                                 @if (isset($errors->has('password'))) --}}
-                                <span class="text-danger">{{ $errors->has('password') ? $errors->first('password') : $errors->first('password') }}</span>
+                                <div class="text-danger">{{ $errors->has('password') ? $errors->first('password') : $errors->first('password') }}</div>
 
 
                                 {{-- @endif
