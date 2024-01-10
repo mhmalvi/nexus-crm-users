@@ -51,20 +51,15 @@ class ForgetPasswordController extends Controller
         // ];
 
         // $validator = Validator::make($request->all(), $rules);
-        // $validator = Validator::make($request->all(), [
-        //     'email' => 'required|email|exists:users',
-        //     'password' => 'required|string|min:8|confirmed',
-        //     'password_confirmation' => 'required'
-        // ]);
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required'
         ]);
-        // if ($validator->fails()) {
-        //     // return back()->with($validator->errors()[0]);
-        //     return redirect()->back()->withErrors($validator);
-        // } else {
+        if ($validator->fails()) {
+            // return back()->with($validator->errors()[0]);
+            return redirect()->back()->withErrors($validator);
+        } else {
             $updatePassword = DB::table('password_resets')
                 ->where([
                     'email' => $request->email,
@@ -89,6 +84,6 @@ class ForgetPasswordController extends Controller
                     'status' => 500,
                 ]);
             }
-        // }
+        }
     }
 }
