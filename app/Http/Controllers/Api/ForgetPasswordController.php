@@ -57,7 +57,9 @@ class ForgetPasswordController extends Controller
             'password_confirmation' => 'required'
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->with('error', $validator->fails());
+            return redirect()->back()->response()->json([
+                'error'=>$validator->errors()
+            ]);
             // return response()->json([
             //     'data' => $validator->errors()
             // ]);
