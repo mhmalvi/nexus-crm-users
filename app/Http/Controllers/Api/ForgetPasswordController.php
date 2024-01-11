@@ -51,42 +51,42 @@ class ForgetPasswordController extends Controller
         // ];
 
         // $validator = Validator::make($request->all(), $rules);
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'email' => 'required|email|exists:users',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required'
         ]);
         // dd(json_decode($validator->errors()));
-        if ($validator->fails()) {
-            return back()->withInput()->with('error', $validator->errors());
-            // return response()->json([
-            //     'data' => $validator->errors()
-            // ]);
-        } else {
-            $updatePassword = DB::table('password_resets')
-                ->where([
-                    'email' => $request->email,
-                    'token' => $request->token
-                ])
-                ->first();
+        // if ($validator->fails()) {
+        //     return back()->withInput()->with('error', $validator->errors());
+        //     // return response()->json([
+        //     //     'data' => $validator->errors()
+        //     // ]);
+        // } else {
+        $updatePassword = DB::table('password_resets')
+            ->where([
+                'email' => $request->email,
+                'token' => $request->token
+            ])
+            ->first();
 
-            if (!$updatePassword) {
-                return back()->withInput()->with('error', 'Invalid token!');
-            }
-            $is_email_exist = User::where('email', $request->email)->exists();
-            if ($is_email_exist) {
-                $user = User::where('email', $request->email)
-                    ->update(['password' => Hash::make($request->password)]);
-
-                DB::table('password_resets')->where(['email' => $request->email])->delete();
-
-                return view('auth.redirectToLogin');
-            } else {
-                return response()->json([
-                    'message' => 'Email is not valid',
-                    'status' => 500,
-                ]);
-            }
+        if (!$updatePassword) {
+            return back()->withInput()->with('error', 'Invalid token!');
         }
+        $is_email_exist = User::where('email', $request->email)->exists();
+        if ($is_email_exist) {
+            $user = User::where('email', $request->email)
+                ->update(['password' => Hash::make($request->password)]);
+
+            DB::table('password_resets')->where(['email' => $request->email])->delete();
+
+            return view('auth.redirectToLogin');
+        } else {
+            return response()->json([
+                'message' => 'Email is not valid',
+                'status' => 500,
+            ]);
+        }
+        // }
     }
 }
