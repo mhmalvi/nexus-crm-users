@@ -31,7 +31,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Password <span class="text-info">(password must include upper and lowercase letters and atleast one symbol)</span> </label>
+
+
                             <div class="col-md-6">
                                 <input type="password" id="password" class="form-control" name="password" required autofocus>
                                 @if ($errors->has('password'))
@@ -44,7 +46,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password (password must include upper and lowercase letters and atleast one symbol)</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
 
                             <div class="col-md-6">
                                 <input type="password" id="password-confirm" class="form-control" name="password_confirmation" required autofocus>
