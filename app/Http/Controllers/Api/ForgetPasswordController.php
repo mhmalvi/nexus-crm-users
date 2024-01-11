@@ -53,7 +53,7 @@ class ForgetPasswordController extends Controller
         // $validator = Validator::make($request->all(), $rules);
         $request->validate([
             'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8|confirmed|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
             'password_confirmation' => 'required'
         ]);
         // dd(json_decode($validator->errors()));
