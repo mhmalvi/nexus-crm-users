@@ -67,7 +67,7 @@ class AuthController extends Controller
                 $data = User::leftJoin('user_profile', function ($join) {
                     $join->on('user_profile.user_id', '=', 'users.id');
                 })->whereIn('users.id', $userIdArray)
-                    ->where('users.status', 1)->where('role_id', 5)->where('users.suspend', 0)
+                    ->where('users.status', 1)->where('role_id', 5)->where('users.suspend','=', 0)
                     //->where('lead_details.client_id', '=', $request->client_id)
                     ->get();
             } else {
