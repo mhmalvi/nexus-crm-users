@@ -56,6 +56,7 @@ class ForgetPasswordController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required'
         ]);
+        dd($validator->errors());
         if ($validator->fails()) {
             return back()->with('error', $validator->errors());
             // return response()->json([
