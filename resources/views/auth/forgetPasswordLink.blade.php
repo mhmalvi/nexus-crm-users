@@ -32,8 +32,9 @@
                             <div class="col-md-6">
                                 <input type="password" id="password" class="form-control" name="password" required autofocus>
                             </div>
-                            @if (isset($error))
-                            <div class="text-danger">{{ $error }}</div>
+                            @if (session('error'))
+                            <div class="text-danger">{{ session('error') }}</div>
+
                             @endif
 
                         </div>
