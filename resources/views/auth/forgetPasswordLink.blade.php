@@ -33,7 +33,7 @@
                                 <input type="password" id="password" class="form-control" name="password" required autofocus>
                             </div>
                             @if (isset($error))
-                            <div class="text-danger">gfhhth</div>
+                            <div class="text-danger">{{ $error }}</div>
                             @endif
 
                         </div>
