@@ -40,6 +40,8 @@ class ForgetPasswordController extends Controller
 
     public function showResetPasswordForm($token)
     {
+        $isTokenExists = DB::table('password_resets')->where('token',$token)->exists();
+        dd($isTokenExists);
         return view('auth.forgetPasswordLink', ['token' => $token]);
     }
 
