@@ -8,13 +8,6 @@
                 <div class="card">
                     <div class="card-header">Reset Password</div>
                     <div class="card-body">
-                        {{-- @if ($errors->any())
-                        <div class="alert alert-danger" role="alert">
-                            @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </div>
-                    @endif --}}
                     <form action="{{ route('reset.password.post') }}" method="POST">
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
