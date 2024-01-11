@@ -639,7 +639,7 @@ class AuthController extends Controller
             $companyServiceAPI = env('COMPANY_SERVICE_API', '');
             if (isset($data->role_id) && in_array($data->role_id, $roleArray)) {
                 // $clientId =  $data->user_id;
-                
+
                 // dd($companyServiceAPI);
 
                 $response = Http::post('https://crmcompany.queleadscrm.com/api/company/details/user', [
@@ -693,5 +693,19 @@ class AuthController extends Controller
         $user = DB::table('users')->where('id', $request->user_id)->delete();
         // dd(json_encode($user));
         //  dd($user);
+    }
+
+    public function logout(Request $request)
+    {
+        if (auth('sanctum')->user() !== null) {
+            $response = auth('sanctum')->user()->currentAccessToken()->delete();
+            if ($response) {
+                return response()->json('Logout successful');
+            }
+        } else {
+            return response()->json(
+                'Invalid token'
+            );
+        }
     }
 }
