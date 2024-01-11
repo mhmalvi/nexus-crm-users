@@ -1,6 +1,6 @@
-{{-- @extends('layout')
+@extends('layout')
 
-@section('content') --}}
+@section('content')
 <main class="login-form">
     <div class="cotainer">
         <div class="row justify-content-center">
@@ -63,4 +63,4 @@
     </div>
     </div>
 </main>
-{{-- @endsection --}}
+@endsection
