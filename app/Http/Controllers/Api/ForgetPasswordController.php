@@ -58,7 +58,7 @@ class ForgetPasswordController extends Controller
         ]);
         // dd(json_decode($validator->errors()));
         if ($validator->fails()) {
-            return back()->with('error', json_decode($validator->errors()));
+            return back()->with('error', $validator->errors());
             // return response()->json([
             //     'data' => $validator->errors()
             // ]);
