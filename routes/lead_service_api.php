@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\lead_service\LeadListController;
+use App\Http\Controllers\Api\lead_service\LeadDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,5 @@ use App\Http\Controllers\Api\lead_service\LeadListController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('lead/list', [LeadListController::class, 'leadList']);
+    Route::post('lead/details', [LeadDetailsController::class, 'leadDetails']);
 });
