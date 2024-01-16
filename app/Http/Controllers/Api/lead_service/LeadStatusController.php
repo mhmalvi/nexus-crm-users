@@ -11,6 +11,6 @@ class LeadStatusController extends Controller
     public function leadStatusUpdate(Request $request)
     {
         $response = Http::put(env('LEAD_SERVICE_API') . '/lead/status', ['lead_id' => $request->lead_id, 'sales_user_id' => $request->sales_user_id, 'lead_status' => $request->lead_status]);
-        return response()->json($response);
+        return response()->json(json_decode($response));
     }
 }
