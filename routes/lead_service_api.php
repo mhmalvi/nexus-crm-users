@@ -20,5 +20,5 @@ use App\Http\Controllers\Api\lead_service\LeadListController;
 // });
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/lead/list', [LeadListController::class, 'leadList']);
+    Route::post('lead/list', [LeadListController::class, 'leadList']);
 });
