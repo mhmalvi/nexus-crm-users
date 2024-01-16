@@ -10,7 +10,6 @@ class LeadDetailsController extends Controller
 {
     public function leadDetails(Request $request)
     {
-        dd($request->lead_id);
         $lead_details = Http::post(env('LEAD_SERVICE_API','') . '/lead/details', ['lead_id' => $request->lead_id]);
         return response()->json($lead_details);
     }
