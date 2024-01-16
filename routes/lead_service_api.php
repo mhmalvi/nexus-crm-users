@@ -25,5 +25,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('lead/list', [LeadListController::class, 'leadList']);
     Route::post('lead/details', [LeadDetailsController::class, 'leadDetails']);
     Route::put('lead/status', [LeadStatusController::class, 'leadStatusUpdate']);
-    // Route::put('lead/details', [LeadStatusController::class, 'leadStatusUpdate']);
+    Route::get('lead/lead_id={lead_id}/lead-status-logs', [LeadStatusController::class, 'leadStatusLogs']);
 });
