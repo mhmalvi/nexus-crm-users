@@ -10,7 +10,6 @@ class LeadListController extends Controller
 {
     public function leadList(Request $request)
     {
-        dd(env('LEAD_SERVICE_API', ''));
         $lead_list = Http::post(env('LEAD_SERVICE_API', '') . '/lead/list', ['role_id' => $request->role_id, 'client_id' => $request->client_id, 'user_id' => $request->user_id]);
         return response()->json(json_decode($lead_list));
     }
