@@ -10,7 +10,7 @@ class LeadLocationColorController extends Controller
 {
     public function add_color(Request $request)
     {
-        $response = Http::post(env('LEAD_SERVICE_API', '') . '/add-lead-location-color', ['location' => $request->location, 'color' => $request->color, 'company_id' => $request->company_id]);
+        $response = Http::post('https://crmleads.queleadscrm.com/api/add-lead-location-color', ['location' => $request->location, 'color' => $request->color, 'company_id' => $request->company_id]);
         return response()->json($response);
     }
 }
