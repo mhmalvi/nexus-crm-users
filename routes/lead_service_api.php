@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\lead_service\LeadListController;
 use App\Http\Controllers\Api\lead_service\LeadStatusController;
 use App\Http\Controllers\Api\lead_service\LeadDetailsController;
+use App\Http\Controllers\Api\lead_service\LeadLocationColorController;
 use App\Http\Controllers\Api\lead_service\LeadSingleCommentController;
 
 /*
