@@ -30,4 +30,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('lead/lead_id={lead_id}/lead-status-logs', [LeadStatusController::class, 'leadStatusLogs']);
     Route::post('review/{lead_id}', [LeadSingleCommentController::class, 'single_comment']);
     Route::post('add-lead-location-color', [LeadLocationColorController::class, 'add_color']);
+    Route::get('/{company_id}/location-color', [LeadLocationColorController::class, 'getColor']);
 });
