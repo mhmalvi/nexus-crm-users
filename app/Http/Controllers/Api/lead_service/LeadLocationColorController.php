@@ -24,7 +24,7 @@ class LeadLocationColorController extends Controller
 
         if ($company_id) {
             $response = Http::post('https://crmleads.queleadscrm.com/api/location-color', ['company_id' => $company_id]);
-            return response()->json($response);
+            return response()->json(json_decode($response));
         } else {
             return response()->json([
                 'message' => 'Please provide company id',
