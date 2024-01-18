@@ -47,7 +47,7 @@ class LeadLocationColorController extends Controller
         $request->validate([
             'id' => 'required'
         ]);
-        $response = Http::get('https://crmleads.queleadscrm.com/api/update-location-color', ['id' => $request->id, 'location' => $request->location, 'color' => $request->color]);
+        $response = Http::put('https://crmleads.queleadscrm.com/api/update-location-color', ['id' => $request->id, 'location' => $request->location, 'color' => $request->color]);
         return response()->json(json_decode($response));
     }
 }
