@@ -32,4 +32,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('add-lead-location-color', [LeadLocationColorController::class, 'add_color']);
     Route::get('{company_id}/location-color', [LeadLocationColorController::class, 'getColor']);
     Route::get('delete-location-color', [LeadLocationColorController::class, 'deleteColor']);
+    Route::put('update-location-color', [LeadLocationColorController::class, 'updateColor']);
 });
