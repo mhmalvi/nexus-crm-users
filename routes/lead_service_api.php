@@ -31,5 +31,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('review/{lead_id}', [LeadSingleCommentController::class, 'single_comment']);
     Route::post('add-lead-location-color', [LeadLocationColorController::class, 'add_color']);
     Route::get('{company_id}/location-color', [LeadLocationColorController::class, 'getColor']);
-    Route::get('delete-location-color', [LeadLocationColorController::class, 'deleteColor']);
+    Route::get('{id}/delete-location-color', [LeadLocationColorController::class, 'deleteColor']);
 });
