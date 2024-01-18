@@ -10,7 +10,7 @@ class LeadLocationColorController extends Controller
 {
     public function add_color(Request $request)
     {
-        
+
         $response = Http::accept('application/json')->post('https://crmleads.queleadscrm.com/api/add-lead-location-color', ['location' => $request->location, 'color' => $request->color, 'company_id' => $request->company_id]);
         return response()->json(json_decode($response));
     }
@@ -40,10 +40,7 @@ class LeadLocationColorController extends Controller
 
     public function updateColor(Request $request)
     {
-        $request->validate([
-            'id' => 'required'
-        ]);
-        $response = Http::put('https://crmleads.queleadscrm.com/api/update-location-color', ['id' => $request->id, 'location' => $request->location, 'color' => $request->color]);
+        $response = Http::accept('application/json')->put('https://crmleads.queleadscrm.com/api/update-location-color', ['id' => $request->id, 'location' => $request->location, 'color' => $request->color]);
         return response()->json(json_decode($response));
     }
 }
