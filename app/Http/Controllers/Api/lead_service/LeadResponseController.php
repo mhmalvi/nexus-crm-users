@@ -13,9 +13,10 @@ class LeadResponseController extends Controller
         $request->validate([
             'lead_id' => 'required',
             'lead_status' => 'required',
-            'response' => 'required'
+            'response' => 'required',
+            'client_id'=>'required'
         ]);
-        $response = Http::crm_leads()->put('/lead/response', ['lead_id' => $request->lead_id, 'lead_status' => $request->lead_status, 'response' => $request->response]);
+        $response = Http::crm_leads()->put('/lead/response', ['lead_id' => $request->lead_id, 'lead_status' => $request->lead_status, 'response' => $request->response, 'keyword' => 'lead', 'client_id' => $request->client_id]);
         if ($response) {
             return response()->json(json_decode($response));
         } else {
