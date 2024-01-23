@@ -17,7 +17,7 @@ class LeadResponseController extends Controller
         ]);
         $response = Http::crm_leads()->put('/lead/response', ['lead_id' => $request->lead_id, 'lead_status' => $request->lead_status, 'response' => $request->response]);
         if ($response) {
-            return response()->json($response);
+            return response()->json(json_decode($response));
         } else {
             return response()->json([
                 'message' => "failed",
