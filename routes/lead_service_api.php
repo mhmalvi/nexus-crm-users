@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\lead_service\LeadListController;
 use App\Http\Controllers\Api\lead_service\LeadStatusController;
 use App\Http\Controllers\Api\lead_service\LeadDetailsController;
 use App\Http\Controllers\Api\lead_service\LeadLocationColorController;
+use App\Http\Controllers\Api\lead_service\LeadResponseController;
 use App\Http\Controllers\Api\lead_service\LeadSingleCommentController;
 
 /*
@@ -29,10 +30,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('lead/status', [LeadStatusController::class, 'leadStatusUpdate']);
     Route::get('lead/lead_id={lead_id}/lead-status-logs', [LeadStatusController::class, 'leadStatusLogs']);
     Route::post('review/{lead_id}', [LeadSingleCommentController::class, 'single_comment']);
-
+    Route::put('/lead/response', [LeadResponseController::class, 'leadResponse']);
     
     Route::post('add-lead-location-color', [LeadLocationColorController::class, 'add_color']);
     Route::get('{company_id}/location-color', [LeadLocationColorController::class, 'getColor']);
     Route::get('delete-location-color', [LeadLocationColorController::class, 'deleteColor']);
     Route::put('update-location-color', [LeadLocationColorController::class, 'updateColor']);
+
 });
