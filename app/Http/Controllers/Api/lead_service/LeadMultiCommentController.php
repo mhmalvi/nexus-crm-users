@@ -12,7 +12,7 @@ class LeadMultiCommentController extends Controller
     {
         $response = Http::crm_leads()->post('/multi-review/' . $lead_id, ['comments' => $request->comments]);
         if ($response) {
-            return response()->json($response);
+            return response()->json(json_decode($response));
         } else {
             return response()->json([
                 'message' => 'Failed',
