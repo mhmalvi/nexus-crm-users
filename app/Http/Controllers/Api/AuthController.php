@@ -7,8 +7,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Support\Str;
-// use Illuminate\Http\Request;
-use Request;
+use Illuminate\Http\Request;
 use App\Mail\RegistrationMail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -669,7 +668,7 @@ class AuthController extends Controller
             ActiveToken::create([
                 'email' => $request->email,
                 'token' => $token,
-                'ip' => Request::ip(),
+                'ip' => $request->ip(),
                 'user_id' => $user->id
             ]);
             return response()->json([
