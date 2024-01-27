@@ -708,7 +708,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        dd(auth('sanctum')->user()->currentAccessToken());
+        dd(json_decode(auth('sanctum')->user()->currentAccessToken()));
         if (auth('sanctum')->user() !== null) {
             $response = auth('sanctum')->user()->currentAccessToken()->delete();
             $token = ActiveToken::where('token', auth('sanctum')->user()->currentAccessToken())->where('ip', $request->ip())->first();
