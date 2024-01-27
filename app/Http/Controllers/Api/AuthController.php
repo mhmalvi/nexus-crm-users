@@ -29,7 +29,8 @@ class AuthController extends Controller
         $data = User::where('email', Auth::user()->email)->where('token', $request->bearerToken())->exists();
         if (isset($data)) {
             return response()->json([
-                'data' => 1
+                'data' => 1,
+                'role'=>$data->role
             ]);
         } else {
             return response()->json([
