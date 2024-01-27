@@ -26,7 +26,7 @@ class AuthController extends Controller
     public function token_exists(Request $request)
     {
         //  dd(Auth::user()->email);
-        $data = User::where('email', Auth::user()->email)->where('token', $request->bearerToken())->exists();
+        $data = User::where('email', Auth::user()->email)->where('token', $request->bearerToken())->first();
         // dd($data);
         if (isset($data)) {
             return response()->json([
