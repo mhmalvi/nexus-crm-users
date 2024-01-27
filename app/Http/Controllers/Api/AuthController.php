@@ -658,10 +658,10 @@ class AuthController extends Controller
             $data->client_id = $clientId;
             $data->ac_k = $ac_k;
             $token = Auth::user()->createToken("API TOKEN")->plainTextToken;
-            $user = User::where('email', $request->email)->first();
-            // dd($user);
-            $user->token = $token;
-            $user->save();
+            // $user = User::where('email', $request->email)->first();
+            // // dd($user);
+            // $user->token = $token;
+            // $user->save();
             //dd($data);
             return response()->json([
                 'status' => true,
