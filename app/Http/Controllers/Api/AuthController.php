@@ -622,7 +622,8 @@ class AuthController extends Controller
             // dd($user->id);
 
             //dd(Auth::user()->id);
-
+            $activeSessionsCount = Auth::user()->sessions()->count();
+            dd($activeSessionsCount);
             $data = User::join('user_profile', function ($join) {
                 $join->on('user_profile.user_id', '=', 'users.id');
             })->where('users.id', Auth::user()->id)
