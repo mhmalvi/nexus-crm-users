@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\ActiveToken;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\UserProfile;
@@ -31,7 +32,7 @@ class AuthController extends Controller
         if (isset($data)) {
             return response()->json([
                 'data' => 1,
-                'role'=>$data->role_id
+                'role' => $data->role_id
             ]);
         } else {
             return response()->json([
@@ -48,7 +49,7 @@ class AuthController extends Controller
         })->where('users.id', $request->user_id)->where('users.role_id', $request->role)->where('users.status', 1)->where('users.suspend', 0)->first();
         if ($user) {
             return response()->json([
-                'message'     => 'success',
+                'message' => 'success',
                 'status' => 200,
                 'data' => $user
             ]);
@@ -69,7 +70,7 @@ class AuthController extends Controller
                 $data = User::leftJoin('user_profile', function ($join) {
                     $join->on('user_profile.user_id', '=', 'users.id');
                 })->whereIn('users.id', $userIdArray)
-                    ->where('users.status', 1)->where('role_id', 5)->where('users.suspend','=', 0)
+                    ->where('users.status', 1)->where('role_id', 5)->where('users.suspend', '=', 0)
                     //->where('lead_details.client_id', '=', $request->client_id)
                     ->get();
             } else {
@@ -109,11 +110,11 @@ class AuthController extends Controller
         // if ($flag_receive == 1) {
         $data =
             DB::table('users')
-            ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
-            ->select('users.*', 'user_profile.*')
-            ->where('users.role_id', '=', 5)
-            ->where('suspend', 0)
-            ->get();
+                ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
+                ->select('users.*', 'user_profile.*')
+                ->where('users.role_id', '=', 5)
+                ->where('suspend', 0)
+                ->get();
         // dd(json_encode($data));
         if ($data) {
             return response()->json($data);
@@ -134,13 +135,13 @@ class AuthController extends Controller
         $user = User::where('role_id', $role)->where('suspend', $status)->get();
         if (count($user) > 0) {
             return response()->json([
-                'message'    => 'success',
+                'message' => 'success',
                 'status' => 200,
                 'data' => $user
             ], 200);
         } else {
             return response()->json([
-                'message'    => 'Failed',
+                'message' => 'Failed',
                 'status' => 200,
                 'data' => []
             ], 200);
@@ -221,7 +222,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'User Created Successfully',
-                'data'  => $userData
+                'data' => $userData
             ], 201);
         } catch (\Throwable $th) {
             DB::rollback();
@@ -256,7 +257,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'User Profile Data',
-                'data'    => $user->toArray()
+                'data' => $user->toArray()
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
@@ -270,11 +271,11 @@ class AuthController extends Controller
     {
         $data =
             DB::table('users')
-            ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
-            ->select('users.*', 'user_profile.*')
-            ->where('users.role_id', '=', 5)
-            ->where('suspend', 0)
-            ->get();
+                ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
+                ->select('users.*', 'user_profile.*')
+                ->where('users.role_id', '=', 5)
+                ->where('suspend', 0)
+                ->get();
         // dd(json_encode($data));
         if ($data) {
             return response()->json($data);
@@ -618,11 +619,12 @@ class AuthController extends Controller
                     'message' => 'Your Account is Currently Inactive, Please Contact with Support Team',
                 ], 401);
             }
-            //$user = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->first();
             // dd($user->id);
 
             //dd(Auth::user()->id);
             // $activeSessionsCount = Auth::user()->sessions()->count();
+
             // dd($activeSessionsCount);
             $data = User::join('user_profile', function ($join) {
                 $join->on('user_profile.user_id', '=', 'users.id');
@@ -663,11 +665,17 @@ class AuthController extends Controller
             // $user->token = $token;
             // $user->save();
             //dd($data);
+            ActiveToken::create([
+                'email' => $request->email,
+                'token' => $token,
+                'ip' => Request::ip(),
+                'user_id' => $user->id
+            ]);
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
                 'token' => $token,
-                'data'  => $data
+                'data' => $data
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
