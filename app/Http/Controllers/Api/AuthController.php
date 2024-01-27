@@ -27,12 +27,13 @@ class AuthController extends Controller
     public function token_exists(Request $request)
     {
         //  dd(Auth::user()->email);
-        $data = User::where('email', Auth::user()->email)->where('token', $request->bearerToken())->first();
+        $token_exist = ActiveToken::where('token', $request->bearerToken())->exists();
         // dd($data);
-        if (isset($data)) {
+        if ($token_exist) {
+            $token = ActiveToken::where('token', $request->bearerToken())->first();
             return response()->json([
                 'data' => 1,
-                'role' => $data->role_id
+                'role' => $token->role_id
             ]);
         } else {
             return response()->json([
@@ -669,6 +670,7 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'token' => $token,
                 'ip' => $request->ip(),
+                'role_id' => $user->role_id,
                 'user_id' => $user->id
             ]);
             return response()->json([
@@ -713,14 +715,14 @@ class AuthController extends Controller
             $response = auth('sanctum')->user()->currentAccessToken()->delete();
             $token_exist = ActiveToken::where('token', $request->bearerToken())->where('ip', $request->ip())->exists();
             // dd($token);
-            if($token_exist){
+            if ($token_exist) {
                 $token = ActiveToken::where('token', $request->bearerToken())->where('ip', $request->ip())->first();
                 $result = $token->delete();
             }
 
             if ($response && $result) {
                 return response()->json('Logout successful');
-            }else{
+            } else {
                 return response()->json('Unauthorized attempt');
             }
         } else {
