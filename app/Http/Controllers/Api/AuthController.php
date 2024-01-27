@@ -27,7 +27,7 @@ class AuthController extends Controller
     {
         //  dd(Auth::user()->email);
         $data = User::where('email', Auth::user()->email)->where('token', $request->bearerToken())->first();
-        // dd($data);
+        dd($data);
         if (isset($data)) {
             return response()->json([
                 'data' => 1,
