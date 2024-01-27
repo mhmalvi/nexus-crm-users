@@ -710,10 +710,12 @@ class AuthController extends Controller
     {
         if (auth('sanctum')->user() !== null) {
             $response = auth('sanctum')->user()->currentAccessToken()->delete();
-            $token = ActiveToken::where('token', auth('sanctum')->user()->currentAccessToken())->first();
+            $token = ActiveToken::where('token', auth('sanctum')->user()->currentAccessToken())->where('ip', $request->ip())->first();
             $result = $token->delete();
             if ($response && $result) {
                 return response()->json('Logout successful');
+            }else{
+                return response()->json('Unauthorized attempt');
             }
         } else {
             return response()->json(
