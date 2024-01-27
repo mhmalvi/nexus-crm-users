@@ -711,9 +711,13 @@ class AuthController extends Controller
         // dd(json_decode(auth('sanctum')->user()->currentAccessToken())->tokenable->token);
         if (auth('sanctum')->user() !== null) {
             $response = auth('sanctum')->user()->currentAccessToken()->delete();
-            $token = ActiveToken::where('token', $request->bearerToken())->where('ip', $request->ip())->first();
+            $token_exist = ActiveToken::where('token', $request->bearerToken())->where('ip', $request->ip())->exists();
             // dd($token);
-            $result = $token->delete();
+            if($token_exist){
+                $token = ActiveToken::where('token', $request->bearerToken())->where('ip', $request->ip())->first();
+                $result = $token->delete();
+            }
+
             if ($response && $result) {
                 return response()->json('Logout successful');
             }else{
