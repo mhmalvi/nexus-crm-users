@@ -712,7 +712,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
          // dd(json_decode(auth('sanctum')->user()->currentAccessToken())->tokenable->token);
-         if (auth('sanctum')->user() !== null) {
+         if ($request->bearerToken() !== null) {
             $response = auth('sanctum')->user()->currentAccessToken()->delete();
             $token_exist = ActiveToken::where('token', $request->bearerToken())->where('ip', $request->ip())->exists();
             // dd($token);
