@@ -18,7 +18,7 @@ class ForgetPasswordController extends Controller
     {
 
         $request->validate([
-            'email' => 'required|email|exists:users',
+            'email' => 'required|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/|exists:users',
         ]);
         $token = Str::random(64);
 
