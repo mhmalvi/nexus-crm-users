@@ -243,7 +243,7 @@ class AuthController extends Controller
             //     'created_at' => Carbon::parse(now())->toDateTime(),
             //     'updated_at' => Carbon::parse(now())->toDateTime()
             // ]);
-            $user = DB::table('users')->where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->first();
             $user->contact_number = $request->contact;
             $user->full_name = $request->username;
             $user->verification_status = 2;
