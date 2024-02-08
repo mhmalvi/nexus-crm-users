@@ -142,7 +142,7 @@
         Thank you for registering with us.
     </div>
     <div>
-        To verify your email, please click on this link: <a href="{{ route('email.verification',['token'=>$token]) }}">
+        To verify your email, please click on this link: <a href="{{ route('email.verification',$token) }}">
     </div>
 
 
