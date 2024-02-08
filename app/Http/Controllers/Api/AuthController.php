@@ -169,7 +169,8 @@ class AuthController extends Controller
                 'role_id' => 3,
                 'status' => 1,
                 'suspend' => 0,
-                'token' => $token
+                'token' => $token,
+                'verification_status'=>0
             ]);
             $user_profile = UserProfile::create([
                 'user_id' => $user->id
