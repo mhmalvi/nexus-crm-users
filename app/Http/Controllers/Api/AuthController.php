@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -151,12 +152,8 @@ class AuthController extends Controller
         // }
     }
 
-    public function register(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8'
-        ]);
+    public function register(RegisterRequest $request)
+    {        
         try {
             $token = Str::random(64);
             $isTokenExists = User::where('token', $token)->exists();
