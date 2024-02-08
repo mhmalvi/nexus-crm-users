@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\ActiveToken;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Mail\SignupMail;
+use App\Models\ActiveToken;
 use App\Models\UserProfile;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -154,7 +155,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => 'required|unique:users',
-            'password' => 'required|string|min:8|confirmed'
+            'password' => 'required|min:8'
         ]);
         try {
             $token = Str::random(64);
