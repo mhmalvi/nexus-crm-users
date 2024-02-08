@@ -210,6 +210,7 @@ class AuthController extends Controller
      */
     public function createUser(Request $request)
     {
+        dd($request->all());
         DB::beginTransaction();
 
         try {
