@@ -289,8 +289,8 @@ class AuthController extends Controller
                 'user_email' => $request->email
             ];
             return response()->json([
-                'status' => true,
-                'message' => 'User Created Successfully',
+                'status' => 201,
+                'message' => 'Company Created Successfully',
                 'data' => $userData
             ], 201);
         } catch (\Throwable $th) {
