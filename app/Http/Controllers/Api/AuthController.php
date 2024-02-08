@@ -230,42 +230,61 @@ class AuthController extends Controller
             // }
             // $randomPassword = $this->_randomPassword();
             // Business type used in Company service this time
-            $userId = DB::table('users')->insertGetId([
-                'email' => $request->email,
-                // 'password' => Hash::make($randomPassword),
-                'role_id' => $request->role_id,
-                'contact_number' => isset($request->contact_number) ? $request->contact_number : '',
-                // 'abn_number' => isset($request->abn_number)?$request->abn_number:'',
-                'flag' => 1,
-                'status' => 1,
-                'suspend' => 0,
-                'created_at' => Carbon::parse(now())->toDateTime(),
-                'updated_at' => Carbon::parse(now())->toDateTime()
+            // $userId = DB::table('users')->insertGetId([
+            //     'email' => $request->email,
+            //     // 'password' => Hash::make($randomPassword),
+            //     'role_id' => $request->role_id,
+            //     'contact_number' => isset($request->contact_number) ? $request->contact_number : '',
+            //     // 'abn_number' => isset($request->abn_number)?$request->abn_number:'',
+            //     'flag' => 1,
+            //     'status' => 1,
+            //     'suspend' => 0,
+            //     'created_at' => Carbon::parse(now())->toDateTime(),
+            //     'updated_at' => Carbon::parse(now())->toDateTime()
+            // ]);
+            $user = DB::table('users')->where('email', $request->email)->first();
+            $user->contact_number = $request->contact;
+            $user->full_name = $request->username;
+            $user->save();
+            $profile = DB::table('user_profile')->where('user_id', $user->id)->first();
+            $profile->full_name = $request->username;
+            $profile->website = $request->website;
+            $profile->address = $request->company_address;
+            $profile->save();
+            DB::connection('company')->table('companies')->insert([
+                'name' => $request->company_name,
+                'contact' => $request->contact,
+                'business_email' => $request->email,
+                'address' => $request->company_address,
+                'abn' => $request->abn ? $request->abn : '',
+                'website' => $request->website,
+                'trading_name' => $request->trading_name ? $request->trading_name : '',
+                'rto_code' => $request->rto_code,
+                'country_name' => $request->country_name ? $request->country_name : '',
+                'admin' => $user->id,
+                'active' => 1,
             ]);
-            DB::table('users')->where('email','$request->email')->first();
-            DB::table('user_profile')->insert([
-                'user_id' => $userId,
-                'full_name' => isset($request->full_name) ? $request->full_name : '',
-                'address' => isset($request->address) ? $request->address : '',
-                'qualification' => isset($request->qualification) ? $request->qualification : '',
-                'region' => isset($request->region) ? $request->region : '',
-                'postcode' => isset($request->postcode) ? $request->postcode : '',
-                'work_experiences' => isset($request->work_experiences) ? $request->work_experiences : '',
-                'location' => isset($request->location) ? $request->location : '',
-                'profession' => isset($request->profession) ? $request->profession : '',
-                'secondary_contact' => isset($request->secondary_contact) ? $request->secondary_contact : '',
-                'date_of_birth' => isset($request->date_of_birth) ? $request->date_of_birth : '',
-                'website' => isset($request->website) ? $request->website : ''
-            ]);
+            // DB::table('user_profile')->insert([
+            //     'user_id' => $userId,
+            //     'full_name' => isset($request->full_name) ? $request->full_name : '',
+            //     'address' => isset($request->address) ? $request->address : '',
+            //     'qualification' => isset($request->qualification) ? $request->qualification : '',
+            //     'region' => isset($request->region) ? $request->region : '',
+            //     'postcode' => isset($request->postcode) ? $request->postcode : '',
+            //     'work_experiences' => isset($request->work_experiences) ? $request->work_experiences : '',
+            //     'location' => isset($request->location) ? $request->location : '',
+            //     'profession' => isset($request->profession) ? $request->profession : '',
+            //     'secondary_contact' => isset($request->secondary_contact) ? $request->secondary_contact : '',
+            //     'date_of_birth' => isset($request->date_of_birth) ? $request->date_of_birth : '',
+            //     'website' => isset($request->website) ? $request->website : ''
+            // ]);
             DB::commit();
 
-            Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name, $randomPassword));
+            Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
 
             $userData = [
                 'user_name' => $request->full_name,
-                'user_email' => $request->email,
-                'user_id' => $userId,
-                'password' => $randomPassword
+                'user_email' => $request->email
             ];
             return response()->json([
                 'status' => true,

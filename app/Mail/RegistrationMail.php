@@ -14,17 +14,15 @@ class RegistrationMail extends Mailable
 
     public $email;
     public $name;
-    public $password;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email, $name, $password)
+    public function __construct($email, $name)
     {
         $this->email = $email;
         $this->name = $name;
-        $this->password = $password;
     }
 
     /**
@@ -35,7 +33,7 @@ class RegistrationMail extends Mailable
     public function build()
     {
         $this
-            ->subject($this->subject)->with(['email' => $this->email, 'name' => $this->name, 'password' => $this->password])
+            ->subject($this->subject)->with(['email' => $this->email, 'name' => $this->name])
             ->markdown('registration_mail.registration_mail');
         return $this;
     }
