@@ -258,7 +258,7 @@ class AuthController extends Controller
                 'business_email' => $request->email,
                 'address' => $request->company_address,
                 'abn' => $request->abn ? $request->abn : '',
-                'website' => $request->website,
+                'website' => $request->website ? $request->website : "",
                 'trading_name' => $request->trading_name ? $request->trading_name : '',
                 'rto_code' => $request->company_code,
                 'country_name' => $request->country_name ? $request->country_name : '',
