@@ -248,7 +248,7 @@ class AuthController extends Controller
             $user->verification_status = 2;
             $user->save();
             // dd($user);
-            $profile = DB::table('user_profile')->where('user_id', $user->id)->first();
+            $profile = UserProfile::where('user_id', $user->id)->first();
             $profile->full_name = $request->username;
             $profile->website = $request->website;
             $profile->address = $request->company_address;
