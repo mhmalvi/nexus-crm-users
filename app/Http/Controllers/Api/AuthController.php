@@ -40,7 +40,6 @@ class AuthController extends Controller
                 'message' => 'unauthenticated'
             ]);
         }
-
     }
 
     public function get_user_details(Request $request)
@@ -112,11 +111,11 @@ class AuthController extends Controller
         // if ($flag_receive == 1) {
         $data =
             DB::table('users')
-                ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
-                ->select('users.*', 'user_profile.*')
-                ->where('users.role_id', '=', 5)
-                ->where('suspend', 0)
-                ->get();
+            ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
+            ->select('users.*', 'user_profile.*')
+            ->where('users.role_id', '=', 5)
+            ->where('suspend', 0)
+            ->get();
         // dd(json_encode($data));
         if ($data) {
             return response()->json($data);
@@ -149,6 +148,60 @@ class AuthController extends Controller
             ], 200);
         }
         // }
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|unique:users',
+            'password' => 'required|string|min:8|confirmed'
+        ]);
+        try {
+            $token = Str::random(64);
+            $isTokenExists = User::where('token', $token)->exists();
+            if ($isTokenExists) {
+                $token = Str::random(64);
+            }
+            $user = User::create([
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role_id' => 3,
+                'status' => 1,
+                'suspend' => 0,
+                'token' => $token
+            ]);
+            $user_profile = UserProfile::create([
+                'user_id' => $user->id
+            ]);
+            Mail::to($request->email)->queue(new SignupMail($token, $request->email));
+            if ($user_profile) {
+                return response()->json([
+                    'message' => 'Registration successful',
+                    'status' => 201
+                ], 201);
+            } else {
+                return response()->json([
+                    'message' => 'Registration failed',
+                    'status' => 500
+                ], 500);
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function email_verification($token)
+    {
+        $result = User::where('token', $token)->first();
+        if ($result) {
+            $result->verification_status = 1;
+            $response = $result->save();
+            if ($response) {
+                return view('registration_mail.email_verification_success');
+            }
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -273,11 +326,11 @@ class AuthController extends Controller
     {
         $data =
             DB::table('users')
-                ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
-                ->select('users.*', 'user_profile.*')
-                ->where('users.role_id', '=', 5)
-                ->where('suspend', 0)
-                ->get();
+            ->join('user_profile', 'users.id', '=', 'user_profile.user_id')
+            ->select('users.*', 'user_profile.*')
+            ->where('users.role_id', '=', 5)
+            ->where('suspend', 0)
+            ->get();
         // dd(json_encode($data));
         if ($data) {
             return response()->json($data);
@@ -711,8 +764,8 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-         // dd(json_decode(auth('sanctum')->user()->currentAccessToken())->tokenable->token);
-         if ($request->bearerToken() !== null) {
+        // dd(json_decode(auth('sanctum')->user()->currentAccessToken())->tokenable->token);
+        if ($request->bearerToken() !== null) {
             $response = auth('sanctum')->user()->currentAccessToken()->delete();
             $token_exist = ActiveToken::where('token', $request->bearerToken())->where('ip', $request->ip())->exists();
             // dd($token);
@@ -731,6 +784,5 @@ class AuthController extends Controller
                 'Invalid token'
             );
         }
-
     }
 }

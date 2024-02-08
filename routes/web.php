@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ForgetPasswordController;
 
 /*
@@ -17,5 +18,7 @@ use App\Http\Controllers\Api\ForgetPasswordController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('verification/{token}',[AuthController::class,'email_verification'])->name('email.verification');
 Route::get('reset-password/{token}', [ForgetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
