@@ -246,6 +246,7 @@ class AuthController extends Controller
             $user = DB::table('users')->where('email', $request->email)->first();
             $user->contact_number = $request->contact;
             $user->full_name = $request->username;
+            $user->verification_status = 2;
             $user->save();
             $profile = DB::table('user_profile')->where('user_id', $user->id)->first();
             $profile->full_name = $request->username;
