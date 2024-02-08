@@ -30,7 +30,7 @@ Route::post('/user/delete-company-id',[\App\Http\Controllers\Api\AuthController:
 
 
 Route::post('/user/register', [\App\Http\Controllers\Api\AuthController::class, 'createUser']);
-Route::post('/user/registeration', [\App\Http\Controllers\Api\AuthController::class, 'register']);
+Route::post('/user/registration', [\App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('/user/update', [\App\Http\Controllers\Api\AuthController::class, 'updateUser']);
 
 
