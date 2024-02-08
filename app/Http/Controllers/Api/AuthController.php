@@ -245,6 +245,7 @@ class AuthController extends Controller
             // ]);
             $user = User::where('email', $request->email)->update(['contact_number'=>$request->contact,
             'verification_status'=>2]);
+            dd($user);
             // $user->contact_number = $request->contact;
             // $user->verification_status = 2;
             // $user->save();
