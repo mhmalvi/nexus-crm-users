@@ -260,10 +260,11 @@ class AuthController extends Controller
                 'abn' => $request->abn ? $request->abn : '',
                 'website' => $request->website,
                 'trading_name' => $request->trading_name ? $request->trading_name : '',
-                'rto_code' => $request->rto_code,
+                'rto_code' => $request->company_code,
                 'country_name' => $request->country_name ? $request->country_name : '',
                 'admin' => $user->id,
                 'active' => 1,
+                'industry' => $request->industry
             ]);
             // DB::table('user_profile')->insert([
             //     'user_id' => $userId,
