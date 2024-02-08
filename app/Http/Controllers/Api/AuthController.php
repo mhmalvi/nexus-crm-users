@@ -153,7 +153,7 @@ class AuthController extends Controller
     }
 
     public function register(RegisterRequest $request)
-    {        
+    {
         try {
             $token = Str::random(64);
             $isTokenExists = User::where('token', $token)->exists();
@@ -167,7 +167,7 @@ class AuthController extends Controller
                 'status' => 1,
                 'suspend' => 0,
                 'token' => $token,
-                'verification_status'=>0
+                'verification_status' => 0
             ]);
             $user_profile = UserProfile::create([
                 'user_id' => $user->id
@@ -228,11 +228,11 @@ class AuthController extends Controller
             //         ], 401);
             //     }
             // }
-            $randomPassword = $this->_randomPassword();
+            // $randomPassword = $this->_randomPassword();
             // Business type used in Company service this time
             $userId = DB::table('users')->insertGetId([
                 'email' => $request->email,
-                'password' => Hash::make($randomPassword),
+                // 'password' => Hash::make($randomPassword),
                 'role_id' => $request->role_id,
                 'contact_number' => isset($request->contact_number) ? $request->contact_number : '',
                 // 'abn_number' => isset($request->abn_number)?$request->abn_number:'',
@@ -259,13 +259,6 @@ class AuthController extends Controller
             DB::commit();
 
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name, $randomPassword));
-            // $userServiceAPI = env('EMAIL_SERVICE_API', '');
-
-            // $response = Http::post('https://crm-mailer.onrender.com/api/send-registration-mail', [
-            //     'username'=>$request->full_name,
-            //     'email'=>$request->email,
-            //     'password' => $randomPassword
-            // ]);
 
             $userData = [
                 'user_name' => $request->full_name,
