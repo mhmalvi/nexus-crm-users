@@ -242,6 +242,7 @@ class AuthController extends Controller
                 'created_at' => Carbon::parse(now())->toDateTime(),
                 'updated_at' => Carbon::parse(now())->toDateTime()
             ]);
+            DB::table('users')->where('email','$request->email')->first();
             DB::table('user_profile')->insert([
                 'user_id' => $userId,
                 'full_name' => isset($request->full_name) ? $request->full_name : '',
