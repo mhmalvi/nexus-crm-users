@@ -246,7 +246,6 @@ class AuthController extends Controller
                 'active' => 1,
                 'industry' => $request->industry
             ]);
-            dd($company);
             DB::commit();
 
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
