@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Company;
+use App\Models\CRMFilesystem;
+use App\services\Register;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -219,9 +222,7 @@ class AuthController extends Controller
     public function createUser(Request $request)
     {
         DB::beginTransaction();
-
         try {
-            
             $user = User::where('email', $request->email)->first();
             $user->contact_number = $request->contact;
             $user->verification_status = 2;
@@ -231,25 +232,29 @@ class AuthController extends Controller
             $profile->website = $request->website;
             $profile->address = $request->company_address;
             $profile->save();
-
-            $company = DB::connection('company')->table('companies')->insert([
-                'name' => $request->company_name,
-                'contact' => $request->contact,
-                'business_email' => $request->email,
-                'address' => $request->company_address,
-                'abn' => $request->abn ? $request->abn : '',
-                'website' => $request->website ? $request->website : "",
-                'trading_name' => $request->trading_name ? $request->trading_name : '',
-                'rto_code' => $request->company_code,
-                'country_name' => $request->country_name ? $request->country_name : '',
-                'admin' => $user->id,
-                'active' => 1,
-                'industry' => $request->industry
-            ]);
+            $file = new CRMFilesystem();
+            $file->user_id = $user->id;
+            $file->document_name = "company_image/buildings.svg";
+            $file->save();
+            $company = new Company();
+            $company->name = $request->company_name;
+            $company->contact = $request->contact;
+            $company->business_email = $request->email;
+            $company->address = $request->company_address;
+            $company->abn = $request->abn ? $request->abn : '';
+            $company->website = $request->website ? $request->website : "";
+            $company->trading_name = $request->trading_name ? $request->trading_name : '';
+            $company->rto_code = $request->company_code;
+            $company->country_name = $request->country_name ? $request->country_name : '';
+            $company->admin = $user->id;
+            $company->active = 1;
+            $company->industry = $request->industry;
+            $company->logo_id = $file->id;
+            $company->save();
+            $file->client_id = $company->id;
+            $file->save();
             DB::commit();
-
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
-
             $userData = [
                 'user_name' => $request->full_name,
                 'user_email' => $request->email
