@@ -227,15 +227,19 @@ class AuthController extends Controller
             $user->contact_number = $request->contact;
             $user->verification_status = 2;
             $user->save();
+            /////////////////////////////////////////////////////////////////////////////////
             $profile = UserProfile::where('user_id', $user->id)->first();
             $profile->full_name = $request->username;
             $profile->website = $request->website;
             $profile->address = $request->company_address;
             $profile->save();
+            ///////////////////////////////////////////////////////////////////////////////////
             $file = new CRMFilesystem();
             $file->user_id = $user->id;
             $file->document_name = "company_image/buildings.svg";
+            $file->document_details = "company image";
             $file->save();
+            ///////////////////////////////////////////////////////////////////////////////////
             $company = new Company();
             $company->name = $request->company_name;
             $company->contact = $request->contact;
@@ -251,6 +255,7 @@ class AuthController extends Controller
             $company->industry = $request->industry;
             $company->logo_id = $file->id;
             $company->save();
+            ///////////////////////////////////////////////////////////////////////////////////
             $file->client_id = $company->id;
             $file->save();
             DB::commit();
