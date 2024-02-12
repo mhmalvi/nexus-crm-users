@@ -227,7 +227,7 @@ class AuthController extends Controller
             $user->contact_number = $request->contact;
             $user->verification_status = 2;
             $user->save();
-            /////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////////////
             $profile = UserProfile::where('user_id', $user->id)->first();
             $profile->full_name = $request->username;
             $profile->website = $request->website;
@@ -258,12 +258,12 @@ class AuthController extends Controller
             ///////////////////////////////////////////////////////////////////////////////////
             $file->client_id = $company->id;
             $file->save();
-            DB::commit();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
             $userData = [
-                'user_name' => $request->full_name,
-                'user_email' => $request->email
+            'user_name' => $request->full_name,
+            'user_email' => $request->email
             ];
+            DB::commit();            
             return response()->json([
                 'status' => 201,
                 'message' => 'Company Created Successfully',
