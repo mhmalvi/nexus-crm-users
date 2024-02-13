@@ -258,16 +258,13 @@ class AuthController extends Controller
             ///////////////////////////////////////////////////////////////////////////////////
             $file->client_id = $company->id;
             $file->save();
+            $user_data = DB::table('users')->join('user_profile', 'users.id' === 'user_profile.user_id')->where('users.id', $user->id)->first();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
-            $userData = [
-            'user_name' => $request->full_name,
-            'user_email' => $request->email
-            ];
-            DB::commit();            
+            DB::commit();
             return response()->json([
                 'status' => 201,
                 'message' => 'Company Created Successfully',
-                'data' => $userData
+                'data' => $user_data
             ], 201);
         } catch (\Throwable $th) {
             DB::rollback();
