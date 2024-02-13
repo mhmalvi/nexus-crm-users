@@ -158,42 +158,34 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         try {
-            $is_user_exists = User::where('email', $request->email)->exists();
-            if (!$is_user_exists) {
+            $token = Str::random(64);
+            $isTokenExists = User::where('token', $token)->exists();
+            if ($isTokenExists) {
                 $token = Str::random(64);
-                $isTokenExists = User::where('token', $token)->exists();
-                if ($isTokenExists) {
-                    $token = Str::random(64);
-                }
-                $user = User::create([
-                    'email' => $request->email,
-                    'password' => Hash::make($request->password),
-                    'role_id' => 3,
-                    'status' => 1,
-                    'suspend' => 0,
-                    'token' => $token,
-                    'verification_status' => 0
-                ]);
-                $user_profile = UserProfile::create([
-                    'user_id' => $user->id
-                ]);
-                Mail::to($request->email)->queue(new SignupMail($token, $request->email));
-                if ($user_profile) {
-                    return response()->json([
-                        'message' => 'Registration successful',
-                        'status' => 201
-                    ], 201);
-                } else {
-                    return response()->json([
-                        'message' => 'Registration failed',
-                        'status' => 500
-                    ], 500);
-                }
+            }
+            $user = User::create([
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role_id' => 3,
+                'status' => 1,
+                'suspend' => 0,
+                'token' => $token,
+                'verification_status' => 0
+            ]);
+            $user_profile = UserProfile::create([
+                'user_id' => $user->id
+            ]);
+            Mail::to($request->email)->queue(new SignupMail($token, $request->email));
+            if ($user_profile) {
+                return response()->json([
+                    'message' => 'Registration successful',
+                    'status' => 201
+                ], 201);
             } else {
                 return response()->json([
-                    'message' => 'User already registered',
-                    'status' => 422
-                ], 422);
+                    'message' => 'Registration failed',
+                    'status' => 500
+                ], 500);
             }
         } catch (\Throwable $th) {
             throw $th;
