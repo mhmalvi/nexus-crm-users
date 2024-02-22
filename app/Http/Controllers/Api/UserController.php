@@ -56,6 +56,7 @@ class UserController extends Controller
                 'flag' => 1,
                 'status' => 1,
                 'suspend' => 0,
+                'verification_status'=>2,
                 'created_at' => Carbon::parse(now())->toDateTime(),
                 'updated_at' => Carbon::parse(now())->toDateTime()
             ]);
