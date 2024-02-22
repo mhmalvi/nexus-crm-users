@@ -634,7 +634,9 @@
                                   padding: 5px 10px 10px 20px;
                                   font-family: 'Open Sans', sans-serif;
                                 " align="left">
-                                                            {{-- <div style="
+                                                            @php
+                                                            @if($password)
+                                                            <div style="
                                     color: #333333;
                                     line-height: 140%;
                                     text-align: left;
@@ -643,7 +645,10 @@
                                                                 <p style="font-size: 14px; line-height: 140%">
                                                                     <strong>One time password : {{$password}}</strong> 
                                                                 </p>
-                                                            </div> --}}
+                                                            </div>
+                                                            @endif
+                                                            @endphp
+
                                                         </td>
                                                     </tr>
                                                 </tbody>
