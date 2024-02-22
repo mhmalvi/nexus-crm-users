@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\AddUserRequest;
+use App\Mail\UserAddMail;
 
 class UserController extends Controller
 {
@@ -76,7 +77,7 @@ class UserController extends Controller
             ]);
             DB::commit();
 
-            Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name, $randomPassword));
+            Mail::to($request->email)->queue(new UserAddMail($request->email, $request->full_name, $randomPassword));
             // $userServiceAPI = env('EMAIL_SERVICE_API', '');
 
             // $response = Http::post('https://crm-mailer.onrender.com/api/send-registration-mail', [
