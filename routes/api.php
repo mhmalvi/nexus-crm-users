@@ -33,6 +33,8 @@ Route::post('/user/register', [\App\Http\Controllers\Api\AuthController::class, 
 Route::post('/user/registration', [\App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('/user/update', [\App\Http\Controllers\Api\AuthController::class, 'updateUser']);
 
+Route::post('/user/add', [\App\Http\Controllers\Api\UserController::class, 'addUser']);
+
 
 Route::post('/user/password-reset', [ForgetPasswordController::class, 'resetPassword']);
 Route::post('/user/forgot-password', [ForgetPasswordController::class, 'forgotPassword']);

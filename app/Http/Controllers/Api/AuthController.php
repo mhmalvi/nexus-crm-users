@@ -211,6 +211,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse  User
      */
+
     public function createUser(Request $request)
     {
         DB::beginTransaction();
@@ -226,6 +227,7 @@ class AuthController extends Controller
             $profile->address = $request->company_address;
             $profile->save();
             ///////////////////////////////////////////////////////////////////////////////////
+            
             $file = new CRMFilesystem();
             $file->user_id = $user->id;
             $file->document_name = "company_image/buildings.svg";
