@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\AddUserRequest;
 
 class UserController extends Controller
 {
@@ -24,7 +25,7 @@ class UserController extends Controller
         return implode($pass);
         //turn the array into a string 
     }
-    public function addUser(Request $request)
+    public function addUser(AddUserRequest $request)
     {
         DB::beginTransaction();
 
