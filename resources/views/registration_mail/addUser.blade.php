@@ -635,6 +635,17 @@
                                   font-family: 'Open Sans', sans-serif;
                                 " align="left">
 
+                                                            <div style="
+                                    color: #333333;
+                                    line-height: 140%;
+                                    text-align: left;
+                                    word-wrap: break-word;
+                                  ">
+                                                                <p style="font-size: 14px; line-height: 140%">
+                                                                    <strong>One time password : {{$password}}</strong> 
+                                                                </p>
+                                                            </div>
+
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -1022,3 +1033,4 @@
     <!--[if IE]></div><![endif]-->
 </body>
 </html>
+
