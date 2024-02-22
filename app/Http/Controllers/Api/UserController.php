@@ -93,7 +93,7 @@ class UserController extends Controller
                 'password' => $randomPassword
             ];
             return response()->json([
-                'status' => true,
+                'status' => 201,
                 'message' => 'User Created Successfully',
                 'data' => $userData
             ], 201);
