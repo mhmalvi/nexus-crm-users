@@ -33,7 +33,7 @@ class RegistrationMail extends Mailable
     public function build()
     {
         $this
-            ->subject($this->subject)->with(['email' => $this->email, 'name' => $this->name])
+            ->subject("Queleads Registration")->with(['email' => $this->email, 'name' => $this->name])
             ->markdown('registration_mail.registration_mail');
         return $this;
     }

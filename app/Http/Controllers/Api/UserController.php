@@ -78,14 +78,6 @@ class UserController extends Controller
             DB::commit();
 
             Mail::to($request->email)->queue(new UserAddMail($request->email, $request->full_name, $randomPassword));
-            // $userServiceAPI = env('EMAIL_SERVICE_API', '');
-
-            // $response = Http::post('https://crm-mailer.onrender.com/api/send-registration-mail', [
-            // 'username'=>$request->full_name,
-            // 'email'=>$request->email,
-            // 'password' => $randomPassword
-            // ]);
-
             $userData = [
                 'user_name' => $request->full_name,
                 'user_email' => $request->email,
