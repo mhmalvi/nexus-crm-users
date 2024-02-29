@@ -753,28 +753,29 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         // if ($request->bearerToken() !== null) {
-            $token_exist = DB::connection('token')->table('token')->where('token', $request->token)->where('email', $request->email)->where(
+        $token_exist = DB::connection('token')->table('token')->where('token', $request->token)->where('email', $request->email)->where(
+            'user_id',
+            $request->user_id
+        )->exists();
+        // dd($token);
+        if ($token_exist) {
+            $token = DB::connection('token')->table('token')->where('token', $request->token)->where(
+                'email',
+                $request->email
+            )->where(
                 'user_id',
                 $request->user_id
-            )->exists();
+            )->delete();
             // dd($token);
-            if ($token_exist) {
-                $token = DB::connection('token')->table('token')->where('token', $request->token)->where(
-                    'email',
-                    $request->email
-                )->where(
-                    'user_id',
-                    $request->user_id
-                )->first();
-                // dd($token);
-                $result = $token->delete();
-            }
-
+            // $result = $token->delete();
             if ($result) {
                 return response()->json('Logout successful');
             } else {
                 return response()->json('Unauthorized attempt');
             }
+        }
+
+
         // } else {
         //     return response()->json(
         //         'Invalid token'
