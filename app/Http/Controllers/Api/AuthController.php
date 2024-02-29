@@ -766,14 +766,15 @@ class AuthController extends Controller
                     'user_id',
                     $request->user_id
                 )->first();
+                dd($token);
                 $result = $token->delete();
             }
 
-            if ($result) {
-                return response()->json('Logout successful');
-            } else {
-                return response()->json('Unauthorized attempt');
-            }
+            // if ($result) {
+            //     return response()->json('Logout successful');
+            // } else {
+            //     return response()->json('Unauthorized attempt');
+            // }
         // } else {
         //     return response()->json(
         //         'Invalid token'
