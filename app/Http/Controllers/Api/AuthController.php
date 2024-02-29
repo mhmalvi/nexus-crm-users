@@ -756,9 +756,6 @@ class AuthController extends Controller
             $token_exist = DB::connection('token')->table('token')->where('token', $request->token)->where('email', $request->email)->where(
                 'user_id',
                 $request->user_id
-            )->where(
-                'ip',
-                $request->ip()
             )->exists();
             // dd($token);
             if ($token_exist) {
