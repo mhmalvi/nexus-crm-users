@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('check-if-token-exists',[\App\Http\Controllers\Api\AuthController::class, 'token_exists']);
-    Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
+    
 });
-
+Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
 ////////////// getting company id from company service to delete company credentials /////////////////
 Route::post('/user/delete-company-id',[\App\Http\Controllers\Api\AuthController::class,'delete_company_id']);
 
