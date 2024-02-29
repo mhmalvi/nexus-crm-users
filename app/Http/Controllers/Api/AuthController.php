@@ -768,7 +768,7 @@ class AuthController extends Controller
             )->delete();
             // dd($token);
             // $result = $token->delete();
-            if ($result) {
+            if ($token) {
                 return response()->json('Logout successful');
             } else {
                 return response()->json('Unauthorized attempt');
