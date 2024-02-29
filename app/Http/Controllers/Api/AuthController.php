@@ -752,7 +752,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        if ($request->bearerToken() !== null) {
+        // if ($request->bearerToken() !== null) {
             $token_exist = DB::connection('token')->table('token')->where('token', $request->token)->where('email', $request->email)->where(
                 'user_id',
                 $request->user_id
@@ -768,9 +768,6 @@ class AuthController extends Controller
                 )->where(
                     'user_id',
                     $request->user_id
-                )->where(
-                    'ip',
-                    $request->ip()
                 )->first();
                 $result = $token->delete();
             }
@@ -780,10 +777,10 @@ class AuthController extends Controller
             } else {
                 return response()->json('Unauthorized attempt');
             }
-        } else {
-            return response()->json(
-                'Invalid token'
-            );
-        }
+        // } else {
+        //     return response()->json(
+        //         'Invalid token'
+        //     );
+        // }
     }
 }
