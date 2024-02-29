@@ -227,7 +227,7 @@ class AuthController extends Controller
             $profile->address = $request->company_address;
             $profile->save();
             ///////////////////////////////////////////////////////////////////////////////////
-            
+
             $file = new CRMFilesystem();
             $file->user_id = $user->id;
             $file->document_name = "company_image/buildings.svg";
@@ -701,13 +701,20 @@ class AuthController extends Controller
             // $user->token = $token;
             // $user->save();
             //dd($data);
-            ActiveToken::create([
+            DB::connection('token')->table('token')->insert([
                 'email' => $request->email,
                 'token' => $token,
                 'ip' => $request->ip(),
                 'role_id' => $user->role_id,
                 'user_id' => $user->id
             ]);
+            // ActiveToken::create([
+            //     'email' => $request->email,
+            //     'token' => $token,
+            //     'ip' => $request->ip(),
+            //     'role_id' => $user->role_id,
+            //     'user_id' => $user->id
+            // ]);
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
@@ -745,17 +752,30 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        // dd(json_decode(auth('sanctum')->user()->currentAccessToken())->tokenable->token);
         if ($request->bearerToken() !== null) {
-            $response = auth('sanctum')->user()->currentAccessToken()->delete();
-            $token_exist = ActiveToken::where('token', $request->bearerToken())->where('ip', $request->ip())->exists();
+            $token_exist = DB::connection('token')->table('token')->where('token', $request->token)->where('email', $request->email)->where(
+                'user_id',
+                $request->user_id
+            )->where(
+                'ip',
+                $request->ip()
+            )->exists();
             // dd($token);
             if ($token_exist) {
-                $token = ActiveToken::where('token', $request->bearerToken())->where('ip', $request->ip())->first();
+                $token = DB::connection('token')->table('token')->where('token', $request->token)->where(
+                    'email',
+                    $request->email
+                )->where(
+                    'user_id',
+                    $request->user_id
+                )->where(
+                    'ip',
+                    $request->ip()
+                )->first();
                 $result = $token->delete();
             }
 
-            if ($response && $result) {
+            if ($result) {
                 return response()->json('Logout successful');
             } else {
                 return response()->json('Unauthorized attempt');
