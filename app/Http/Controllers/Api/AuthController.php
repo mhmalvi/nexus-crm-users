@@ -766,7 +766,7 @@ class AuthController extends Controller
                     'user_id',
                     $request->user_id
                 )->first();
-                dd($token);
+                // dd($token);
                 $result = $token->delete();
             }
 
