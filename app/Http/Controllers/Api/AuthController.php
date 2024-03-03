@@ -703,7 +703,7 @@ class AuthController extends Controller
             //dd($data);
             DB::connection('token')->table('token')->insert([
                 'email' => $request->email,
-                'token' => $token,
+                'token' => 'Bearer ' . $token,
                 'ip' => $request->ip(),
                 'role_id' => $user->role_id,
                 'user_id' => $user->id
