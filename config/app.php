@@ -56,6 +56,8 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'stripe_secret'=>env('STRIPE_SECRET','sk_test_51Ot2bOGeh9PhcWp4xA9lwPULEmbeJacm812lQnRCrsVqe9Qq99TW0CubibwAdICxXxSQpUS0YX7pjKglHuC7kcvv00FnD0uR70'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

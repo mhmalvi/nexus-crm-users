@@ -4,22 +4,23 @@ namespace App\Http\Controllers\Api;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Company;
 use App\Mail\SignupMail;
+use App\services\Register;
 use App\Models\ActiveToken;
 use App\Models\UserProfile;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CRMFilesystem;
 use App\Mail\RegistrationMail;
 use Illuminate\Support\Facades\DB;
+use App\Interfaces\CreateInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
-use App\Models\Company;
-use App\Models\CRMFilesystem;
-use App\services\Register;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -212,7 +213,7 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse  User
      */
 
-    public function createUser(Request $request)
+    public function createUser(Request $request, CreateInterface $createStripeCustomer)
     {
         DB::beginTransaction();
         try {
@@ -252,6 +253,11 @@ class AuthController extends Controller
             ///////////////////////////////////////////////////////////////////////////////////
             $file->client_id = $company->id;
             $file->save();
+            $data = [
+                $company_name =$request->company_name,
+                $email =$request->email,
+            ];
+            $result = $createStripeCustomer->create($data);
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.id', $user->id)->first();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
             DB::commit();
