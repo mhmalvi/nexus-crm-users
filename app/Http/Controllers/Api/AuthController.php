@@ -736,7 +736,7 @@ class AuthController extends Controller
             } else {
                 return response()->json([
                     'message'=>'Account not verified',
-                    'status' => 005,
+                    'status' => 222,
                 ]);
             }
         } catch (\Throwable $th) {
