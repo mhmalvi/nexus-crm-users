@@ -254,8 +254,8 @@ class AuthController extends Controller
             $file->client_id = $company->id;
             $file->save();
             $data = [
-                $company_name =$request->company_name,
-                $email =$request->email,
+                $company_name = $request->company_name,
+                $email = $request->email,
             ];
             $result = $createStripeCustomer->create($data);
             $company->connect_id = $result->id;
@@ -670,65 +670,70 @@ class AuthController extends Controller
             // $activeSessionsCount = Auth::user()->sessions()->count();
 
             // dd($activeSessionsCount);
-            $data = User::join('user_profile', function ($join) {
-                $join->on('user_profile.user_id', '=', 'users.id');
-            })->where('users.id', Auth::user()->id)
-                //->where('lead_details.client_id', '=', $request->client_id)
-                ->first();
+            if (
+                $user->verification_status == 1 || $user->verification_status
+                == 2
+            ) {
+                $data = User::join('user_profile', function ($join) {
+                    $join->on('user_profile.user_id', '=', 'users.id');
+                })->where('users.id', Auth::user()->id)
+                    //->where('lead_details.client_id', '=', $request->client_id)
+                    ->first();
 
-            if ($data == "") {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'User not found',
-                ], 401);
-            }
-            $clientId = 0;
-            $ac_k = '';
-            $roleArray = [1, 2, 3, 4, 5];
-            $companyServiceAPI = env('COMPANY_SERVICE_API', '');
-            if (isset($data->role_id) && in_array($data->role_id, $roleArray)) {
-                // $clientId =  $data->user_id;
-
-                // dd($companyServiceAPI);
-
-                $response = Http::post('https://crmcompany.queleadscrm.com/api/company/details/user', [
-                    'user_id' => $data->user_id,
-                    'role_id' => $data->role_id
-                ]);
-                $jsonArray = json_decode($response->body());
-                if ($jsonArray != "" && isset($jsonArray->data->company_id)) {
-                    $clientId = $jsonArray->data->company_id;
-                    $ac_k = $jsonArray->data->fb_ac_credential;
+                if ($data == "") {
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'User not found',
+                    ], 401);
                 }
+                $clientId = 0;
+                $ac_k = '';
+                $roleArray = [1, 2, 3, 4, 5];
+                // $companyServiceAPI = env('COMPANY_SERVICE_API', '');
+                if (isset($data->role_id) && in_array($data->role_id, $roleArray)) {
+                    // $clientId = $data->user_id;
+
+                    // dd($companyServiceAPI);
+
+                    $response = Http::post('https://crmcompany.queleadscrm.com/api/company/details/user', [
+                        'user_id' => $data->user_id,
+                        'role_id' => $data->role_id
+                    ]);
+                    $jsonArray = json_decode($response->body());
+                    if ($jsonArray != "" && isset($jsonArray->data->company_id)) {
+                        $clientId = $jsonArray->data->company_id;
+                        $ac_k = $jsonArray->data->fb_ac_credential;
+                    }
+                }
+                $data->client_id = $clientId;
+                $data->ac_k = $ac_k;
+                $token = Auth::user()->createToken("API TOKEN")->plainTextToken;
+                // $user = User::where('email', $request->email)->first();
+                // // dd($user);
+                // $user->token = $token;
+                // $user->save();
+                //dd($data);
+                DB::connection('token')->table('token')->insert([
+                    'email' => $request->email,
+                    'token' => 'Bearer ' . $token,
+                    'ip' => $request->ip(),
+                    'role_id' => $user->role_id,
+                    'user_id' => $user->id
+                ]);
+                // ActiveToken::create([
+                // 'email' => $request->email,
+                // 'token' => $token,
+                // 'ip' => $request->ip(),
+                // 'role_id' => $user->role_id,
+                // 'user_id' => $user->id
+                // ]);
+                return response()->json([
+                    'status' => true,
+                    'message' => 'User Logged In Successfully',
+                    'token' => $token,
+                    'data' => $data
+                ], 200);
             }
-            $data->client_id = $clientId;
-            $data->ac_k = $ac_k;
-            $token = Auth::user()->createToken("API TOKEN")->plainTextToken;
-            // $user = User::where('email', $request->email)->first();
-            // // dd($user);
-            // $user->token = $token;
-            // $user->save();
-            //dd($data);
-            DB::connection('token')->table('token')->insert([
-                'email' => $request->email,
-                'token' => 'Bearer ' . $token,
-                'ip' => $request->ip(),
-                'role_id' => $user->role_id,
-                'user_id' => $user->id
-            ]);
-            // ActiveToken::create([
-            //     'email' => $request->email,
-            //     'token' => $token,
-            //     'ip' => $request->ip(),
-            //     'role_id' => $user->role_id,
-            //     'user_id' => $user->id
-            // ]);
-            return response()->json([
-                'status' => true,
-                'message' => 'User Logged In Successfully',
-                'token' => $token,
-                'data' => $data
-            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
@@ -761,13 +766,13 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         // if ($request->bearerToken() !== null) {
-        $token_exist = DB::connection('token')->table('token')->where('token', 'Bearer '.$request->token)->where('email', $request->email)->where(
+        $token_exist = DB::connection('token')->table('token')->where('token', 'Bearer ' . $request->token)->where('email', $request->email)->where(
             'user_id',
             $request->user_id
         )->exists();
         // dd($token);
         if ($token_exist) {
-            $token = DB::connection('token')->table('token')->where('token', 'Bearer '.$request->token)->where(
+            $token = DB::connection('token')->table('token')->where('token', 'Bearer ' . $request->token)->where(
                 'email',
                 $request->email
             )->where(

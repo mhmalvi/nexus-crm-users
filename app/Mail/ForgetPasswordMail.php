@@ -31,7 +31,7 @@ class ForgetPasswordMail extends Mailable
     public function build()
     {
         $this->subject('Reset Password')->with(['email' => $this->email, 'token' => $this->token])
-            ->markdown('email.forgetPasswordLink');
+            ->markdown('email.forgetpassword');
         return $this;
     }
 }
