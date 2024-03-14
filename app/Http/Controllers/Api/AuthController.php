@@ -215,7 +215,7 @@ class AuthController extends Controller
 
     public function createUser(Request $request, CreateInterface $createStripeCustomer)
     {
-        // DB::beginTransaction();
+        DB::beginTransaction();
         try {
             $user = User::where('email', $request->email)->first();
             $user->contact_number = $request->contact;
@@ -258,16 +258,18 @@ class AuthController extends Controller
                 $email =$request->email,
             ];
             $result = $createStripeCustomer->create($data);
+            $company->connect_id = $result->id;
+            $company->save();
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.id', $user->id)->first();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
-            // DB::commit();
+            DB::commit();
             return response()->json([
                 'status' => 201,
                 'message' => 'Company Created Successfully',
                 'data' => $user_data
             ], 201);
         } catch (\Throwable $th) {
-            // DB::rollback();
+            DB::rollback();
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
