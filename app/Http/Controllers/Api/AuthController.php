@@ -737,7 +737,7 @@ class AuthController extends Controller
                 return response()->json([
                     'message'=>'Account not verified',
                     'status' => 005,
-                ], 005);
+                ]);
             }
         } catch (\Throwable $th) {
             return response()->json([
