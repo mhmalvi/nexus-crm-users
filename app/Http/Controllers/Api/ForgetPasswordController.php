@@ -33,7 +33,7 @@ class ForgetPasswordController extends Controller
         //     $message->to($request->email);
         //     $message->subject('Reset Password');
         // });
-        Mail::to($request->email)->queue(new ForgetPasswordMail($request->email, $token));
+        Mail::to($request->email)->send(new ForgetPasswordMail($request->email, $token));
         
         return response()->json([
             'message' => 'success',
