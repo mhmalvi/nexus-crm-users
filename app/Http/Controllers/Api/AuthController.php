@@ -735,7 +735,7 @@ class AuthController extends Controller
                 ], 200);
             } else {
                 return response()->json([
-                    'message'=>'Account not verified'
+                    'message'=>'Account not verified',
                     'status' => 005,
                 ], 005);
             }
