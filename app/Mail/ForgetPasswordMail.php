@@ -17,10 +17,10 @@ class ForgetPasswordMail extends Mailable
      *
      * @return void
      */
-    public function __construct($email,$token)
+    public function __construct($email, $token)
     {
-        $this->email=$email;
-        $this->token=$token;
+        $this->email = $email;
+        $this->token = $token;
     }
 
     /**
@@ -31,7 +31,7 @@ class ForgetPasswordMail extends Mailable
     public function build()
     {
         $this->subject('Reset Password')->with(['email' => $this->email, 'token' => $this->token])
-            ->markdown('email.forgetpassword');
-            return $this;
+            ->markdown('email.forgetPasswordLink');
+        return $this;
     }
 }
