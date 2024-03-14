@@ -10,15 +10,17 @@ use Illuminate\Queue\SerializesModels;
 class ForgetPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $email;
+    public $token;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($email,$token)
     {
-        //
+        $this->email=$email;
+        $this->token=$token;
     }
 
     /**
@@ -28,6 +30,8 @@ class ForgetPasswordMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $this->subject('Reset Password')->with(['email' => $this->email, 'token' => $this->token])
+            ->markdown('email.forgetpassword');
+            return $this;
     }
 }

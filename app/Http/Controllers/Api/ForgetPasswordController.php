@@ -28,10 +28,11 @@ class ForgetPasswordController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        Mail::send('email.forgetpassword', ['token' => $token], function ($message) use ($request) {
-            $message->to($request->email);
-            $message->subject('Reset Password');
-        });
+        // Mail::send('email.forgetpassword', ['token' => $token], function ($message) use ($request) {
+        //     $message->to($request->email);
+        //     $message->subject('Reset Password');
+        // });
+        Mail::to($request->email)->queue(new ForgetPasswordMail($request->email, $token));
         
         return response()->json([
             'message' => 'success',
