@@ -2,6 +2,6 @@
 
 namespace App\Interfaces;
 
-interface Create{
-    public function create();
+interface CreateInterface{
+    public function create($data);
 }
