@@ -703,10 +703,12 @@ class AuthController extends Controller
                     if ($jsonArray != "" && isset($jsonArray->data->company_id)) {
                         $clientId = $jsonArray->data->company_id;
                         $ac_k = $jsonArray->data->fb_ac_credential;
+                        $customer_id = $jsonArray->data->connect_id;
                     }
                 }
                 $data->client_id = $clientId;
                 $data->ac_k = $ac_k;
+                $data->customer_id = $customer_id;
                 $token = Auth::user()->createToken("API TOKEN")->plainTextToken;
                 // $user = User::where('email', $request->email)->first();
                 // // dd($user);
@@ -735,8 +737,8 @@ class AuthController extends Controller
                 ], 200);
             } else {
                 return response()->json([
-                    'message'=>'Account not verified',
-                    'token'=>""
+                    'message' => 'Account not verified',
+                    'token' => ""
                 ]);
             }
         } catch (\Throwable $th) {
