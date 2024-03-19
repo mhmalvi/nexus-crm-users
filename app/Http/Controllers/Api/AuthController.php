@@ -266,7 +266,7 @@ class AuthController extends Controller
             $end_date = $current_date->addDays(30);
             $result = $createStripeCustomer->create($data);
             $company->connect_id = $result->id;
-            $company->package = 0;
+            $company->package = "trial";
             $company->end_date = $end_date;
             $company->save();
 
