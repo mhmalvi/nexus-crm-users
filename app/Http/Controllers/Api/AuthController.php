@@ -703,7 +703,7 @@ class AuthController extends Controller
                     if ($jsonArray != "" && isset($jsonArray->data->company_id)) {
                         $clientId = $jsonArray->data->company_id;
                         $ac_k = $jsonArray->data->fb_ac_credential;
-                        $customer_id = $jsonArray->data->connect_id;
+                        $customer_id = $jsonArray->data->connect_id?$jsonArray->data->connect_id:"";
                     }
                 }
                 $data->client_id = $clientId;
