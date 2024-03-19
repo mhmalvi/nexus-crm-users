@@ -21,10 +21,15 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
+use App\Services\CreateTrialPackageService;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    private $createTrialPackageService;
+    public function __construct(CreateTrialPackageService $createTrialPackageService){
+        $this->createTrialPackageService=$createTrialPackageService;
+    }
     /**
      * User List
      * @param Request $request
@@ -257,9 +262,14 @@ class AuthController extends Controller
                 $company_name = $request->company_name,
                 $email = $request->email,
             ];
+            $current_date = Carbon::now();
+            $end_date = $current_date->addDays(30);
             $result = $createStripeCustomer->create($data);
             $company->connect_id = $result->id;
+            $company->package = 0;
+            $company->end_date = $end_date;
             $company->save();
+
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.id', $user->id)->first();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
             DB::commit();
@@ -282,6 +292,11 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
+
+    //  public function createPackage(){
+    //     $response = $this->createTrialPackageService->createPackage();
+    //     // dd($response);
+    //  }
     public function getUserDetails(Request $request)
     {
         if (!isset($request->user_id))

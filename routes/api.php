@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ForgetPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -75,3 +76,4 @@ Route::post('/delete-notification', [\App\Http\Controllers\Api\ReminderControlle
 Route::get('/user-details',[\App\Http\Controllers\Api\AuthController::class,'get_user_details']);
 Route::post('/sales-employee-list',[\App\Http\Controllers\Api\SalesListController::class,'salesList']);
 
+Route::post('create-trial',[AuthController::class,'createPackage']);
