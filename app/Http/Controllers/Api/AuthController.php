@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use DateTime;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Company;
@@ -21,8 +22,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
-use App\Services\CreateTrialPackageService;
 use Illuminate\Support\Facades\Validator;
+use App\Services\CreateTrialPackageService;
 
 class AuthController extends Controller
 {
