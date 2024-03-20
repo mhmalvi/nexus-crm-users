@@ -738,7 +738,7 @@ class AuthController extends Controller
                 if(isset($end_date)){
                     $data->end_date = Carbon::now($end_date);
                 }       
-                if(isset($end_date)){
+                if(isset($package)){
                     $data->package = $package;
                 }      
                 $token = Auth::user()->createToken("API TOKEN")->plainTextToken;
