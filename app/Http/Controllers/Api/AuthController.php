@@ -724,6 +724,9 @@ class AuthController extends Controller
                         if(isset($jsonArray->data->end_date)){
                             $end_date = $jsonArray->data->end_date;
                         }
+                        if(isset($jsonArray->data->package)){
+                            $package = $jsonArray->data->package;
+                        }
                         
                     }
                 }
@@ -734,7 +737,10 @@ class AuthController extends Controller
                 }  
                 if(isset($end_date)){
                     $data->end_date = $end_date;
-                }               
+                }       
+                if(isset($end_date)){
+                    $data->package = $package;
+                }      
                 $token = Auth::user()->createToken("API TOKEN")->plainTextToken;
                 // $user = User::where('email', $request->email)->first();
                 // // dd($user);
