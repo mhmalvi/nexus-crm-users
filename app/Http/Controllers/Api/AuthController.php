@@ -736,7 +736,7 @@ class AuthController extends Controller
                     $data->customer_id = $customer_id;
                 }  
                 if(isset($end_date)){
-                    $data->end_date = Carbon::now($end_date);
+                    $data->end_date = gmdate('d.m.Y H:i', strtotime('2012-06-28 23:55'));
                 }       
                 if(isset($package)){
                     $data->package = $package;
