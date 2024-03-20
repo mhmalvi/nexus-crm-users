@@ -736,7 +736,9 @@ class AuthController extends Controller
                     $data->customer_id = $customer_id;
                 }  
                 if(isset($end_date)){
-                    $data->end_date = gmdate('d.m.Y H:i', strtotime('2012-06-28 23:55'));
+                    // $data->end_date = gmdate('d.m.Y H:i', strtotime($end_date));
+                    $end_dateTime = new DateTime($end_date);
+                    $data->end_date = $end_dateTime->format($end_dateTime);
                 }       
                 if(isset($package)){
                     $data->package = $package;
