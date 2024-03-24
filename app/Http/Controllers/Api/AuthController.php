@@ -728,11 +728,14 @@ class AuthController extends Controller
                         if(isset($jsonArray->data->package)){
                             $package = $jsonArray->data->package;
                         }
-                        
+                        if(isset($jsonArray->data->subscription_id)){
+                        $subscription_id = $jsonArray->data->subscription_id;
+                        }
                     }
                 }
                 $data->client_id = $clientId;
                 $data->ac_k = $ac_k;
+                $data->subscription_id=$subscription_id;
                 if(isset($customer_id)){
                     $data->customer_id = $customer_id;
                 }  
@@ -743,7 +746,10 @@ class AuthController extends Controller
                 }       
                 if(isset($package)){
                     $data->package = $package;
-                }      
+                }
+                if(isset($subscription_id)){
+                $data->subscription_id = $subscription_id;
+                }
                 $token = Auth::user()->createToken("API TOKEN")->plainTextToken;
                 // $user = User::where('email', $request->email)->first();
                 // // dd($user);
