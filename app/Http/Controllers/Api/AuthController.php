@@ -735,7 +735,6 @@ class AuthController extends Controller
                 }
                 $data->client_id = $clientId;
                 $data->ac_k = $ac_k;
-                $data->subscription_id=$subscription_id;
                 if(isset($customer_id)){
                     $data->customer_id = $customer_id;
                 }  
