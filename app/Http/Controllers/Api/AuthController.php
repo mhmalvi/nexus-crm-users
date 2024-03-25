@@ -28,8 +28,9 @@ use App\Services\CreateTrialPackageService;
 class AuthController extends Controller
 {
     private $createTrialPackageService;
-    public function __construct(CreateTrialPackageService $createTrialPackageService){
-        $this->createTrialPackageService=$createTrialPackageService;
+    public function __construct(CreateTrialPackageService $createTrialPackageService)
+    {
+        $this->createTrialPackageService = $createTrialPackageService;
     }
     /**
      * User List
@@ -719,37 +720,42 @@ class AuthController extends Controller
                     if ($jsonArray != "" && isset($jsonArray->data->company_id)) {
                         $clientId = $jsonArray->data->company_id;
                         $ac_k = $jsonArray->data->fb_ac_credential;
-                        $active = $jsonArray->data->active;
-                        if(isset($jsonArray->data->connect_id)){
+                        if (isset($jsonArray->data->connect_id)) {
                             $customer_id = $jsonArray->data->connect_id;
                         }
-                        if(isset($jsonArray->data->end_date)){
+                        if (isset($jsonArray->data->end_date)) {
                             $end_date = $jsonArray->data->end_date;
                         }
-                        if(isset($jsonArray->data->package)){
+                        if (isset($jsonArray->data->package)) {
                             $package = $jsonArray->data->package;
                         }
-                        if(isset($jsonArray->data->subscription_id)){
-                        $subscription_id = $jsonArray->data->subscription_id;
+                        if (isset($jsonArray->data->subscription_id)) {
+                            $subscription_id = $jsonArray->data->subscription_id;
+                        }
+                        if (isset($jsonArray->data->active)) {
+                            $active = $jsonArray->data->active;
                         }
                     }
                 }
                 $data->client_id = $clientId;
                 $data->ac_k = $ac_k;
                 $data->active = $active;
-                if(isset($customer_id)){
+                if (isset($customer_id)) {
                     $data->customer_id = $customer_id;
-                }  
-                if(isset($end_date)){
+                }
+                if (isset($end_date)) {
                     // $data->end_date = gmdate('d.m.Y H:i', strtotime($end_date));
                     $data->end_date = new DateTime($end_date);
                     // $data->end_date = $end_dateTime->format($end_dateTime);
-                }       
-                if(isset($package)){
+                }
+                if (isset($package)) {
                     $data->package = $package;
                 }
-                if(isset($subscription_id)){
-                $data->subscription_id = $subscription_id;
+                if (isset($subscription_id)) {
+                    $data->subscription_id = $subscription_id;
+                }
+                if (isset($active)) {
+                    $data->active = $active;
                 }
                 $token = Auth::user()->createToken("API TOKEN")->plainTextToken;
                 // $user = User::where('email', $request->email)->first();
