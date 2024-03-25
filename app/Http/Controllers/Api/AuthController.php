@@ -719,6 +719,7 @@ class AuthController extends Controller
                     if ($jsonArray != "" && isset($jsonArray->data->company_id)) {
                         $clientId = $jsonArray->data->company_id;
                         $ac_k = $jsonArray->data->fb_ac_credential;
+                        $active = $jsonArray->data->active;
                         if(isset($jsonArray->data->connect_id)){
                             $customer_id = $jsonArray->data->connect_id;
                         }
@@ -735,6 +736,7 @@ class AuthController extends Controller
                 }
                 $data->client_id = $clientId;
                 $data->ac_k = $ac_k;
+                $data->active = $active;
                 if(isset($customer_id)){
                     $data->customer_id = $customer_id;
                 }  
