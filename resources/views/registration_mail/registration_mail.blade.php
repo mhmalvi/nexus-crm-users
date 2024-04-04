@@ -1,5 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:o="urn:schemas-microsoft-com:office:office">
+
 <head>
     <!--[if gte mso 9]>
       <xml>
@@ -115,17 +118,19 @@
                 max-width: 36% !important;
             }
         }
-
     </style>
 
     <!--[if !mso]><!-->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet"
+        type="text/css" />
     <!--<![endif]-->
 </head>
 
-<body class="clean-body u_body" style="
+<body class="clean-body u_body"
+    style="
       margin: 0;
       padding: 0;
       -webkit-text-size-adjust: 100%;
@@ -134,7 +139,8 @@
     ">
     <!--[if IE]><div class="ie-container"><![endif]-->
     <!--[if mso]><div class="mso-container"><![endif]-->
-    <table id="u_body" style="
+    <table id="u_body"
+        style="
         border-collapse: collapse;
         table-layout: fixed;
         border-spacing: 0;
@@ -145,10 +151,12 @@
         margin: 0 auto;
         background-color: #e7e7e7;
         width: 100%;
-      " cellpadding="0" cellspacing="0">
+      "
+        cellpadding="0" cellspacing="0">
         <tbody>
             <tr style="vertical-align: top">
-                <td style="
+                <td
+                    style="
               word-break: break-word;
               border-collapse: collapse !important;
               vertical-align: top;
@@ -156,7 +164,8 @@
                     <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #e7e7e7;"><![endif]-->
 
                     <div class="u-row-container" style="padding: 0px; background-color: transparent">
-                        <div class="u-row" style="
+                        <div class="u-row"
+                            style="
                   margin: 0 auto;
                   min-width: 320px;
                   max-width: 600px;
@@ -165,7 +174,8 @@
                   word-break: break-word;
                   background-color: #e6a501;
                 ">
-                            <div style="
+                            <div
+                                style="
                     border-collapse: collapse;
                     display: table;
                     width: 100%;
@@ -175,7 +185,8 @@
                                 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #e6a501;"><![endif]-->
 
                                 <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
-                                <div class="u-col u-col-100" style="
+                                <div class="u-col u-col-100"
+                                    style="
                       max-width: 320px;
                       min-width: 600px;
                       display: table-cell;
@@ -183,7 +194,8 @@
                     ">
                                     <div style="height: 100%; width: 100% !important">
                                         <!--[if (!mso)&(!IE)]><!-->
-                                        <div style="
+                                        <div
+                                            style="
                           box-sizing: border-box;
                           height: 100%;
                           padding: 0px;
@@ -193,7 +205,9 @@
                           border-bottom: 0px solid transparent;
                         ">
                                             <!--<![endif]-->
-                                            <table id="u_content_image_1" style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table id="u_content_image_1" style="font-family: 'Open Sans', sans-serif"
+                                                role="presentation" cellpadding="0" cellspacing="0" width="100%"
+                                                border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -201,14 +215,20 @@
                                   word-break: break-word;
                                   padding: 25px 10px 15px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                "
+                                                            align="left">
+                                                            <table width="100%" cellpadding="0" cellspacing="0"
+                                                                border="0">
                                                                 <tr>
                                                                     <td style="
                                         padding-right: 0px;
                                         padding-left: 0px;
-                                      " align="center">
-                                                                        <img align="center" border="0" src="https://i.ibb.co/1RzW27L/admin-ajax-1-1.png" alt="Logo" title="Logo" style="
+                                      "
+                                                                        align="center">
+                                                                        <img align="center" border="0"
+                                                                            src="https://i.ibb.co/1RzW27L/admin-ajax-1-1.png"
+                                                                            alt="Logo" title="Logo"
+                                                                            style="
                                           outline: none;
                                           text-decoration: none;
                                           -ms-interpolation-mode: bicubic;
@@ -219,7 +239,9 @@
                                           float: none;
                                           width: 31%;
                                           max-width: 179.8px;
-                                        " width="179.8" class="v-src-width v-src-max-width" />
+                                        "
+                                                                            width="179.8"
+                                                                            class="v-src-width v-src-max-width" />
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -228,7 +250,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -236,8 +259,11 @@
                                   word-break: break-word;
                                   padding: 10px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <table height="0px" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="
+                                "
+                                                            align="left">
+                                                            <table height="0px" align="center" border="0"
+                                                                cellpadding="0" cellspacing="0" width="100%"
+                                                                style="
                                     border-collapse: collapse;
                                     table-layout: fixed;
                                     border-spacing: 0;
@@ -250,7 +276,8 @@
                                   ">
                                                                 <tbody>
                                                                     <tr style="vertical-align: top">
-                                                                        <td style="
+                                                                        <td
+                                                                            style="
                                           word-break: break-word;
                                           border-collapse: collapse !important;
                                           vertical-align: top;
@@ -270,7 +297,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -278,8 +306,10 @@
                                   word-break: break-word;
                                   padding: 10px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <h1 style="
+                                "
+                                                            align="left">
+                                                            <h1
+                                                                style="
                                     margin: 0px;
                                     color: #ffffff;
                                     line-height: 140%;
@@ -295,7 +325,9 @@
                                                 </tbody>
                                             </table>
 
-                                            <table id="u_content_image_2" style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table id="u_content_image_2" style="font-family: 'Open Sans', sans-serif"
+                                                role="presentation" cellpadding="0" cellspacing="0" width="100%"
+                                                border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -303,14 +335,20 @@
                                   word-break: break-word;
                                   padding: 10px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                "
+                                                            align="left">
+                                                            <table width="100%" cellpadding="0" cellspacing="0"
+                                                                border="0">
                                                                 <tr>
                                                                     <td style="
                                         padding-right: 0px;
                                         padding-left: 0px;
-                                      " align="center">
-                                                                        <img align="center" border="0" src="https://i.ibb.co/zbY7DnX/image-5.png" alt="Image" title="Image" style="
+                                      "
+                                                                        align="center">
+                                                                        <img align="center" border="0"
+                                                                            src="https://i.ibb.co/zbY7DnX/image-5.png"
+                                                                            alt="Image" title="Image"
+                                                                            style="
                                           outline: none;
                                           text-decoration: none;
                                           -ms-interpolation-mode: bicubic;
@@ -321,7 +359,9 @@
                                           float: none;
                                           width: 20%;
                                           max-width: 116px;
-                                        " width="116" class="v-src-width v-src-max-width" />
+                                        "
+                                                                            width="116"
+                                                                            class="v-src-width v-src-max-width" />
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -330,7 +370,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -338,19 +379,23 @@
                                   word-break: break-word;
                                   padding: 10px 10px 35px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <div style="
+                                "
+                                                            align="left">
+                                                            <div
+                                                                style="
                                     line-height: 140%;
                                     text-align: center;
                                     word-wrap: break-word;
                                   ">
                                                                 <p style="font-size: 14px; line-height: 140%">
-                                                                    <span style="
+                                                                    <span
+                                                                        style="
                                         color: #e67e23;
                                         font-size: 26px;
                                         line-height: 36.4px;
                                         background-color: #ffffff;
-                                      ">&nbsp; Your Registration is
+                                      ">&nbsp;
+                                                                        Your Registration is
                                                                         Completed!&nbsp;
                                                                     </span>
                                                                 </p>
@@ -372,7 +417,8 @@
                     </div>
 
                     <div class="u-row-container" style="padding: 0px; background-color: transparent">
-                        <div class="u-row" style="
+                        <div class="u-row"
+                            style="
                   margin: 0 auto;
                   min-width: 320px;
                   max-width: 600px;
@@ -381,7 +427,8 @@
                   word-break: break-word;
                   background-color: #ffffff;
                 ">
-                            <div style="
+                            <div
+                                style="
                     border-collapse: collapse;
                     display: table;
                     width: 100%;
@@ -391,7 +438,8 @@
                                 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #ffffff;"><![endif]-->
 
                                 <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
-                                <div class="u-col u-col-100" style="
+                                <div class="u-col u-col-100"
+                                    style="
                       max-width: 320px;
                       min-width: 600px;
                       display: table-cell;
@@ -399,7 +447,8 @@
                     ">
                                     <div style="height: 100%; width: 100% !important">
                                         <!--[if (!mso)&(!IE)]><!-->
-                                        <div style="
+                                        <div
+                                            style="
                           box-sizing: border-box;
                           height: 100%;
                           padding: 0px;
@@ -409,7 +458,8 @@
                           border-bottom: 0px solid transparent;
                         ">
                                             <!--<![endif]-->
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -417,29 +467,35 @@
                                   word-break: break-word;
                                   padding: 30px 10px 30px 20px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
+                                "
+                                                            align="left">
 
-                                                            <div style="
+                                                            <div
+                                                                style="
                                     color: #333333;
                                     line-height: 130%;
                                     text-align: left;
                                     word-wrap: break-word;
                                   ">
                                                                 <p style="font-size: 14px; line-height: 130%">
-                                                                    <strong><span style="
+                                                                    <strong><span
+                                                                            style="
                                           font-size: 16px;
                                           line-height: 20.8px;
-                                        ">Hello {{$name}},</span></strong>
+                                        ">Hello
+                                                                            {{ $name }},</span></strong>
                                                                 </p>
                                                                 <p style="font-size: 14px; line-height: 130%">
 
                                                                 </p>
                                                                 <p style="font-size: 14px; line-height: 130%">
-                                                                    <span style="
+                                                                    <span
+                                                                        style="
                                         font-size: 16px;
                                         line-height: 20.8px;
                                         font-family: Lato, sans-serif;
-                                      ">Thank you for registering ! </span>
+                                      ">Thank
+                                                                        you for registering ! </span>
                                                                 </p>
                                                             </div>
                                                         </td>
@@ -459,7 +515,8 @@
                     </div>
 
                     <div class="u-row-container" style="padding: 0px; background-color: transparent">
-                        <div class="u-row" style="
+                        <div class="u-row"
+                            style="
                   margin: 0 auto;
                   min-width: 320px;
                   max-width: 600px;
@@ -468,7 +525,8 @@
                   word-break: break-word;
                   background-color: #f7f6f4;
                 ">
-                            <div style="
+                            <div
+                                style="
                     border-collapse: collapse;
                     display: table;
                     width: 100%;
@@ -478,7 +536,8 @@
                                 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #f7f6f4;"><![endif]-->
 
                                 <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
-                                <div class="u-col u-col-100" style="
+                                <div class="u-col u-col-100"
+                                    style="
                       max-width: 320px;
                       min-width: 600px;
                       display: table-cell;
@@ -486,7 +545,8 @@
                     ">
                                     <div style="height: 100%; width: 100% !important">
                                         <!--[if (!mso)&(!IE)]><!-->
-                                        <div style="
+                                        <div
+                                            style="
                           box-sizing: border-box;
                           height: 100%;
                           padding: 0px;
@@ -496,7 +556,8 @@
                           border-bottom: 0px solid transparent;
                         ">
                                             <!--<![endif]-->
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -504,22 +565,27 @@
                                   word-break: break-word;
                                   padding: 25px 10px 0px 20px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <div style="
+                                "
+                                                            align="left">
+                                                            <div
+                                                                style="
                                     line-height: 140%;
                                     text-align: left;
                                     word-wrap: break-word;
                                   ">
                                                                 <p style="font-size: 14px; line-height: 140%">
-                                                                    <span style="
+                                                                    <span
+                                                                        style="
                                         font-family: Lato, sans-serif;
                                         font-size: 14px;
                                         line-height: 19.6px;
-                                      "><strong><span style="
+                                      "><strong><span
+                                                                                style="
                                             font-size: 18px;
                                             line-height: 25.2px;
                                             color: #236fa1;
-                                          ">REGISTRATION DETAILS</span></strong></span>
+                                          ">REGISTRATION
+                                                                                DETAILS</span></strong></span>
                                                                 </p>
                                                             </div>
                                                         </td>
@@ -527,7 +593,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -535,8 +602,11 @@
                                   word-break: break-word;
                                   padding: 5px 10px 10px 20px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <table height="0px" align="left" border="0" cellpadding="0" cellspacing="0" width="22%" style="
+                                "
+                                                            align="left">
+                                                            <table height="0px" align="left" border="0"
+                                                                cellpadding="0" cellspacing="0" width="22%"
+                                                                style="
                                     border-collapse: collapse;
                                     table-layout: fixed;
                                     border-spacing: 0;
@@ -549,7 +619,8 @@
                                   ">
                                                                 <tbody>
                                                                     <tr style="vertical-align: top">
-                                                                        <td style="
+                                                                        <td
+                                                                            style="
                                           word-break: break-word;
                                           border-collapse: collapse !important;
                                           vertical-align: top;
@@ -569,7 +640,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -577,23 +649,25 @@
                                   word-break: break-word;
                                   padding: 10px 10px 10px 20px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <div style="
+                                "
+                                                            align="left">
+                                                            <div
+                                                                style="
                                     color: #333333;
                                     line-height: 140%;
                                     text-align: left;
                                     word-wrap: break-word;
                                   ">
-                                                                @if($name!="")
-                                                                <p style="font-size: 14px; line-height: 140%">
-                                                                    <strong>Name:
-                                                                        <span style="
+                                                                @if ($name != '')
+                                                                    <p style="font-size: 14px; line-height: 140%">
+                                                                        <strong>Name:
+                                                                            <span
+                                                                                style="
                                         color: #828080;
                                         font-size: 14px;
                                         line-height: 19.6px;
-                                      ">{{$name}}</span></strong>
-                                                                </p>
-
+                                      ">{{ $name }}</span></strong>
+                                                                    </p>
                                                                 @endif
                                                             </div>
                                                         </td>
@@ -601,7 +675,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -609,15 +684,17 @@
                                   word-break: break-word;
                                   padding: 5px 10px 10px 20px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <div style="
+                                "
+                                                            align="left">
+                                                            <div
+                                                                style="
                                     color: #333333;
                                     line-height: 140%;
                                     text-align: left;
                                     word-wrap: break-word;
                                   ">
                                                                 <p style="font-size: 14px; line-height: 140%">
-                                                                    <strong>Email: {{$email}}</strong> 
+                                                                    <strong>Email: {{ $email }}</strong>
                                                                 </p>
                                                             </div>
                                                         </td>
@@ -625,7 +702,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -633,7 +711,8 @@
                                   word-break: break-word;
                                   padding: 5px 10px 10px 20px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
+                                "
+                                                            align="left">
 
                                                         </td>
                                                     </tr>
@@ -652,7 +731,8 @@
                     </div>
 
                     <div class="u-row-container" style="padding: 0px; background-color: transparent">
-                        <div class="u-row" style="
+                        <div class="u-row"
+                            style="
                   margin: 0 auto;
                   min-width: 320px;
                   max-width: 600px;
@@ -661,7 +741,8 @@
                   word-break: break-word;
                   background-color: #ffffff;
                 ">
-                            <div style="
+                            <div
+                                style="
                     border-collapse: collapse;
                     display: table;
                     width: 100%;
@@ -671,7 +752,8 @@
                                 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #ffffff;"><![endif]-->
 
                                 <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
-                                <div class="u-col u-col-100" style="
+                                <div class="u-col u-col-100"
+                                    style="
                       max-width: 320px;
                       min-width: 600px;
                       display: table-cell;
@@ -679,7 +761,8 @@
                     ">
                                     <div style="height: 100%; width: 100% !important">
                                         <!--[if (!mso)&(!IE)]><!-->
-                                        <div style="
+                                        <div
+                                            style="
                           box-sizing: border-box;
                           height: 100%;
                           padding: 0px;
@@ -689,7 +772,8 @@
                           border-bottom: 0px solid transparent;
                         ">
                                             <!--<![endif]-->
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -697,8 +781,11 @@
                                   word-break: break-word;
                                   padding: 10px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <table height="0px" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="
+                                "
+                                                            align="left">
+                                                            <table height="0px" align="center" border="0"
+                                                                cellpadding="0" cellspacing="0" width="100%"
+                                                                style="
                                     border-collapse: collapse;
                                     table-layout: fixed;
                                     border-spacing: 0;
@@ -711,7 +798,8 @@
                                   ">
                                                                 <tbody>
                                                                     <tr style="vertical-align: top">
-                                                                        <td style="
+                                                                        <td
+                                                                            style="
                                           word-break: break-word;
                                           border-collapse: collapse !important;
                                           vertical-align: top;
@@ -731,7 +819,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -739,13 +828,17 @@
                                   word-break: break-word;
                                   padding: 14px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
+                                "
+                                                            align="left">
                                                             <div align="center">
                                                                 <div style="display: table; max-width: 187px">
                                                                     <!--[if (mso)|(IE)]><table width="187" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse;" align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:187px;"><tr><![endif]-->
 
                                                                     <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 15px;" valign="top"><![endif]-->
-                                                                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="
+                                                                    <table align="left" border="0"
+                                                                        cellspacing="0" cellpadding="0"
+                                                                        width="32" height="32"
+                                                                        style="
                                         width: 32px !important;
                                         height: 32px !important;
                                         display: inline-block;
@@ -759,13 +852,20 @@
                                       ">
                                                                         <tbody>
                                                                             <tr style="vertical-align: top">
-                                                                                <td align="left" valign="middle" style="
+                                                                                <td align="left" valign="middle"
+                                                                                    style="
                                               word-break: break-word;
                                               border-collapse: collapse !important;
                                               vertical-align: top;
                                             ">
-                                                                                    <a href="https://www.facebook.com/quadquetech/" title="Facebook" target="_blank">
-                                                                                        <img src="https://i.ibb.co/gR5CgMt/image-4.png" alt="Facebook" title="Facebook" width="32" style="
+                                                                                    <a href="https://www.facebook.com/quadquetech/"
+                                                                                        title="Facebook"
+                                                                                        target="_blank">
+                                                                                        <img src="https://i.ibb.co/gR5CgMt/image-4.png"
+                                                                                            alt="Facebook"
+                                                                                            title="Facebook"
+                                                                                            width="32"
+                                                                                            style="
                                                   outline: none;
                                                   text-decoration: none;
                                                   -ms-interpolation-mode: bicubic;
@@ -784,7 +884,10 @@
                                                                     <!--[if (mso)|(IE)]></td><![endif]-->
 
                                                                     <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 15px;" valign="top"><![endif]-->
-                                                                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="
+                                                                    <table align="left" border="0"
+                                                                        cellspacing="0" cellpadding="0"
+                                                                        width="32" height="32"
+                                                                        style="
                                         width: 32px !important;
                                         height: 32px !important;
                                         display: inline-block;
@@ -798,13 +901,20 @@
                                       ">
                                                                         <tbody>
                                                                             <tr style="vertical-align: top">
-                                                                                <td align="left" valign="middle" style="
+                                                                                <td align="left" valign="middle"
+                                                                                    style="
                                               word-break: break-word;
                                               border-collapse: collapse !important;
                                               vertical-align: top;
                                             ">
-                                                                                    <a href="https://twitter.com/quadquet?lang=en" title="Twitter" target="_blank">
-                                                                                        <img src="https://i.ibb.co/zZvYdhy/image-1.png" alt="Twitter" title="Twitter" width="32" style="
+                                                                                    <a href="https://twitter.com/quadquet?lang=en"
+                                                                                        title="Twitter"
+                                                                                        target="_blank">
+                                                                                        <img src="https://i.ibb.co/zZvYdhy/image-1.png"
+                                                                                            alt="Twitter"
+                                                                                            title="Twitter"
+                                                                                            width="32"
+                                                                                            style="
                                                   outline: none;
                                                   text-decoration: none;
                                                   -ms-interpolation-mode: bicubic;
@@ -823,7 +933,10 @@
                                                                     <!--[if (mso)|(IE)]></td><![endif]-->
 
                                                                     <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 15px;" valign="top"><![endif]-->
-                                                                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="
+                                                                    <table align="left" border="0"
+                                                                        cellspacing="0" cellpadding="0"
+                                                                        width="32" height="32"
+                                                                        style="
                                         width: 32px !important;
                                         height: 32px !important;
                                         display: inline-block;
@@ -837,13 +950,20 @@
                                       ">
                                                                         <tbody>
                                                                             <tr style="vertical-align: top">
-                                                                                <td align="left" valign="middle" style="
+                                                                                <td align="left" valign="middle"
+                                                                                    style="
                                               word-break: break-word;
                                               border-collapse: collapse !important;
                                               vertical-align: top;
                                             ">
-                                                                                    <a href="https://bd.linkedin.com/company/quadque-technologies-ltd" title="LinkedIn" target="_blank">
-                                                                                        <img src="https://i.ibb.co/LZ5KBZv/image-3.png" alt="LinkedIn" title="LinkedIn" width="32" style="
+                                                                                    <a href="https://bd.linkedin.com/company/quadque-technologies-ltd"
+                                                                                        title="LinkedIn"
+                                                                                        target="_blank">
+                                                                                        <img src="https://i.ibb.co/LZ5KBZv/image-3.png"
+                                                                                            alt="LinkedIn"
+                                                                                            title="LinkedIn"
+                                                                                            width="32"
+                                                                                            style="
                                                   outline: none;
                                                   text-decoration: none;
                                                   -ms-interpolation-mode: bicubic;
@@ -862,7 +982,10 @@
                                                                     <!--[if (mso)|(IE)]></td><![endif]-->
 
                                                                     <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 0px;" valign="top"><![endif]-->
-                                                                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="
+                                                                    <table align="left" border="0"
+                                                                        cellspacing="0" cellpadding="0"
+                                                                        width="32" height="32"
+                                                                        style="
                                         width: 32px !important;
                                         height: 32px !important;
                                         display: inline-block;
@@ -876,13 +999,20 @@
                                       ">
                                                                         <tbody>
                                                                             <tr style="vertical-align: top">
-                                                                                <td align="left" valign="middle" style="
+                                                                                <td align="left" valign="middle"
+                                                                                    style="
                                               word-break: break-word;
                                               border-collapse: collapse !important;
                                               vertical-align: top;
                                             ">
-                                                                                    <a href="https://www.instagram.com/quadquetech/?hl=en" title="Instagram" target="_blank">
-                                                                                        <img src="https://i.ibb.co/7vmgpC9/image-2.png" alt="Instagram" title="Instagram" width="32" style="
+                                                                                    <a href="https://www.instagram.com/quadquetech/?hl=en"
+                                                                                        title="Instagram"
+                                                                                        target="_blank">
+                                                                                        <img src="https://i.ibb.co/7vmgpC9/image-2.png"
+                                                                                            alt="Instagram"
+                                                                                            title="Instagram"
+                                                                                            width="32"
+                                                                                            style="
                                                   outline: none;
                                                   text-decoration: none;
                                                   -ms-interpolation-mode: bicubic;
@@ -908,7 +1038,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -916,8 +1047,10 @@
                                   word-break: break-word;
                                   padding: 10px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <div style="
+                                "
+                                                            align="left">
+                                                            <div
+                                                                style="
                                     color: #828080;
                                     line-height: 160%;
                                     text-align: center;
@@ -935,7 +1068,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -943,8 +1077,11 @@
                                   word-break: break-word;
                                   padding: 10px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <table height="0px" align="center" border="0" cellpadding="0" cellspacing="0" width="64%" style="
+                                "
+                                                            align="left">
+                                                            <table height="0px" align="center" border="0"
+                                                                cellpadding="0" cellspacing="0" width="64%"
+                                                                style="
                                     border-collapse: collapse;
                                     table-layout: fixed;
                                     border-spacing: 0;
@@ -957,7 +1094,8 @@
                                   ">
                                                                 <tbody>
                                                                     <tr style="vertical-align: top">
-                                                                        <td style="
+                                                                        <td
+                                                                            style="
                                           word-break: break-word;
                                           border-collapse: collapse !important;
                                           vertical-align: top;
@@ -977,7 +1115,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                            <table style="font-family: 'Open Sans', sans-serif" role="presentation"
+                                                cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
                                                         <td style="
@@ -985,8 +1124,10 @@
                                   word-break: break-word;
                                   padding: 0px 10px 20px;
                                   font-family: 'Open Sans', sans-serif;
-                                " align="left">
-                                                            <div style="
+                                "
+                                                            align="left">
+                                                            <div
+                                                                style="
                                     color: #828080;
                                     line-height: 140%;
                                     text-align: center;
@@ -1021,4 +1162,5 @@
     <!--[if mso]></div><![endif]-->
     <!--[if IE]></div><![endif]-->
 </body>
+
 </html>

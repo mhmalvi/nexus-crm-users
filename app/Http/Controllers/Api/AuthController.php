@@ -269,7 +269,7 @@ class AuthController extends Controller
             $result = $createStripeCustomer->create($data);
             $company->connect_id = $result->id;
             $company->package = "trial";
-            $company->end_date = $end_date;
+            $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
             $company->save();
 
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.id', $user->id)->first();
