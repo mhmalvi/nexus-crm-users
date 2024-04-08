@@ -266,6 +266,24 @@ class AuthController extends Controller
             ];
             $current_date = Carbon::now();
             $end_date = $current_date->addDays(30);
+
+            $ip = $request->ip();
+            // dd($ip);
+            $url = 'http://ip-api.com/json/' . $ip;
+            $tz = file_get_contents($url);
+            $tz = json_decode($tz, true)['timezone'];
+            // dd($tz);
+            $zone = json_encode(Carbon::now($tz));
+            // dd($zone);
+            $time = substr($zone, 12, 13);
+            // dd($time);
+            $time_str = substr($time, 0, 8);
+            // dd($time_sub);
+            $date_str = substr($zone, 1, 10);
+            // dd($sub_str);
+            $date_time_str = $date_str . ' ' . $time_str;
+
+
             $result = $createStripeCustomer->create($data);
             $company->connect_id = $result->id;
             $company->package = "trial";
@@ -735,6 +753,9 @@ class AuthController extends Controller
                         if (isset($jsonArray->data->active)) {
                             $active = $jsonArray->data->active;
                         }
+                        if (isset($jsonArray->data->interval)) {
+                            $interval = $jsonArray->data->interval;
+                        }
                     }
                 }
                 $data->client_id = $clientId;
@@ -744,7 +765,7 @@ class AuthController extends Controller
                 }
                 if (isset($end_date)) {
                     // $data->end_date = gmdate('d.m.Y H:i', strtotime($end_date));
-                    $data->end_date = new DateTime($end_date);
+                    $data->end_date = $end_date;
                     // $data->end_date = $end_dateTime->format($end_dateTime);
                 }
                 if (isset($package)) {
@@ -755,6 +776,9 @@ class AuthController extends Controller
                 }
                 if (isset($active)) {
                     $data->active = $active;
+                }
+                if (isset($interval)) {
+                    $data->interval = $interval;
                 }
                 $token = Auth::user()->createToken("API TOKEN")->plainTextToken;
                 // $user = User::where('email', $request->email)->first();
