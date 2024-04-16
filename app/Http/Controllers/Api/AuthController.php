@@ -304,7 +304,7 @@ class AuthController extends Controller
 
             $result = $createStripeCustomer->create($data);
             $company->connect_id = $result->id;
-            if ($request->package == 'trial') {
+            if ($company->package == 'trial') {
                 $current_date = Carbon::now();
                 $end_date = $current_date->addDays(30);
                 $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
