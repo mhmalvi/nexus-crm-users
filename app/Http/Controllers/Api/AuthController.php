@@ -22,15 +22,19 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
+use App\Services\CreateSubscriptionService;
 use Illuminate\Support\Facades\Validator;
 use App\Services\CreateTrialPackageService;
 
 class AuthController extends Controller
 {
     private $createTrialPackageService;
-    public function __construct(CreateTrialPackageService $createTrialPackageService)
+    private $createSubscription;
+    public function __construct(CreateTrialPackageService $createTrialPackageService, CreateSubscriptionService
+    $createSubscription)
     {
         $this->createTrialPackageService = $createTrialPackageService;
+        $this->createSubscription = $createSubscription;
     }
     /**
      * User List
@@ -183,6 +187,11 @@ class AuthController extends Controller
             $user_profile = UserProfile::create([
                 'user_id' => $user->id
             ]);
+            Company::create([
+                'business_email' => $request->email,
+                'package' => $request->package,
+                'interval' => $request->interval
+            ]);
             Mail::to($request->email)->queue(new SignupMail($token, $request->email));
             if ($user_profile) {
                 return response()->json([
@@ -242,10 +251,9 @@ class AuthController extends Controller
             $file->document_details = "company image";
             $file->save();
             ///////////////////////////////////////////////////////////////////////////////////
-            $company = new Company();
+            $company = Company::where('business_email', $request->email)->first();
             $company->name = $request->company_name;
             $company->contact = $request->contact;
-            $company->business_email = $request->email;
             $company->address = $request->company_address;
             $company->abn = $request->abn ? $request->abn : '';
             $company->website = $request->website ? $request->website : "";
@@ -264,32 +272,39 @@ class AuthController extends Controller
                 $company_name = $request->company_name,
                 $email = $request->email,
             ];
-            $current_date = Carbon::now();
-            $end_date = $current_date->addDays(30);
+            
 
-            $ip = $request->ip();
-            // dd($ip);
-            $url = 'http://ip-api.com/json/' . $ip;
-            $tz = file_get_contents($url);
-            $tz = json_decode($tz, true)['timezone'];
-            // dd($tz);
-            $zone = json_encode(Carbon::now($tz));
-            // dd($zone);
-            $time = substr($zone, 12, 13);
-            // dd($time);
-            $time_str = substr($time, 0, 8);
-            // dd($time_sub);
-            $date_str = substr($zone, 1, 10);
-            // dd($sub_str);
-            $date_time_str = $date_str . ' ' . $time_str;
+
+            // $ip = $request->ip();
+            // // dd($ip);
+            // $url = 'http://ip-api.com/json/' . $ip;
+            // $tz = file_get_contents($url);
+            // $tz = json_decode($tz, true)['timezone'];
+            // // dd($tz);
+            // $zone = json_encode(Carbon::now($tz));
+            // // dd($zone);
+            // $time = substr($zone, 12, 13);
+            // // dd($time);
+            // $time_str = substr($time, 0, 8);
+            // // dd($time_sub);
+            // $date_str = substr($zone, 1, 10);
+            // // dd($sub_str);
+            // $date_time_str = $date_str . ' ' . $time_str;
 
 
             $result = $createStripeCustomer->create($data);
             $company->connect_id = $result->id;
-            $company->package = "trial";
-            $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
+            if ($request->package == 'trial') {
+                $current_date = Carbon::now();
+                $end_date = $current_date->addDays(30);
+                $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
+            } else {
+                $subscription = $this->createSubscription->create_subscription($result,$request->priceId);
+                $company->end_date = $subscription->current_period_end;
+            }
+            $company->package = $request->package;    
+            $company->interval = $request->interval;
             $company->save();
-
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.id', $user->id)->first();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
             DB::commit();
