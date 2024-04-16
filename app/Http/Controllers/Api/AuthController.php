@@ -187,11 +187,21 @@ class AuthController extends Controller
             $user_profile = UserProfile::create([
                 'user_id' => $user->id
             ]);
-            Company::create([
-                'business_email' => $request->email,
-                'package' => $request->package,
-                'interval' => $request->interval
-            ]);
+            if ($request->package == 'trial') {
+                Company::create([
+                    'business_email' => $request->email,
+                    'package' => $request->package,
+                    'interval' => $request->interval
+                ]);
+            } else {
+                Company::create([
+                    'business_email' => $request->email,
+                    'package' => $request->package,
+                    'interval' => $request->interval,
+                    'price_id' => $request->priceId
+                ]);
+            }
+
             Mail::to($request->email)->queue(new SignupMail($token, $request->email));
             if ($user_profile) {
                 return response()->json([
@@ -272,7 +282,7 @@ class AuthController extends Controller
                 $company_name = $request->company_name,
                 $email = $request->email,
             ];
-            
+
 
 
             // $ip = $request->ip();
@@ -299,10 +309,10 @@ class AuthController extends Controller
                 $end_date = $current_date->addDays(30);
                 $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
             } else {
-                $subscription = $this->createSubscription->create_subscription($result,$request->priceId);
+                $subscription = $this->createSubscription->create_subscription($result, $company->price_id);
                 $company->end_date = $subscription->current_period_end;
             }
-            $company->package = $request->package;    
+            $company->package = $request->package;
             $company->interval = $request->interval;
             $company->save();
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.id', $user->id)->first();
