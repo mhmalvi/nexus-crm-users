@@ -8,8 +8,8 @@ class UpdateCustomerService
     {
         $stripe = new \Stripe\StripeClient(config("app.stripe_secret"));
         $stripe->customers->update(
-            $data[0],
-            ['name' => $data[1]]
+            $data[1],
+            ['name' => $data[0]]
         );
     }
 }
