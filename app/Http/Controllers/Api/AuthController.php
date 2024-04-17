@@ -290,7 +290,7 @@ class AuthController extends Controller
             $file->save();
             $data = [
                 $company_name = $request->company_name,
-                $cus_id = $request->cus_id,
+                $cus_id = $company->cus_id,
             ];
 
 
