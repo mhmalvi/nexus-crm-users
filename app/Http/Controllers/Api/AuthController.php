@@ -324,6 +324,7 @@ class AuthController extends Controller
             } else {
                 $company->package = $request->package;
                 $subscription = $this->createSubscription->create_subscription($result, $company->price_id);
+                $company->subscription_id = $subscription->id;
                 $company->end_date = $subscription->current_period_end;
                 $company->interval = $request->interval;
             }
