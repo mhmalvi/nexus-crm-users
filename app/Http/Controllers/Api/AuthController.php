@@ -200,7 +200,8 @@ class AuthController extends Controller
                     'connect_id' => $result->id,
                     'business_email' => $request->email,
                     'package' => $request->package,
-                    'interval' => $request->interval
+                    'interval' => $request->interval,
+                    'admin' => $user->id
                 ]);
             } else {
                 Company::create([
@@ -208,7 +209,8 @@ class AuthController extends Controller
                     'business_email' => $request->email,
                     'package' => $request->package,
                     'interval' => $request->interval,
-                    'price_id' => $request->priceId
+                    'price_id' => $request->priceId,
+                    'admin' => $user->id
                 ]);
             }
 
