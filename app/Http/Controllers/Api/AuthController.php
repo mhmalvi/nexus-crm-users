@@ -316,6 +316,7 @@ class AuthController extends Controller
 
 
             $result = $this->updateStripeCustomer->updateCustomer($data);
+            dd($result);
             if ($request->package == 'Trial') {
                 $company->package = $request->package;
                 $current_date = Carbon::now();
