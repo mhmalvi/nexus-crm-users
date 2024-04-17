@@ -25,16 +25,19 @@ use App\Http\Requests\RegisterRequest;
 use App\Services\CreateSubscriptionService;
 use Illuminate\Support\Facades\Validator;
 use App\Services\CreateTrialPackageService;
+use App\Services\UpdateCustomerService;
 
 class AuthController extends Controller
 {
     private $createTrialPackageService;
     private $createSubscription;
+    private $updateStripeCustomer;
     public function __construct(CreateTrialPackageService $createTrialPackageService, CreateSubscriptionService
-    $createSubscription)
+    $createSubscription, UpdateCustomerService $updateStripeCustomer)
     {
         $this->createTrialPackageService = $createTrialPackageService;
         $this->createSubscription = $createSubscription;
+        $this->updateStripeCustomer = $updateStripeCustomer;
     }
     /**
      * User List
@@ -167,7 +170,7 @@ class AuthController extends Controller
         // }
     }
 
-    public function register(RegisterRequest $request)
+    public function register(RegisterRequest $request, CreateInterface $createStripeCustomer)
     {
         try {
             $token = Str::random(64);
@@ -187,14 +190,21 @@ class AuthController extends Controller
             $user_profile = UserProfile::create([
                 'user_id' => $user->id
             ]);
+            $data = [
+                $company_name = "Customer",
+                $email = $request->email,
+            ];
+            $result = $createStripeCustomer->create($data);
             if ($request->package == 'trial') {
                 Company::create([
+                    'connect_id' => $result->id,
                     'business_email' => $request->email,
                     'package' => $request->package,
                     'interval' => $request->interval
                 ]);
             } else {
                 Company::create([
+                    'connect_id' => $result->id,
                     'business_email' => $request->email,
                     'package' => $request->package,
                     'interval' => $request->interval,
@@ -239,7 +249,7 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse  User
      */
 
-    public function createUser(Request $request, CreateInterface $createStripeCustomer)
+    public function createUser(Request $request)
     {
         DB::beginTransaction();
         try {
@@ -280,7 +290,7 @@ class AuthController extends Controller
             $file->save();
             $data = [
                 $company_name = $request->company_name,
-                $email = $request->email,
+                $cus_id = $request->cus_id,
             ];
 
 
@@ -302,20 +312,19 @@ class AuthController extends Controller
             // $date_time_str = $date_str . ' ' . $time_str;
 
 
-            $result = $createStripeCustomer->create($data);
-            $company->connect_id = $result->id;
-            if ($company->package == 'trial') {
+            $result = $this->updateStripeCustomer->updateCustomer($data);
+            if ($request->package == 'Trial') {
+                $company->package = $request->package;
                 $current_date = Carbon::now();
                 $end_date = $current_date->addDays(30);
                 $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
                 $company->interval = 'month';
             } else {
+                $company->package = $request->package;
                 $subscription = $this->createSubscription->create_subscription($result, $company->price_id);
                 $company->end_date = $subscription->current_period_end;
                 $company->interval = $request->interval;
             }
-            $company->package = $request->package;
-            
             $company->save();
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.id', $user->id)->first();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
