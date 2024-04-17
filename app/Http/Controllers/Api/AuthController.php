@@ -323,6 +323,7 @@ class AuthController extends Controller
                 $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
                 $company->interval = 'month';
             } else {
+                dd($result);
                 $company->package = $request->package;
                 $subscription = $this->createSubscription->create_subscription($result, $company->price_id);
                 $company->subscription_id = $subscription->id;
