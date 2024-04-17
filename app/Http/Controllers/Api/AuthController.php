@@ -308,12 +308,14 @@ class AuthController extends Controller
                 $current_date = Carbon::now();
                 $end_date = $current_date->addDays(30);
                 $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
+                $company->interval = 'month';
             } else {
                 $subscription = $this->createSubscription->create_subscription($result, $company->price_id);
                 $company->end_date = $subscription->current_period_end;
+                $company->interval = $request->interval;
             }
             $company->package = $request->package;
-            $company->interval = $request->interval;
+            
             $company->save();
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.id', $user->id)->first();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
