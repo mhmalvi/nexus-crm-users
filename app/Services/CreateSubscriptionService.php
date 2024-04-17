@@ -8,6 +8,7 @@ class CreateSubscriptionService
     {
         $stripe = new
             \Stripe\StripeClient(config("app.stripe_secret"));
+            dd($data->id);
         return $response = $stripe->subscriptions->create([
             'customer' => $data->id,
 

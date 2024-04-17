@@ -274,7 +274,7 @@ class AuthController extends Controller
             $file->save();
             ///////////////////////////////////////////////////////////////////////////////////
             $company = Company::where('business_email', $request->email)->first();
-            dd($company->connect_id);
+            // dd($company->connect_id);
             $company->name = $request->company_name;
             $company->contact = $request->contact;
             $company->address = $request->company_address;
