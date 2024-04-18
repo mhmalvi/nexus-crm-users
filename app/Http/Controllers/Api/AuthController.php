@@ -338,7 +338,8 @@ class AuthController extends Controller
             return response()->json([
                 'status' => 201,
                 'message' => 'Company Created Successfully',
-                'data' => $user_data
+                'data' => $user_data,
+                'company'=>$company
             ], 201);
         } catch (\Throwable $th) {
             // DB::rollback();
