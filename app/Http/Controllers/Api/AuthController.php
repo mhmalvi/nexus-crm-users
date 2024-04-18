@@ -333,7 +333,7 @@ class AuthController extends Controller
             }
             $company->save();
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=',
-            'user_profile.user_id')->join('company.companies','users.id', '=', 'companies.admin')->where('users.id',
+            'user_profile.user_id')->where('users.id',
             $user->id)->first();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
             // DB::commit();
