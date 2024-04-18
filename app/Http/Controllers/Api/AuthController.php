@@ -314,7 +314,7 @@ class AuthController extends Controller
             // // dd($sub_str);
             // $date_time_str = $date_str . ' ' . $time_str;
 
-// dd($data);
+            // dd($data);
             $result = $this->updateStripeCustomer->updateCustomer($data);
             // dd($result);
             if ($request->package == 'Trial') {
@@ -332,14 +332,16 @@ class AuthController extends Controller
                 // $company->interval = $request->interval;
             }
             $company->save();
-            $user_data = DB::table('users')->join('user_profile', 'users.id', '=', 'user_profile.user_id')->where('users.id', $user->id)->first();
+            $user_data = DB::table('users')->join('user_profile', 'users.id', '=',
+            'user_profile.user_id')->join('companies','users.id', '=', 'companies.admin')->where('users.id',
+            $user->id)->first();
             Mail::to($request->email)->queue(new RegistrationMail($request->email, $request->full_name));
             // DB::commit();
             return response()->json([
                 'status' => 201,
                 'message' => 'Company Created Successfully',
                 'data' => $user_data,
-                'company'=>$company
+                'company' => $company
             ], 201);
         } catch (\Throwable $th) {
             // DB::rollback();
