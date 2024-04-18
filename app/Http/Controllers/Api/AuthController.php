@@ -314,7 +314,7 @@ class AuthController extends Controller
             // // dd($sub_str);
             // $date_time_str = $date_str . ' ' . $time_str;
 
-dd($data);
+// dd($data);
             $result = $this->updateStripeCustomer->updateCustomer($data);
             dd($result);
             if ($request->package == 'Trial') {
@@ -324,7 +324,7 @@ dd($data);
                 $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
                 $company->interval = 'month';
             } else {
-                dd($result);
+                // dd($result);
                 $company->package = $request->package;
                 $subscription = $this->createSubscription->create_subscription($result, $company->price_id);
                 $company->subscription_id = $subscription->id;
