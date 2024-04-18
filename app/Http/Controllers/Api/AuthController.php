@@ -314,7 +314,7 @@ class AuthController extends Controller
             // // dd($sub_str);
             // $date_time_str = $date_str . ' ' . $time_str;
 
-
+dd($data);
             $result = $this->updateStripeCustomer->updateCustomer($data);
             dd($result);
             if ($request->package == 'Trial') {
