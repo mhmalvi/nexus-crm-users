@@ -321,7 +321,8 @@ class AuthController extends Controller
                 $company->package = $request->package;
                 $current_date = Carbon::now();
                 $end_date = $current_date->addDays(30);
-                $company->end_date = Carbon::parse($end_date)->format("Y-m-d H:i:s");
+                $end_date_timestamp = $end_date->getTimeStamp();
+                $company->end_date = $end_date_timestamp;
                 // $company->interval = 'month';
             } else {
                 // dd($result);
