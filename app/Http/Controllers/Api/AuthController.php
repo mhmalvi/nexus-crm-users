@@ -200,7 +200,7 @@ class AuthController extends Controller
                     'connect_id' => $result->id,
                     'business_email' => $request->email,
                     'package' => $request->package,
-                    'interval' => $request->interval,
+                    'interval' => 'month',
                     'admin' => $user->id
                 ]);
             } else {
