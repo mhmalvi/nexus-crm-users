@@ -323,14 +323,14 @@ class AuthController extends Controller
                 $end_date = $current_date->addDays(30);
                 $end_date_timestamp = $end_date->getTimeStamp();
                 $company->end_date = $end_date_timestamp;
-                // $company->interval = 'month';
+                $company->interval = 'month';
             } else {
                 // dd($result);
                 $company->package = $request->package;
                 $subscription = $this->createSubscription->create_subscription($result, $request->priceId);
                 $company->subscription_id = $subscription->id;
                 $company->end_date = $subscription->current_period_end;
-                // $company->interval = $request->interval;
+                $company->interval = $request->interval;
             }
             $company->save();
             $user_data = DB::table('users')->join('user_profile', 'users.id', '=',
