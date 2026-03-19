@@ -13,3 +13,8 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+# Security
+.env.*
+credentials.json
+serviceAccountKey.json
+.claude/
