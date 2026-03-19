@@ -1,64 +1,114 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Nexus CRM Users
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The user management and authentication microservice for the **Nexus CRM** platform. This Laravel-based API handles user registration, login, role-based access control, follow-up reminders, and real-time notifications via WebSockets.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **User Registration & Authentication** — Secure sign-up and login with Laravel Sanctum token-based auth
+- **Email Verification** — Verification code validation during registration
+- **Password Recovery** — Forgot password and reset password flows with email notifications
+- **Role-Based Access Control** — Support for multiple roles including admin, sales, and super admin
+- **User Management** — Create, update, suspend, and delete user accounts
+- **Sales Team Queries** — Dedicated endpoints for listing and filtering sales personnel
+- **Follow-Up Reminders** — Schedule, update, and manage follow-up tasks for leads
+- **Real-Time Notifications** — WebSocket-powered notification broadcasting via Laravel WebSockets
+- **Notification Center** — List, read, and manage notification history
+- **Stripe Integration** — Customer-level Stripe operations for subscription management
+- **Trial Package Management** — Create and manage trial subscription packages
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Layer | Technology |
+|-------|-----------|
+| Framework | Laravel 8 |
+| Language | PHP 7.3+ / 8.0+ |
+| Authentication | Laravel Sanctum |
+| WebSockets | beyondcode/laravel-websockets |
+| Payments | Stripe PHP SDK |
+| Database | MySQL |
+| DB Migrations | Doctrine DBAL |
+| HTTP Client | Guzzle |
+| Testing | PHPUnit 9 |
+| Code Style | StyleCI |
 
-## Learning Laravel
+## Prerequisites
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP >= 7.3 (8.0+ recommended)
+- Composer
+- MySQL 5.7+ or MariaDB 10.3+
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Getting Started
 
-## Laravel Sponsors
+1. **Clone the repository**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+   ```bash
+   git clone https://github.com/mhmalvi/nexus-crm-users.git
+   cd nexus-crm-users
+   ```
 
-### Premium Partners
+2. **Install dependencies**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+   ```bash
+   composer install
+   ```
 
-## Contributing
+3. **Configure environment**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-## Code of Conduct
+   Update `.env` with database credentials, mail settings, Stripe keys, and WebSocket configuration.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Run database migrations**
 
-## Security Vulnerabilities
+   ```bash
+   php artisan migrate
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   Alternatively, import the provided `crm_user.sql` schema file.
+
+5. **Start the development server**
+
+   ```bash
+   php artisan serve
+   ```
+
+6. **Start the WebSocket server** (optional, for real-time features)
+
+   ```bash
+   php artisan websockets:serve
+   ```
+
+   The API will be available at `http://localhost:8000`.
+
+## API Overview
+
+| Endpoint Group | Description |
+|---------------|-------------|
+| `POST /api/user/register` | Register a new user |
+| `POST /api/user/login` | Authenticate and receive token |
+| `POST /api/user/list` | List users with filters |
+| `GET /api/user/{id}/details` | Get user profile details |
+| `POST /api/user/update` | Update user information |
+| `POST /api/user/status` | Change user active status |
+| `POST /api/user/suspend` | Suspend user accounts |
+| `POST /api/user/forgot-password` | Initiate password reset |
+| `POST /api/follow-up` | Create a follow-up reminder |
+| `POST /api/notifications-list` | Fetch user notifications |
+| `GET /api/user/sales-list` | List sales team members |
+
+## Microservices Integration
+
+| Service | Interaction |
+|---------|------------|
+| nexus-crm-leads | Provides user/sales data for lead assignment |
+| nexus-crm-orgs | Shares user context for company-level operations |
+| nexus-crm-payments | Manages Stripe customer records |
+| nexus-crm-alerts | Broadcasts real-time notification events |
+| nexus-crm-b2b | Validates authentication tokens for B2B operations |
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is proprietary software. All rights reserved.
