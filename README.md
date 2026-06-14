@@ -1,3 +1,6 @@
+<!-- repo-card -->
+![nexus-crm-users](docs/assets/social-card.png)
+
 # Nexus CRM Users
 
 The user management and authentication microservice for the **Nexus CRM** platform. This Laravel-based API handles user registration, login, role-based access control, follow-up reminders, and real-time notifications via WebSockets.
